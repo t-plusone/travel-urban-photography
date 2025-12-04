@@ -639,26 +639,26 @@ function PortfolioPage() {
       title: 'sychedelic southerncross station', 
       image: "https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5939.jpg?raw=true" 
     },
-    { 
-      id: 'project-title-3', 
-      title: 'SkyMine HQ', 
-      image: "https://github.com/t-plusone/plus.one-photos/blob/main/skymine.jpg?raw=true" 
-    },
-    { 
-      id: 'project-title-4', 
-      title: 'Urban Reflections', 
-      image: "https://github.com/t-plusone/plus.one-photos/blob/main/project4.jpg?raw=true" 
-    },
-    { 
-      id: 'project-title-5', 
-      title: 'Concrete Dreams', 
-      image: "https://github.com/t-plusone/plus.one-photos/blob/main/project5.jpg?raw=true" 
-    },
-    { 
-      id: 'project-title-6', 
-      title: 'Vertical Horizons', 
-      image: "https://github.com/t-plusone/plus.one-photos/blob/main/project6.jpg?raw=true" 
-    }
+    //{ 
+    //  id: 'project-title-3', 
+    //  title: 'SkyMine HQ', 
+    //  image: "https://github.com/t-plusone/plus.one-photos/blob/main/skymine.jpg?raw=true" 
+    //},
+    //{ 
+    //  id: 'project-title-4', 
+    //  title: 'Urban Reflections', 
+    //  image: "https://github.com/t-plusone/plus.one-photos/blob/main/project4.jpg?raw=true" 
+    //},
+    //{ 
+    //  id: 'project-title-5', 
+    //  title: 'Concrete Dreams', 
+    //  image: "https://github.com/t-plusone/plus.one-photos/blob/main/project5.jpg?raw=true" 
+    //},
+    //{ 
+    //  id: 'project-title-6', 
+    //  title: 'Vertical Horizons', 
+    //  image: "https://github.com/t-plusone/plus.one-photos/blob/main/project6.jpg?raw=true" 
+    //}
   ];
 
   return (
