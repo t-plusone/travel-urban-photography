@@ -16,27 +16,27 @@ import 'leaflet/dist/leaflet.css';
 const photoMarkers = [
   {
     id: 1,
-    position: [1.2839, 103.8323], // Tanjong Pagar Railway Station
+    position: [1.2727939,103.8379301], // Tanjong Pagar Railway Station
     date: 'June 2010',
-    title: 'Tanjong Pagar Platform',
+    title: 'Tanjong Pagar Station',
     description: 'The familiar platform, still bustling, yet under the shadow of change.',
-    imageUrl: '/path/to/your/photo1.jpg', // Replace with actual image path
+    imageUrl: '/images/ktm/001-P2090545.jpg', // Replace with actual image path
   },
   {
     id: 2,
-    position: [1.2839, 103.8323], // Same location for another shot
+    position: [1.2751553,103.8291078], // Same location for another shot
     date: 'July 2010',
-    title: 'The Last Ticket Counter',
-    description: 'The iconic ticketing hall, a symbol of journeys to come and gone.',
-    imageUrl: '/path/to/your/photo2.jpg',
+    title: 'KTM Train leaving Tg Pagar Station',
+    description: 'Taken on Kampong Bahru Flyover',
+    imageUrl: '/images/ktm/030-P8010338.jpg',
   },
-  {
-    id: 3,
-    position: [1.4358, 103.7860], // Woodlands Checkpoint (for context)
-    date: 'August 2010',
-    title: 'Future Hub: Woodlands',
-    description: 'The new departure point, a stark contrast to the old.',
-    imageUrl: '/path/to/your/photo3.jpg',
+  //{
+  //  id: 3,
+  //  position: [1.4358, 103.7860], // Woodlands Checkpoint (for context)
+  //  date: 'August 2010',
+  //  title: 'Future Hub: Woodlands',
+  //  description: 'The new departure point, a stark contrast to the old.',
+  //  imageUrl: '/path/to/your/photo3.jpg',
   },
   // Add more markers as needed
 ];
