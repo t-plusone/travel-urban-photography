@@ -355,15 +355,31 @@ function MobileMenu({ isHome, darkMode = false, isOpen, onClose }) {
     </div>
   );
 }
+// =============== DYNAMIC LOGO ===============
+function Logo({ isHome = false, darkMode = false }) {
+  const logoWhite = "https://raw.githubusercontent.com/t-plusone/plus.one-photos/main/plusone_logo_white.png";
+  const logoBlack = "https://raw.githubusercontent.com/t-plusone/plus.one-photos/main/plusone_logo_black.png";
 
-// =============== LOGO (unchanged, but ensure contrast) ===============
-function Logo() {
+  let logoUrl;
+
+  if (isHome) {
+    // ✅ Splash page uses WHITE logo
+    logoUrl = logoWhite;
+  } else {
+    // Auto: white on dark bg, black on light bg
+    logoUrl = darkMode ? logoWhite : logoBlack;
+  }
+
   return (
     <Link to="/">
       <img 
-        src="https://github.com/t-plusone/plus.one-photos/blob/main/plusone_logo%202_13x6.png?raw=true" 
+        src={logoUrl}
         alt="plus.one"
         style={{ width: '130px', height: '60px', objectFit: 'contain' }}
+        onError={(e) => {
+          console.error("Failed to load logo:", logoUrl);
+          e.target.style.opacity = 0.5;
+        }}
       />
     </Link>
   );
@@ -385,7 +401,7 @@ function Header({ isHome, darkMode = false }) {
       zIndex: 10,
       backgroundColor: headerBg
     }}>
-      <div><Logo /></div>
+      <div><Logo isHome={isHome} darkMode={darkMode} /></div>
       <Navigation isHome={isHome} darkMode={darkMode} />
       <button 
         onClick={() => setMenuOpen(!menuOpen)}
@@ -405,49 +421,134 @@ function Header({ isHome, darkMode = false }) {
 }
 
 // =============== HOMEPAGE ===============
+// =============== HOMEPAGE ===============
 function HomePage() {
   const heroImage = "https://github.com/t-plusone/plus.one-photos/blob/main/splash%20photo%20a.jpg?raw=true";
   return (
-    <div style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', margin: 0, overflowX: 'hidden' }}>
-      <div style={{ minHeight: '100vh', width: '100%', backgroundImage: `url(${heroImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0, 0, 0, 0.15)' }} />
+    <div style={{ 
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', 
+      margin: 0, 
+      overflowX: 'hidden' 
+    }}>
+      <div style={{ 
+        minHeight: '100vh', 
+        width: '100%', 
+        backgroundImage: `url(${heroImage.trim()})`, 
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center', 
+        backgroundRepeat: 'no-repeat', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        position: 'relative' 
+      }}>
+        <div style={{ 
+          position: 'absolute', 
+          top: 0, 
+          left: 0, 
+          right: 0, 
+          bottom: 0, 
+          backgroundColor: 'rgba(0, 0, 0, 0.15)' 
+        }} />
         <Header isHome={true} />
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '0 20px', color: 'white', position: 'relative', zIndex: 5 }}>
-          <h1 style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', fontWeight: 300, marginBottom: '1rem', letterSpacing: '0.05em', lineHeight: 1.2, textShadow: '2px 2px 4px rgba(0,0,0,0.9)' }}>plus.one</h1>
-          <p style={{ fontSize: 'clamp(1rem, 5vw, 1.5rem)', fontWeight: 300, letterSpacing: '0.2em', lineHeight: 1.2, textShadow: '2px 2px 4px rgba(0,0,0,0.9)' }}>travel & urbanscape photographer</p>
+        <div style={{ 
+          flex: 1, 
+          display: 'flex', 
+          flexDirection: 'column', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          textAlign: 'center', 
+          padding: '0 20px', 
+          position: 'relative', 
+          zIndex: 5 
+        }}>
+          {/* ✅ Split-color "plusone" */}
+          <h1 style={{ 
+  fontSize: 'clamp(2rem, 8vw, 3rem)', 
+  fontWeight: 300, 
+  marginBottom: '1rem', 
+  letterSpacing: '0.05em', 
+  lineHeight: 1.2,
+  textShadow: '2px 2px 4px rgba(0,0,0,0.9)',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+}}>
+  <span style={{ color: 'white' }}>plus</span>
+  <span style={{ color: '#aaa' }}>one</span>
+</h1>
+          <p style={{ 
+            fontSize: 'clamp(1rem, 5vw, 1.5rem)', 
+            fontWeight: 300, 
+            letterSpacing: '0.2em', 
+            lineHeight: 1.2, 
+            textShadow: '2px 2px 4px rgba(0,0,0,0.9)',
+            color: 'white'
+          }}>
+            travel & urbanscape photographer
+          </p>
         </div>
       </div>
     </div>
   );
 }
 
-// =============== PORTFOLIO PAGE (unchanged) ===============
+// =============== PORTFOLIO PAGE ===============
 function PortfolioPage() {
   const projects = [
     { id: 'sg-urbanscape', title: 'singapore urbanscape', image: "https://github.com/t-plusone/plus.one-photos/blob/main/IMG_0365.jpg?raw=true" },
     { id: 'sychedelic', title: 'sychedelic southerncross station', image: "https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5939.jpg?raw=true" }
-//    { id: 'project-title-3', title: 'SkyMine HQ', image: "https://github.com/t-plusone/plus.one-photos/blob/main/skymine.jpg?raw=true" },
-//    { id: 'project-title-4', title: 'Urban Reflections', image: "https://github.com/t-plusone/plus.one-photos/blob/main/project4.jpg?raw=true" },
-//    { id: 'project-title-5', title: 'Concrete Dreams', image: "https://github.com/t-plusone/plus.one-photos/blob/main/project5.jpg?raw=true" },
-//    { id: 'project-title-6', title: 'Vertical Horizons', image: "https://github.com/t-plusone/plus.one-photos/blob/main/project6.jpg?raw=true" }
   ];
+
   return (
-    <div style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', backgroundColor: 'white', color: '#1a1a1a', margin: 0, minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ 
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      backgroundColor: 'white',
+      color: '#1a1a1a',
+      minHeight: '100vh',
+      width: '100%'
+    }}>
       <Header isHome={false} />
-      <main style={{ flex: 1, padding: '60px 32px 40px', display: 'flex', flexDirection: 'column' }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: 400, textAlign: 'center', marginBottom: '40px', letterSpacing: '0.02em' }}>portfolio</h1>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', maxWidth: '1500px', margin: '0 auto', width: '100%' }}>
+      <div style={{ 
+        padding: '60px 32px 40px', 
+        maxWidth: '1500px', 
+        margin: '0 auto',
+        width: '100%',
+        boxSizing: 'border-box'
+      }}>
+        <h1 style={{ 
+          fontSize: '2.5rem', 
+          fontWeight: 400, 
+          textAlign: 'center', 
+          marginBottom: '40px', 
+          letterSpacing: '0.02em' 
+        }}>
+          portfolio
+        </h1>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(2, 1fr)', 
+          gap: '24px', 
+          width: '100%' 
+        }}>
           {projects.map((project, index) => (
             <Link key={index} to={`/portfolio-collections/my-portfolio/${project.id}`} style={{ display: 'block', textDecoration: 'none', width: '100%' }}>
-              <img src={project.image} alt={project.title} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '4px' }} onContextMenu={e => e.preventDefault()} />
-              <div style={{ textAlign: 'center', fontSize: '0.95rem', fontWeight: 400, marginTop: '12px', color: '#1a1a1a' }}>{project.title}</div>
+              <img 
+                src={project.image.trim()} 
+                alt={project.title} 
+                style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '4px' }} 
+                onContextMenu={e => e.preventDefault()} 
+              />
+              <div style={{ textAlign: 'center', fontSize: '0.95rem', fontWeight: 400, marginTop: '12px', color: '#1a1a1a' }}>
+                {project.title}
+              </div>
             </Link>
           ))}
         </div>
-      </main>
+      </div>
     </div>
   );
 }
+
 // =============== PHOTO DOCUMENTARIES PAGE ===============
 function PhotoDocumentariesPage() {
   const documentaries = [
@@ -456,73 +557,75 @@ function PhotoDocumentariesPage() {
       title: 'A Journey Till The End',
       coverImage: 'https://github.com/t-plusone/plus.one-photos/blob/main/030-P8010338.jpg?raw=true'
     }
-    // Add more documentaries here later
   ];
 
   return (
     <div style={{ 
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
       backgroundColor: '#000',
-      color: '#fff',
       minHeight: '100vh',
-      padding: '60px 32px 40px',
-      width: '100%',
-      boxSizing: 'border-box'
+      color: '#fff',
+      width: '100%'
     }}>
       <Header isHome={false} darkMode={true} />
-
-      <h1 style={{ 
-        fontSize: '2.5rem',
-        fontWeight: 400,
-        textAlign: 'center',
-        marginBottom: '40px',
-        letterSpacing: '0.02em'
-      }}>
-        photo documentaries
-      </h1>
-
       <div style={{ 
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)',
-        gap: '24px',
-        maxWidth: '1200px',
+        padding: '60px 32px 40px', 
+        maxWidth: '1500px', 
         margin: '0 auto',
-        width: '100%'
+        width: '100%',
+        boxSizing: 'border-box'
       }}>
-        {documentaries.map((doc, index) => (
-          <Link 
-            key={index} 
-            to={`/photo-documentaries/${doc.slug}`}
-            style={{ display: 'block', textDecoration: 'none', width: '100%' }}
-          >
-            <img 
-              src={doc.coverImage.trim()}
-              alt={doc.title}
-              style={{
-                width: '100%',
-                height: 'auto',
-                aspectRatio: '16 / 10',
-                objectFit: 'cover',
-                borderRadius: '4px',
-                display: 'block'
-              }}
-              onContextMenu={(e) => e.preventDefault()}
-            />
-            <div style={{ 
-              textAlign: 'center', 
-              fontSize: '0.95rem', 
-              fontWeight: 400, 
-              marginTop: '12px',
-              color: '#fff'
-            }}>
-              {doc.title}
-            </div>
-          </Link>
-        ))}
+        <h1 style={{ 
+          fontSize: '2.5rem',
+          fontWeight: 400,
+          textAlign: 'center',
+          marginBottom: '40px',
+          letterSpacing: '0.02em'
+        }}>
+          photo documentaries
+        </h1>
+        <div style={{ 
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '24px',
+          width: '100%'
+        }}>
+          {documentaries.map((doc, index) => (
+            <Link 
+              key={index} 
+              to={`/photo-documentaries/${doc.slug}`}
+              style={{ display: 'block', textDecoration: 'none', width: '100%' }}
+            >
+              <img 
+                src={doc.coverImage.trim()}
+                alt={doc.title}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  aspectRatio: '16 / 10',
+                  objectFit: 'cover',
+                  borderRadius: '4px',
+                  display: 'block'
+                }}
+                onContextMenu={(e) => e.preventDefault()}
+              />
+              <div style={{ 
+                textAlign: 'center', 
+                fontSize: '0.95rem', 
+                fontWeight: 400, 
+                marginTop: '12px',
+                color: '#fff'
+              }}>
+                {doc.title}
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
+
 // =============== KTM STORY MAP PAGE ===============
 function KtmStoryMapPage() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -642,27 +745,29 @@ function KtmStoryMapPage() {
     }
   };
 
-  return (
-    <div style={{ 
-      backgroundColor: '#000',
-      minHeight: '100vh',
-      width: '100%',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-      color: '#fff',
-      padding: '0',
-      margin: '0'
-    }}>
-      <div style={{ 
-        padding: '60px 32px 40px', 
-        maxWidth: '1200px', 
-        margin: '0 auto',
-        boxSizing: 'border-box'
-      }}>
-        <Header isHome={false} darkMode={true} />
+return (
+  <div style={{ 
+    backgroundColor: '#000',
+    minHeight: '100vh',
+    width: '100%',
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+    color: '#fff',
+    padding: '0',
+    margin: '0'
+  }}>
+    {/* ✅ Header stays full-width, same as all other pages */}
+    <Header isHome={false} darkMode={true} />
 
-        <h1 style={{ fontSize: '2.5rem', fontWeight: 400, textAlign: 'center', marginBottom: '16px', letterSpacing: '0.02em' }}>
-          A Journey Till the End
-        </h1>
+    {/* ✅ Only content is centered and constrained */}
+    <div style={{ 
+      padding: '60px 32px 40px', 
+      maxWidth: '1200px', 
+      margin: '0 auto',
+      boxSizing: 'border-box'
+    }}>
+      <h1 style={{ fontSize: '2.5rem', fontWeight: 400, textAlign: 'center', marginBottom: '16px', letterSpacing: '0.02em' }}>
+        A Journey Till the End
+      </h1>
 
         {/* Narrative — EXACT BLOG TEXT */}
         <div style={{ maxWidth: '800px', margin: '0 auto', lineHeight: 1.7, fontSize: '1.05rem' }}>
