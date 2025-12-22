@@ -60,7 +60,7 @@ const projectData = {
         ]
       },
       {
-        src: "https://github.com/t-plusone/plus.one-photos/blob/main/_DSF4459b.jpg?raw=true",
+        src: "https://github.com/t-plusone/plus.one-photos/blob/main/_DSF4459.jpg?raw=true",
         caption: "Inspired by MC Escher",
         metadata: [
           "Were the town planners in Singapore inspired by MC Escher when they designed the town of Toa Payoh back in the 1960s? I doubt they were, but one will never know. Millions of Singaporeans live in government-built apartments within these blocks of 'HDB flats'. (HDB, or Housing Development Board of Singapore, is the government department that build and manage these apartments.) 'HDB flats' has become a symbol of Singapore, loved by their inhabitants and providing a blueprint to many other countries in the world for the development of their own public housing. These 'public housing' estates in Singapore are safe, clean and often spacious and well constructed internally - a far cry from the slums or ghettos associated with 'public housing' in other countries.",
@@ -132,7 +132,7 @@ const projectData = {
       },
 
 {
-        src: "https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5951.jpg?raw=true",
+        src: "https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5953.jpg?raw=true",
         caption: "Undulating roof structure",
         metadata: [
           "Winner: Australian Architecture Awards 2023",
@@ -141,7 +141,7 @@ const projectData = {
       },
 
 {
-        src: "https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5953.jpg?raw=true",
+        src: "https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5951.jpg?raw=true",
         caption: "Undulating roof structure",
         metadata: [
           "Winner: Australian Architecture Awards 2023",
@@ -340,7 +340,6 @@ function Navigation({ isHome, darkMode = false }) {
   );
 }
 
-// =============== MOBILE MENU (updated) ===============
 // =============== MOBILE MENU (Side Drawer) ===============
 function MobileMenu({ isHome, darkMode = false, isOpen, onClose }) {
   // Reuse your existing color logic
@@ -471,7 +470,7 @@ function Logo({ isHome = false, darkMode = false }) {
 // =============== HEADER (updated) ===============
 function Header({ isHome, darkMode = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const headerBg = isHome ? 'rgba(0, 0, 0, 0.20)' : 'transparent';
+  const headerBg = isHome ? 'rgba(0, 0, 0, 0.40)' : 'transparent';
   const buttonColor = isHome ? 'white' : (darkMode ? 'white' : '#1a1a1a');
   
   return (
@@ -516,7 +515,6 @@ function Header({ isHome, darkMode = false }) {
 
 
 // =============== HOMEPAGE ===============
-// =============== HOMEPAGE ===============
 function HomePage() {
   const isMobile = window.innerWidth <= 768;
   
@@ -548,7 +546,7 @@ function HomePage() {
           left: 0, 
           right: 0, 
           bottom: 0, 
-          backgroundColor: 'rgba(0, 0, 0, 0.15)' 
+          backgroundColor: 'rgba(0, 0, 0, 0.10)' 
         }} />
         <Header isHome={true} />
         <div style={{ 
@@ -572,7 +570,7 @@ function HomePage() {
             textShadow: '2px 2px 4px rgba(0,0,0,0.9)' 
           }}>
             <span style={{ color: 'white' }}>plus</span>
-            <span style={{ color: '#aaa' }}>one</span>
+            <span style={{ color: '#bbb' }}>one</span>
           </h1>
           <p style={{ 
             fontSize: 'clamp(1rem, 5vw, 1.5rem)', 
