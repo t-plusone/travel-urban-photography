@@ -516,8 +516,15 @@ function Header({ isHome, darkMode = false }) {
 
 
 // =============== HOMEPAGE ===============
+// =============== HOMEPAGE ===============
 function HomePage() {
-  const heroImage = "https://github.com/t-plusone/plus.one-photos/blob/main/splash%20photo%20a.jpg?raw=true";
+  const isMobile = window.innerWidth <= 768;
+  
+  const desktopHero = "https://github.com/t-plusone/plus.one-photos/blob/main/PA031063.JPG?raw=true";
+  const mobileHero = "https://github.com/t-plusone/plus.one-photos/blob/main/PA031063m.JPG?raw=true";
+  
+  const heroImage = isMobile ? mobileHero : desktopHero;
+
   return (
     <div style={{ 
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', 
@@ -552,31 +559,28 @@ function HomePage() {
           alignItems: 'center', 
           textAlign: 'center', 
           padding: '0 20px', 
+          color: 'white', 
           position: 'relative', 
           zIndex: 5 
         }}>
-          {/* ✅ Split-color "plusone" */}
           <h1 style={{ 
-  fontSize: 'clamp(2rem, 8vw, 3rem)', 
-  fontWeight: 300, 
-  marginBottom: '1rem', 
-  letterSpacing: '0.05em', 
-  lineHeight: 1.2,
-  textShadow: '2px 2px 4px rgba(0,0,0,0.9)',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center'
-}}>
-  <span style={{ color: 'white' }}>plus</span>
-  <span style={{ color: '#aaa' }}>one</span>
-</h1>
+            fontSize: 'clamp(2rem, 8vw, 3rem)', 
+            fontWeight: 300, 
+            marginBottom: '1rem', 
+            letterSpacing: '0.05em', 
+            lineHeight: 1.2, 
+            textShadow: '2px 2px 4px rgba(0,0,0,0.9)' 
+          }}>
+            <span style={{ color: 'white' }}>plus</span>
+            <span style={{ color: '#aaa' }}>one</span>
+          </h1>
           <p style={{ 
             fontSize: 'clamp(1rem, 5vw, 1.5rem)', 
             fontWeight: 300, 
             letterSpacing: '0.2em', 
             lineHeight: 1.2, 
-            textShadow: '2px 2px 4px rgba(0,0,0,0.9)',
-            color: 'white'
+            textShadow: '2px 2px 4px rgba(0,0,0,0.9)', 
+            color: 'white' 
           }}>
             travel & urbanscape photographer
           </p>
@@ -585,7 +589,6 @@ function HomePage() {
     </div>
   );
 }
-
 // =============== PORTFOLIO PAGE ===============
 function PortfolioPage() {
   const projects = [
