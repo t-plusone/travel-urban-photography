@@ -341,20 +341,103 @@ function Navigation({ isHome, darkMode = false }) {
 }
 
 // =============== MOBILE MENU (updated) ===============
+// =============== MOBILE MENU (Side Drawer) ===============
 function MobileMenu({ isHome, darkMode = false, isOpen, onClose }) {
+  // Reuse your existing color logic
   const color = isHome ? 'white' : (darkMode ? 'white' : '#1a1a1a');
-  const bgColor = isHome ? 'rgba(0,0,0,0.9)' : (darkMode ? '#000' : 'white');
-  const borderColor = isHome || darkMode ? undefined : '1px solid #e5e5e5';
+  const bgColor = isHome ? 'rgba(0,0,0,0.9)' : (darkMode ? '#000' : '#fff');
+
   if (!isOpen) return null;
+
   return (
-    <div style={{ position: 'absolute', top: '70px', right: '32px', backgroundColor: bgColor, padding: '16px', borderRadius: '8px', zIndex: 9, border: borderColor }}>
-      <Link to="/portfolio" style={{ display: 'block', textDecoration: 'none', color: color, opacity: 0.9, marginBottom: '12px', fontSize: '0.95rem', fontWeight: 400 }} onClick={onClose}>portfolio</Link>
-      <Link to="/photo-documentaries" style={{ display: 'block', textDecoration: 'none', color: color, opacity: 0.9, marginBottom: '12px', fontSize: '0.95rem', fontWeight: 400 }} onClick={onClose}>photo documentaries</Link>
-      <Link to="/about" style={{ display: 'block', textDecoration: 'none', color: color, opacity: 0.9, marginBottom: '12px', fontSize: '0.95rem', fontWeight: 400 }} onClick={onClose}>about</Link>
-      <Link to="/contact" style={{ display: 'block', textDecoration: 'none', color: color, opacity: 0.9, fontSize: '0.95rem', fontWeight: 400 }} onClick={onClose}>contact</Link>
-    </div>
+    <>
+      {/* Overlay */}
+      <div 
+        onClick={onClose}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.4)',
+          zIndex: 999
+        }}
+      />
+      {/* Side Drawer */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          height: '100vh',
+          width: '280px',
+          backgroundColor: bgColor,
+          color: color,
+          zIndex: 1000,
+          padding: '24px 32px',
+          boxSizing: 'border-box',
+          display: 'flex',
+          flexDirection: 'column'
+        }}
+      >
+        <button
+          onClick={onClose}
+          aria-label="Close menu"
+          style={{
+            background: 'none',
+            border: 'none',
+            color: color,
+            fontSize: '24px',
+            marginLeft: 'auto',
+            cursor: 'pointer'
+          }}
+        >
+          ✕
+        </button>
+        <nav style={{ marginTop: '40px' }}>
+          <div style={{ marginBottom: '20px' }}>
+            <Link 
+              to="/portfolio" 
+              style={{ color: color, textDecoration: 'none', fontSize: '1.1rem' }}
+              onClick={onClose}
+            >
+              portfolio
+            </Link>
+          </div>
+          <div style={{ marginBottom: '20px' }}>
+            <Link 
+              to="/photo-documentaries" 
+              style={{ color: color, textDecoration: 'none', fontSize: '1.1rem' }}
+              onClick={onClose}
+            >
+              photo documentaries
+            </Link>
+          </div>
+          <div style={{ marginBottom: '20px' }}>
+            <Link 
+              to="/about" 
+              style={{ color: color, textDecoration: 'none', fontSize: '1.1rem' }}
+              onClick={onClose}
+            >
+              about
+            </Link>
+          </div>
+          <div>
+            <Link 
+              to="/contact" 
+              style={{ color: color, textDecoration: 'none', fontSize: '1.1rem' }}
+              onClick={onClose}
+            >
+              contact
+            </Link>
+          </div>
+        </nav>
+      </div>
+    </>
   );
 }
+
 // =============== DYNAMIC LOGO ===============
 function Logo({ isHome = false, darkMode = false }) {
   const logoWhite = "https://raw.githubusercontent.com/t-plusone/plus.one-photos/main/plusone_logo_white.png";
@@ -416,11 +499,22 @@ function Header({ isHome, darkMode = false }) {
         isOpen={menuOpen} 
         onClose={() => setMenuOpen(false)} 
       />
+
+      <style jsx>{`
+  @media (max-width: 768px) {
+    .desktop-menu {
+      display: none !important;
+    }
+    .mobile-menu-button {
+      display: block !important;
+    }
+  }
+`}</style>
     </header>
   );
 }
 
-// =============== HOMEPAGE ===============
+
 // =============== HOMEPAGE ===============
 function HomePage() {
   const heroImage = "https://github.com/t-plusone/plus.one-photos/blob/main/splash%20photo%20a.jpg?raw=true";
@@ -1066,5 +1160,7 @@ function App() {
     </Router>
   );
 }
+
+
 
 export default App;
