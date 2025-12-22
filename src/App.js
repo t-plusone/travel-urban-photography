@@ -521,7 +521,7 @@ function HomePage() {
   const isMobile = window.innerWidth <= 768;
   
   const desktopHero = "https://github.com/t-plusone/plus.one-photos/blob/main/PA031063.JPG?raw=true";
-  const mobileHero = "https://github.com/t-plusone/plus.one-photos/blob/main/PA031063m.JPG?raw=true";
+  const mobileHero = "https://raw.githubusercontent.com/t-plusone/plus.one-photos/main/PA031063m.JPG";
   
   const heroImage = isMobile ? mobileHero : desktopHero;
 
