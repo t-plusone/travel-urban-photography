@@ -10,27 +10,6 @@ import { Icon } from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import L from 'leaflet';
 
-function createNumberedIcon(number) {
-  return L.divIcon({
-    className: 'numbered-marker',
-    html: `<div style="
-      background: #1a1a1a;
-      color: white;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 12px;
-      font-weight: bold;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      border: 2px solid white;
-    ">${number}</div>`,
-    iconSize: [24, 24],
-    iconAnchor: [12, 12],
-  });
-}
 
 // Fix marker icons
 delete L.Icon.Default.prototype._getIconUrl;
@@ -720,22 +699,30 @@ function PhotoDocumentariesPage() {
     </div>
   );
 }
-
 // =============== KTM STORY MAP PAGE ===============
 function KtmStoryMapPage() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [lightboxPhoto, setLightboxPhoto] = useState(null); // 👈 for lightbox
   const mapRef = useRef();
 
-  const openLightbox = (photo) => {
-    setSelectedPhoto(photo);
-    setLightboxOpen(true);
-  };
+  const openLightbox = (photo) => setLightboxPhoto(photo);
+  const closeLightbox = () => setLightboxPhoto(null);
 
-  const closeLightbox = () => {
-    setLightboxOpen(false);
-    setSelectedPhoto(null);
-  };
+function MapPaneManager() {
+  const map = useMap();
+
+  useEffect(() => {
+    // Create a custom pane that sits above the default marker pane
+    if (!map.getPane('markerPaneTop')) {
+      map.createPane('markerPaneTop');
+      map.getPane('markerPaneTop').style.zIndex = 625; // higher than default marker-pane (600)
+    }
+  }, [map]);
+
+  return null;
+}
+
+
 
   // Format date: "2010-11-18" → "18 November 2010"
   function formatDate(isoDate) {
@@ -748,7 +735,8 @@ function KtmStoryMapPage() {
   }
 
   // --- Numbered Marker Icon ---
-  function createNumberedIcon(number) {
+  function createNumberedIcon(id) {
+    const zIndex = 1000 - id;
     return L.divIcon({
       className: 'numbered-marker',
       html: `<div style="
@@ -764,46 +752,142 @@ function KtmStoryMapPage() {
         font-weight: bold;
         box-shadow: 0 2px 6px rgba(255,255,255,0.4);
         border: 2px solid #fff;
-      ">${number}</div>`,
+        position: relative;
+        z-index: ${zIndex};
+      ">${id}</div>`,
       iconSize: [24, 24],
       iconAnchor: [12, 12],
+      riseOnHover: false // 👈 critical
     });
   }
 
+
   // --- Photo Locations ---
-  const ktmLocations = [
+   const ktmLocations = [
     {
       id: 1,
-      name: "Tanjong Pagar Railway Station",
-      lat: 1.2727939,
-      lng: 103.8379301,
+      name: "Entrance of Tanjong Pagar Railway Station",
+      lat: 1.2730275,
+      lng: 103.8389164,
       photos: [
         {
           id: 1,
           title: "Tanjong Pagar Railway Station",
-          shotFrom: "Tanjong Pagar Railway Station carpark",
+          shotFrom: "from the carpark of the Station",
           shotDate: "2011-02-09",
           caption: "Built in 1932, the Tanjong Pagar Railway Station is the showpiece of the KTM Railway System within Singapore and is located along Keppel Road.",
-          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/001-P2090545.jpg?raw=true"
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P2090545.jpg?raw=true"
         },
         {
           id: 2,
-          title: "Fencing on the North side of the Railway Station",
-          shotFrom: "North side of the Station",
-          shotDate: "2010-11-18",
-          caption: "On the north side of the Railway Station, there is a side entrance into the Station compound from Spottiswoode Park Road. The fencing on this side of the Station looks simple and easily penetrable - in total contrast with the high-security fencing found in Singapore's governmental buildings. I am reminded of the simplicity and innocence of an age gone by.",
-          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/004-PB180854.jpg?raw=true"
+          title: "Tanjong Pagar Railway Station frontal view",
+          shotFrom: "",
+          shotDate: "2010-10-09",
+          caption: "",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/PA091165.jpg?raw=true"
+        },
+        {
+          id: 3,
+          title: "F.M.S.R.",
+          shotFrom: "",
+          shotDate: "",
+          caption: "The acronym \"F.M.S.R.\" can be found in several places at the Railway Station.  It stands for \"Federal Malay States Railway\".  I guess it must have been the name of the railway systems in Malaya during the British colonial period. An example where F.M.S.R. can be found is above the 4 towering statues at the entrance of the Railway Station.  These 4 statues are named Agriculture, Commerce, Transport and Industry - symbols of Malaya's economic pillars, with each personification holding symbols unique to their character.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/013.jpg?raw=true",
+          isComposite: true
         }
       ]
     },
-    {
+
+     {
       id: 2,
+      name: "North side of the Station facing Spottiswoode Park Road",
+      lat: 1.2733707, 
+      lng: 103.8386348,
+      photos: [
+        {
+          id: 1,
+          title: "A simple fencing",
+          shotFrom: "",
+          shotDate: "2010-11-18",
+          caption: "On the north side of the Railway Station, there is a side entrance into the Station compound from Spottiswoode Park Road. The fencing on this side of the Station looks simple - I am reminded of the simplicity and innocence of an age gone by.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/PB180854.jpg?raw=true"
+        },
+        {
+          id: 2,
+          title: "Bambai Food Catering",
+          shotFrom: "",
+          shotDate: "2010-06-24",
+          caption: "On the north side of the Station, there are several entrances that lead, via eating places or corridors, into the main hall of the Station.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P6240088.jpg?raw=true"
+        },
+        {
+          id: 3,
+          title: "One of the entrances into the Station",
+          shotFrom: "",
+          shotDate: "2010-11-18",
+          caption: "",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/PB180856.jpg?raw=true"
+        },
+        {
+          id: 4,
+          title: "Motorbikes Galore",
+          shotFrom: "",
+          shotDate: "2010-11-18",
+          caption: "Many motorbikes are parked on this side of the Station.  They probably belong to the people who work in the Railway Station.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/PB180858.jpg?raw=true"
+        }
+      ]
+    },
+
+    {
+      id: 3,
+      name: "South side of the Station facing Keppel Road",
+      lat: 1.2726253, 
+      lng: 103.8377604,
+      photos: [
+        {
+          id: 1,
+          title: "Kiriman Ekspres",
+          shotFrom: "along Keppel Road",
+          shotDate: "2010-07-25",
+          caption: "This parcel van comes in at 0624hrs with the night train from KL, and is then shunted to Platform 3 to allow easy loading and unloading of goods from the Kiriman Ekspres (KTM Distribution) office. It departs Singapore at 2230hrs the same day with the night train to KL, stopping at stations to pick up or drop off goods. Sometimes, 1 or 2 parcel vans are used, depending on the requirement.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P7250273.jpg?raw=true"
+        },
+        {
+          id: 2,
+          title: "A broken clock is right twice a day. This one is right four times a day.",
+          shotFrom: "along Keppel Road",
+          shotDate: "2011-02-15",
+          caption: "This side of the clock faces the East and has stopped at about 1:28.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P2150609.jpg?raw=true"
+        },
+        {
+          id: 3,
+          title: "",
+          shotFrom: "",
+          shotDate: "2010-11-18",
+          caption: "The other side of the clock faces the West and has stopped at 12:30.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P7110211.jpg?raw=true"
+        },
+        {
+          id: 4,
+          title: "A train at the departure platform viewed through the Station fencing along Keppel Road.",
+          shotFrom: "",
+          shotDate: "2010-06-24",
+          caption: "",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P6240114.jpg?raw=true"
+        }
+      ]
+    },
+
+    {
+      id: 5,
       name: "Kampong Bahru Flyover",
       lat: 1.275092, 
       lng: 103.829083,
       photos: [
         {
-          id: 3,
+          id: 7,
           title: "On the Kampong Bahru Flyover",
           shotFrom: "Kampong Bahru Flyover pedestrian walkway",
           shotDate: "2010-08-01",
@@ -813,15 +897,15 @@ function KtmStoryMapPage() {
       ]
     },
     {
-      id: 3,
+      id: 30,
       name: "The Causeway",
       lat: 1.4476076,
       lng: 103.7720621,
       photos: [
         {
-          id: 4,
+          id: 200,
           title: "The End",
-          shotFrom: "215 Marsiling Lane",
+          shotFrom: "Woodlands Waterfront Park",
           shotDate: "2010-12-13",
           caption: "After departing the Woodlands Train Checkpoint, a Malaysia-bound train leaves Singapore via the Johor–Singapore Causeway.",
           imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/070-PC131745.jpg?raw=true"
@@ -833,59 +917,57 @@ function KtmStoryMapPage() {
   // Compute map bounds for full journey
   const mapBounds = ktmLocations.map(loc => [loc.lat, loc.lng]);
 
-  // Reset to full journey view
+  // Reset to full view
   const resetToHome = () => {
     if (mapRef.current) {
       mapRef.current.fitBounds(mapBounds, { padding: [50, 50], animate: true });
     }
   };
 
-return (
-  <div style={{ 
-    backgroundColor: '#000',
-    minHeight: '100vh',
-    width: '100%',
-    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-    color: '#fff',
-    padding: '0',
-    margin: '0'
-  }}>
-    {/* ✅ Header stays full-width, same as all other pages */}
-    <Header isHome={false} darkMode={true} />
-
-    {/* ✅ Only content is centered and constrained */}
+  return (
     <div style={{ 
-      padding: '60px 32px 40px', 
-      maxWidth: '1200px', 
-      margin: '0 auto',
-      boxSizing: 'border-box'
+      backgroundColor: '#000',
+      minHeight: '100vh',
+      width: '100%',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      color: '#fff',
+      padding: '0',
+      margin: '0'
     }}>
-      <h1 style={{ fontSize: '2.5rem', fontWeight: 400, textAlign: 'center', marginBottom: '16px', letterSpacing: '0.02em' }}>
-        A Journey Till the End
-      </h1>
+      <div style={{ 
+        padding: '60px 32px 40px', 
+        maxWidth: '1200px', 
+        margin: '0 auto',
+        boxSizing: 'border-box'
+      }}>
+        <Header isHome={false} darkMode={true} />
 
-        {/* Narrative — EXACT BLOG TEXT */}
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 400, textAlign: 'center', marginBottom: '16px', letterSpacing: '0.02em' }}>
+          A Journey Till the End
+        </h1>
+
+        {/* Narrative — your exact blog text */}
         <div style={{ maxWidth: '800px', margin: '0 auto', lineHeight: 1.7, fontSize: '1.05rem' }}>
-          <p>
-            In May 2010, it was announced that from 1 July 2011, KTM train services from Singapore will depart from Woodlands instead of Tanjong Pagar Railway Station. KTM stands for Keretapi Tanah Melayu, which means Malayan Railways. Everyday, it operates a few train trips between Singapore and many parts of Malaysia. Tanjong Pagar Railway Station is KTM’s only station in Singapore.
-          </p>
-          <p>
-            Tanjong Pagar Railway Station, built in 1932, will then be “conserved given its historical significance. It will also be the centrepiece for the proposed new development on this site.” (ChannelNewsAsia, 24 May 2010) We in Singapore know that the word “conserve” can only mean one of two things: 1) The building will be given a new coat of paint and some renovations and it will be leased or sold to the highest bidder who will convert it to a restaurant, a pub, a shopping mall, a discotheque or a residential property (quite unlikely for this case though); or 2) The building will be given to some government entity (e.g. Ministry of Foreign Affairs, etc.) and the place will become out of bounds to the general public.
-          </p>
-          <p>
-            Following the announcement, my immediate thoughts were that it might suffer the same fate that had beset on other historical buildings in Singapore such as the former National Library at Stamford Road (demolished) and Old Thong Chai Hospital (since 1990s, it has existed as a nightclub, a few restaurants and others at different times).
-          </p>
-          <p>
-            Although I had only commuted on KTM trains not more than 10 times in my 39 years of life, I nonetheless felt strongly that this will mark the end of yet another legacy in Singapore. Documentary Photography has always been close to my heart, especially so in the past couple of years. Singapore has changed so much and is still changing so quickly that I firmly believe that I, as a photographer and a Son of this Land, have the moral obligations to our future generations to preserve images of Singapore that will be gone forever.
-          </p>
-          <p>
-            Thus my journey began at Tanjong Pagar Railway Station on a Thursday afternoon in June 2010…
-          </p>
-        </div>
+  <p>
+    In May 2010, it was announced that from 1 July 2011, KTM (Keretapi Tanah Melayu) train services would depart from Woodlands instead of Tanjong Pagar Railway Station. KTM, or Malayan Railways, operated daily trains between Singapore and Malaysia, with Tanjong Pagar as its only station in Singapore.
+  </p>
+  <p>
+    Tanjong Pagar Railway Station, built in 1932, would be “conserved given its historical significance.” Yet in Singapore, we know the word “conserve” often means repurposing or restricted access—much like the former National Library or Old Thong Chai Hospital.
+  </p>
+  <p>
+    Although I had ridden KTM fewer than ten times in my life, I felt strongly that this marked the end of yet another legacy. Documentary photography has always been close to my heart. Singapore changes so quickly that I, as a photographer and a Son of this Land, have a moral obligation to preserve images of what will be gone forever.
+  </p>
+  <p>
+    Thus my journey began at Tanjong Pagar Railway Station on a Thursday afternoon in June 2010. Over the next 360 days, I photographed KTM trains at publicly accessible locations across Singapore—from Tanjong Pagar to Woodlands and beyond. Every image was made with strict technical discipline: I composed each frame to include unmistakable symbols of Singapore—a road sign, an HDB block, familiar urban textures—so no photograph could be mistaken for Malaysia. I timed my shoots to avoid shooting into the sun and waited, sometimes for hours, to capture an approaching train (never its receding back).
+  </p>
+  <p style={{ marginTop: '24px', fontStyle: 'italic', fontWeight: 500, fontSize: '1.1rem' }}>
+    This story ends with the last train’s departure from Tanjong Pagar on 30 June 2011. These images are not nostalgia—they are a testament to a vanishing chapter, preserved with care, precision, and respect.
+  </p>
+</div>
 
-        {/* MAP WITH HOME BUTTON */}
+        {/* MAP */}
         <div style={{ 
-          height: '500px', 
+          height: '600px', 
           marginTop: '40px', 
           marginBottom: '40px', 
           borderRadius: '8px', 
@@ -893,72 +975,46 @@ return (
           border: '1px solid #333',
           position: 'relative'
         }}>
-          <MapContainer 
-            ref={mapRef}
-            bounds={mapBounds}
-            boundsOptions={{ padding: [50, 50] }}
-            style={{ height: '100%', width: '100%' }}
-            scrollWheelZoom={true}
-          >
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            />
-            {ktmLocations.map((location) => (
-              <Marker
-                key={location.id}
-                position={[location.lat, location.lng]}
-                icon={createNumberedIcon(location.id)}
-                eventHandlers={{
-  click: () => {
-    if (mapRef.current) {
-      const currentZoom = mapRef.current.getZoom();
-      const targetZoom = Math.min(currentZoom + 6, 18); 
-      mapRef.current.setView([location.lat, location.lng], targetZoom, { animate: true });
-    }
+<MapContainer
+  ref={mapRef}
+  bounds={mapBounds}
+  boundsOptions={{ padding: [50, 50] }}
+  style={{ height: '100%', width: '100%' }}
+  scrollWheelZoom={true}
+>
+  <TileLayer
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  />
+  {/* Create custom pane */}
+  <MapPaneManager />
+  
+  {/* Render markers in reverse ID order (3,2,1) so #1 is LAST → on top */}
+  {[...ktmLocations]
+    .sort((a, b) => b.id - a.id) // Descending: 30, 5, 3, 2, 1
+    .map((location) => (
+      <Marker
+        key={location.id}
+        position={[location.lat, location.lng]}
+        icon={createNumberedIcon(location.id)}
+        pane="markerPaneTop" // 👈 critical: use custom pane
+        zIndexOffset={1000 - location.id}
+        eventHandlers={{
+          click: () => {
+            if (mapRef.current) {
+              const currentZoom = mapRef.current.getZoom();
+              const targetZoom = Math.min(currentZoom + 6, 18);
+              mapRef.current.setView([location.lat, location.lng], targetZoom, { animate: true });
+            }
+            setSelectedLocation(location);
+          }
+        }}
+      />
+    ))
   }
-}}
-              >
-                <Popup
-                  maxWidth={450}
-                  maxHeight={400}
-                >
-                  <div>
-                    <h4 style={{ margin: '0 0 12px 0', fontSize: '1.1rem', fontWeight: 500, color: '#000' }}>
-                      {location.name}
-                    </h4>
-                    <div style={{ 
-                      display: 'flex',
-                      flexWrap: 'wrap',
-                      gap: '10px',
-                      justifyContent: 'center',
-                      padding: '8px 0'
-                    }}>
-                      {location.photos.map(photo => (
-                        <img 
-                          key={photo.id}
-                          src={photo.imageUrl.trim()}
-                          alt={photo.title}
-                          style={{ 
-                            width: '100px',
-                            height: 'auto',
-                            maxHeight: '120px',
-                            objectFit: 'contain',
-                            backgroundColor: '#000',
-                            borderRadius: '4px',
-                            cursor: 'pointer'
-                          }}
-                          onClick={() => openLightbox(photo)}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </Popup>
-              </Marker>
-            ))}
-          </MapContainer>
+</MapContainer>
           
-          {/* Home Button */}
+          {/* ✅ HOME BUTTON */}
           <button
             onClick={resetToHome}
             style={{
@@ -985,74 +1041,168 @@ return (
             🏠
           </button>
         </div>
-
-        {/* LIGHTBOX */}
-        {selectedPhoto && (
-          <div 
-            style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.9)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '10px', overflow: 'auto' }}
-            onClick={closeLightbox}
-          >
-            <div 
-              style={{
-                backgroundColor: 'white',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                position: 'relative',
-                width: '100%',
-                display: 'flex',
-                flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
-                maxWidth: window.innerWidth <= 768 ? '95vw' : '1200px'
-              }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button onClick={closeLightbox} style={{ position: 'absolute', top: '12px', right: '12px', background: 'rgba(0,0,0,0.7)', color: 'white', border: 'none', borderRadius: '50%', width: '32px', height: '32px', fontSize: '18px', cursor: 'pointer' }}>×</button>
-              
-              <div style={{ 
-                width: '100%',
-                padding: window.innerWidth <= 768 ? '16px' : '20px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                ...(window.innerWidth > 768 ? { flex: 2, minWidth: '400px' } : {})
-              }}>
-                <img 
-                  src={selectedPhoto.imageUrl.trim()}
-                  alt={selectedPhoto.caption}
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: '70vh',
-                    height: 'auto',
-                    width: 'auto',
-                    objectFit: 'contain',
-                    borderRadius: '4px'
-                  }}
-                />
-              </div>
-
-              <div style={{ 
-                width: '100%',
-                padding: window.innerWidth <= 768 ? '0 16px 16px' : '20px',
-                ...(window.innerWidth > 768 ? { flex: 1, minWidth: '300px' } : {})
-              }}>
-                <h3 style={{ fontSize: window.innerWidth <= 768 ? '1rem' : '1.2rem', fontWeight: 500, marginBottom: '8px', color: '#1a1a1a' }}>
-                  {selectedPhoto.title}
-                </h3>
-                <p style={{ 
-                  fontSize: '0.95rem', 
-                  color: '#666', 
-                  marginBottom: '12px',
-                  fontStyle: 'italic'
-                }}>
-                  Photographed from {selectedPhoto.shotFrom} on {formatDate(selectedPhoto.shotDate)}.
-                </p>
-                <p style={{ color: '#495057', lineHeight: 1.6, fontSize: '1rem' }}>
-                  {selectedPhoto.caption}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
+{/* ============ SIDEBAR PANEL ============ */}
+{selectedLocation && (
+  <div 
+    style={{
+      position: 'fixed',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      width: '420px',
+      backgroundColor: 'white',
+      zIndex: 1000,
+      display: 'flex',
+      flexDirection: 'column',
+      boxShadow: '-4px 0 12px rgba(0,0,0,0.15)'
+    }}
+  >
+    {/* ✅ FIXED HEADER (never scrolls) */}
+    <div style={{
+      padding: '24px 32px 16px',
+      position: 'relative',
+      flexShrink: 0, // ← critical: prevents shrinking
+      borderBottom: '1px solid #eee'
+    }}>
+      <button
+        onClick={() => setSelectedLocation(null)}
+        aria-label="Close panel"
+        style={{
+          position: 'absolute',
+          top: '24px',
+          left: '32px',
+          background: 'none',
+          border: 'none',
+          fontSize: '24px',
+          color: '#000',
+          cursor: 'pointer',
+          width: '32px',
+          height: '32px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        ✕
+      </button>
+      <h2 style={{ 
+        fontSize: '1.3rem', 
+        fontWeight: 500, 
+        color: '#000',
+        marginLeft: '32px', // align with content
+        marginTop: 0
+      }}>
+        {selectedLocation.name}
+      </h2>
+    </div>
+
+    {/* ✅ SCROLLABLE CONTENT AREA */}
+    <div style={{
+      padding: '0 32px 32px',
+      overflowY: 'auto',
+      flex: 1
+    }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '8px' }}>
+        {selectedLocation.photos.map(photo => (
+          <div key={photo.id} style={{ display: 'flex', flexDirection: 'column' }}>
+            {/* Photo */}
+            <div style={{ 
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center'
+            }}>
+              <img 
+                src={photo.imageUrl.trim()}
+                alt={photo.title}
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '400px',
+                  height: 'auto',
+                  width: 'auto',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  border: '1px solid #eee'
+                }}
+                onClick={() => openLightbox(photo)}
+                onContextMenu={(e) => e.preventDefault()}
+              />
+            </div>
+            
+            {/* Title */}
+            <h3 style={{ 
+              fontSize: '1.15rem', 
+              fontWeight: 500, 
+              marginTop: '16px', 
+              color: '#000',
+              lineHeight: 1.3
+            }}>
+              {photo.title}
+            </h3>
+
+            {/* "Photographed..." line — ONLY if NOT composite */}
+            {!photo.isComposite && (
+              <p style={{ 
+                fontSize: '0.95rem', 
+                color: '#666', 
+                fontStyle: 'italic',
+                margin: '8px 0 10px 0',
+                lineHeight: 1.4
+              }}>
+                Photographed {photo.shotFrom} on {formatDate(photo.shotDate)}.
+              </p>
+            )}
+
+            {/* Caption */}
+            <p style={{ 
+              color: '#495057', 
+              lineHeight: 1.65, 
+              fontSize: '1rem',
+              marginTop: photo.isComposite ? '8px' : '4px',
+              marginBottom: '0'
+            }}>
+              {photo.caption}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
+
+      {/* ✅ MINIMAL LIGHTBOX */}
+      {lightboxPhoto && (
+        <div 
+          onClick={closeLightbox}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0,0,0,0.95)',
+            zIndex: 2000,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '20px',
+            cursor: 'zoom-out'
+          }}
+        >
+          <img 
+            src={lightboxPhoto.imageUrl.trim()}
+            alt={lightboxPhoto.title}
+            style={{
+              maxWidth: '100%',
+              maxHeight: '100%',
+              width: 'auto',
+              height: 'auto',
+              objectFit: 'contain'
+            }}
+            onContextMenu={(e) => e.preventDefault()}
+          />
+        </div>
+      )}
     </div>
   );
 }
