@@ -629,7 +629,7 @@ function PhotoDocumentariesPage() {
     {
       slug: 'ktm-story',
       title: 'A Journey Till The End',
-      coverImage: 'https://github.com/t-plusone/plus.one-photos/blob/main/030-P8010338.jpg?raw=true'
+      coverImage: 'https://github.com/t-plusone/plus.one-photos/blob/main/P8010338.jpg?raw=true'
     }
   ];
 
@@ -791,8 +791,12 @@ function MapPaneManager() {
           title: "F.M.S.R.",
           shotFrom: "",
           shotDate: "",
-          caption: "The acronym \"F.M.S.R.\" can be found in several places at the Railway Station.  It stands for \"Federal Malay States Railway\".  I guess it must have been the name of the railway systems in Malaya during the British colonial period. An example where F.M.S.R. can be found is above the 4 towering statues at the entrance of the Railway Station.  These 4 statues are named Agriculture, Commerce, Transport and Industry - symbols of Malaya's economic pillars, with each personification holding symbols unique to their character.",
-          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/013.jpg?raw=true",
+          caption: [
+            "The acronym \"F.M.S.R.\" can be found in several places at the Railway Station.  It stands for \"Federal Malay States Railway\".",  
+            "I guess it must have been the name of the railway systems in Malaya during the British colonial period. An example where F.M.S.R. can be found is above the 4 towering statues at the entrance of the Railway Station.",
+            "These 4 statues are named Agriculture, Commerce, Transport and Industry - symbols of Malaya's economic pillars, with each personification holding symbols unique to their character."
+          ],
+            imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/013.jpg?raw=true",
           isComposite: true
         }
       ]
@@ -809,7 +813,10 @@ function MapPaneManager() {
           title: "A simple fencing",
           shotFrom: "",
           shotDate: "2010-11-18",
-          caption: "On the north side of the Railway Station, there is a side entrance into the Station compound from Spottiswoode Park Road. The fencing on this side of the Station looks simple - I am reminded of the simplicity and innocence of an age gone by.",
+          caption: [
+            "On the north side of the Railway Station, there is a side entrance into the Station compound from Spottiswoode Park Road.",
+          "The fencing on this side of the Station looks simple - I am reminded of the simplicity and innocence of an age gone by."
+          ],
           imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/PB180854.jpg?raw=true"
         },
         {
@@ -850,7 +857,10 @@ function MapPaneManager() {
           title: "Kiriman Ekspres",
           shotFrom: "along Keppel Road",
           shotDate: "2010-07-25",
-          caption: "This parcel van comes in at 0624hrs with the night train from KL, and is then shunted to Platform 3 to allow easy loading and unloading of goods from the Kiriman Ekspres (KTM Distribution) office. It departs Singapore at 2230hrs the same day with the night train to KL, stopping at stations to pick up or drop off goods. Sometimes, 1 or 2 parcel vans are used, depending on the requirement.",
+          caption: [
+            "This parcel van comes in at 0624hrs with the night train from KL, and is then shunted to Platform 3 to allow easy loading and unloading of goods from the Kiriman Ekspres (KTM Distribution) office.",
+          "It departs Singapore at 2230hrs the same day with the night train to KL, stopping at stations to pick up or drop off goods. Sometimes, 1 or 2 parcel vans are used, depending on the requirement."
+          ],
           imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P7250273.jpg?raw=true"
         },
         {
@@ -880,19 +890,188 @@ function MapPaneManager() {
       ]
     },
 
-    {
+{
+      id: 4,
+      name: "The interior of the Tanjong Pagar Railway Station",
+      lat: 1.2729819,  
+      lng: 103.8386858,
+      photos: [
+        {
+          id: 1,
+          title: "Kaunter Tiket | Ticket Counter",
+          shotFrom: "inside the Station",
+          shotDate: "2010-06-24",
+          caption: "No automated ticket machines.  No store-valued electronic tickets either.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P6240097.jpg?raw=true"
+        },
+        {
+          id: 2,
+          title: "Station Main Hall",
+          shotFrom: "",
+          shotDate: "2010-10-03",
+          caption: "No security guards, metal detectors or rifle-carrying soldiers.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/PA031100.jpg?raw=true"
+        },
+        {
+          id: 3,
+          title: "F.M.S.R. again",
+          shotFrom: "",
+          shotDate: "2010-11-18",
+          caption: "The acronym F.M.S.R. also appears on the north and south walls inside the station.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P6240095.jpg?raw=true"
+        },
+        {
+          id: 4,
+          title: "Depature Gate",
+          shotFrom: "",
+          shotDate: "2010-07-25",
+          caption: "",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P7250277.jpg?raw=true"
+        }
+      ]
+    },
+
+
+{
       id: 5,
+      name: "Murals murals on the walls",
+      lat: 1.2729685,  
+      lng: 103.8384819,
+      photos: [
+        {
+          id: 1,
+          title: "Mural #1",
+          shotFrom: "inside the Station",
+          shotDate: "2010-07-25",
+          caption: [
+            "There are six murals high on the east and west walls in the main hall of the Station.",   
+          "To properly show the beauty of the murals, these photographs have been post-processed in Photoshop to remove the \"keystoning\" (crooked, convergent) effect due to the angle from which these photographs were taken.",
+          "This mural shows workers in a rubber plantation."
+        ],
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P7250286.jpg?raw=true"
+        },
+        {
+          id: 2,
+          title: "Mural #2",
+          shotFrom: "",
+          shotDate: "2010-07-25",
+          caption: "This mural shows farmers in a rice field.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P7250287.jpg?raw=true"
+        },
+        {
+          id: 3,
+          title: "Mural #3",
+          shotFrom: "",
+          shotDate: "2010-07-25",
+          caption: "This mural shows miners in a mine.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P7250288.jpg?raw=true"
+        },
+        {
+          id: 4,
+          title: "Mural #4",
+          shotFrom: "",
+          shotDate: "2010-07-25",
+          caption: "This mural shows villagers plucking coconuts from coconut trees.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P7250290.jpg?raw=true"
+        },
+        {
+          id: 5,
+          title: "Mural #5",
+          shotFrom: "",
+          shotDate: "2010-07-25",
+          caption: "This mural shows workers in a port, with different types of ships in the background.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P7250292.jpg?raw=true"
+        },
+        {
+          id: 6,
+          title: "Mural #6",
+          shotFrom: "",
+          shotDate: "2010-07-25",
+          caption: "This mural shows villagers transporting goods with tools such as a bullock cart, with a train in the background.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P7250293.jpg?raw=true"
+        }
+      ]
+    },
+
+
+{
+      id: 6,
+      name: "Arrival Platform of the Station",
+      lat: 1.2731777,  
+      lng: 103.8381466,
+      photos: [
+        {
+          id: 1,
+          title: "Eating at the Arrival Platform",
+          shotFrom: "",
+          shotDate: "2010-10-09",
+          caption: [
+            "Patrons of the eating places in the Station can sit down at the arrival platform to enjoy their mee siam or teh tarik in a relaxed manner."
+               ],
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/PA091173.jpg?raw=true"
+        },
+        {
+          id: 2,
+          title: "Seats at the Arrival Platform",
+          shotFrom: "",
+          shotDate: "2011-05-20",
+          caption: "",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/DSCF0013.jpg?raw=true"
+        }
+       
+      ]
+    },
+{
+      id: 7,
+      name: "106 Spottiswoode Park Road",
+      lat: 1.2735718, 
+      lng: 103.8340670,
+      photos: [
+        {
+          id: 1,
+          title: "Train Number 26 \"Senandung Timuran\"， leaving the Tanjong Pagar Railway Station at around 6 pm",
+          shotFrom: "from the 25th floor of 106 Spottiswoode Park Road",
+          shotDate: "2010-11-18",
+          caption: [
+            "On leaving the Tanjong Pagar Railway Station, a Malaysia-bound train will first travel against the traffic flow for vehicles on Keppel Road before cruising alongside the Ayer Rajah Expressway in a northwesterly direction."
+          ],
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/PB180887.jpg?raw=true"
+        }
+      ]
+    },
+ {
+      id: 8,
+      name: "Along Keppel Road",
+      lat: 1.2726761, 
+      lng: 103.8335520,
+      photos: [
+        {
+          id: 1,
+          title: "The 6 pm train, Train Number 14 \"Ekspres Timuran\" departing from Tanjong Pagar Railway Station",
+          shotFrom: "along Keppel Road",
+          shotDate: "2010-07-25",
+          caption: [
+            "The blocks of HDB flats in the background are Blks 111, 113 and 115, Bukit Purmei Road.",
+            "They are visible from Keppel Road on the periphery of the Station."
+          ],
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P7250271.jpg?raw=true"
+        }
+      ]
+    },
+
+    {
+      id: 9,
       name: "Kampong Bahru Flyover",
       lat: 1.275092, 
       lng: 103.829083,
       photos: [
         {
           id: 7,
-          title: "On the Kampong Bahru Flyover",
-          shotFrom: "Kampong Bahru Flyover pedestrian walkway",
+          title: "Train Number 26 \"Senandung Timuran\" approaching the Kampong Bahru Flyover",
+          shotFrom: "on Kampong Bahru Flyover",
           shotDate: "2010-08-01",
-          caption: "The first bridge that a Malaysia-bound train passes was the Kampong Bahru Flyover.",
-          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/030-P8010338.jpg?raw=true"
+          caption: "The first bridge that a Malaysia-bound train passes is the Kampong Bahru Flyover.",
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P8010338.jpg?raw=true"
         }
       ]
     },
@@ -1044,7 +1223,7 @@ function MapPaneManager() {
       </div>
 {/* ============ SIDEBAR PANEL ============ */}
 {selectedLocation && (
-  <div 
+  <div
     style={{
       position: 'fixed',
       top: 0,
@@ -1058,27 +1237,38 @@ function MapPaneManager() {
       boxShadow: '-4px 0 12px rgba(0,0,0,0.15)'
     }}
   >
-    {/* ✅ FIXED HEADER (never scrolls) */}
+    {/* ✅ FIXED HEADER BAR */}
     <div style={{
       padding: '24px 32px 16px',
-      position: 'relative',
-      flexShrink: 0, // ← critical: prevents shrinking
-      borderBottom: '1px solid #eee'
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between', // ✕ on right, title on left
+      borderBottom: '1px solid #eee',
+      flexShrink: 0
     }}>
+      {/* Location name — left aligned with content */}
+      <h2 style={{
+        fontSize: '1.3rem',
+        fontWeight: 500,
+        color: '#000',
+        margin: 0,
+        lineHeight: 1.3
+      }}>
+        {selectedLocation.name}
+      </h2>
+
+      {/* ✕ button — moved to top-right */}
       <button
         onClick={() => setSelectedLocation(null)}
         aria-label="Close panel"
         style={{
-          position: 'absolute',
-          top: '24px',
-          left: '32px',
           background: 'none',
           border: 'none',
-          fontSize: '24px',
+          fontSize: '19px',       // 20% smaller than 24px
           color: '#000',
           cursor: 'pointer',
-          width: '32px',
-          height: '32px',
+          width: '26px',
+          height: '26px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center'
@@ -1086,33 +1276,24 @@ function MapPaneManager() {
       >
         ✕
       </button>
-      <h2 style={{ 
-        fontSize: '1.3rem', 
-        fontWeight: 500, 
-        color: '#000',
-        marginLeft: '32px', // align with content
-        marginTop: 0
-      }}>
-        {selectedLocation.name}
-      </h2>
     </div>
 
-    {/* ✅ SCROLLABLE CONTENT AREA */}
+    {/* ✅ SCROLLABLE CONTENT — perfectly aligned under header */}
     <div style={{
       padding: '0 32px 32px',
       overflowY: 'auto',
       flex: 1
     }}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '8px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '16px' }}>
         {selectedLocation.photos.map(photo => (
           <div key={photo.id} style={{ display: 'flex', flexDirection: 'column' }}>
             {/* Photo */}
-            <div style={{ 
+            <div style={{
               width: '100%',
               display: 'flex',
               justifyContent: 'center'
             }}>
-              <img 
+              <img
                 src={photo.imageUrl.trim()}
                 alt={photo.title}
                 style={{
@@ -1128,23 +1309,24 @@ function MapPaneManager() {
                 onContextMenu={(e) => e.preventDefault()}
               />
             </div>
-            
+
             {/* Title */}
-            <h3 style={{ 
-              fontSize: '1.15rem', 
-              fontWeight: 500, 
-              marginTop: '16px', 
+            <h3 style={{
+              fontSize: '1.15rem',
+              fontWeight: 500,
+              marginTop: '16px',
               color: '#000',
-              lineHeight: 1.3
+              lineHeight: 1.3,
+              textAlign: 'left'
             }}>
               {photo.title}
             </h3>
 
             {/* "Photographed..." line — ONLY if NOT composite */}
             {!photo.isComposite && (
-              <p style={{ 
-                fontSize: '0.95rem', 
-                color: '#666', 
+              <p style={{
+                fontSize: '0.95rem',
+                color: '#666',
                 fontStyle: 'italic',
                 margin: '8px 0 10px 0',
                 lineHeight: 1.4
@@ -1154,9 +1336,9 @@ function MapPaneManager() {
             )}
 
             {/* Caption */}
-            <p style={{ 
-              color: '#495057', 
-              lineHeight: 1.65, 
+            <p style={{
+              color: '#495057',
+              lineHeight: 1.65,
               fontSize: '1rem',
               marginTop: photo.isComposite ? '8px' : '4px',
               marginBottom: '0'
