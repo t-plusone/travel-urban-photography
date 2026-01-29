@@ -844,8 +844,8 @@ function createNumberedIcon(id) {
     {
       id: 3,
       name: "South side of the Station",
-      lat: 1.2726253,
-      lng: 103.8377604,
+      lat: 1.2726349,
+      lng: 103.8383263,
       photos: [
         {
           id: 1,
@@ -1111,6 +1111,75 @@ function createNumberedIcon(id) {
       ]
     },
     {
+      id: 12,
+      name: "After Henderson Flyover near Depot Road",
+      lat: 1.2819672,
+      lng: 103.8159513,
+      photos: [
+        {
+          id: 1,
+          title: "A Walk in the Park",
+          shotFrom: "on the overhead bridge connecting Depot Road and Bukit Merach Central",
+          shotDate: "2010-08-17",
+          caption: [
+            "Though it's risky to be walking along the railway track, this couple probably knew the schedule of the trains very well.",
+            "Once again, the thirty-storey tall 17 Telok Blangah Crescent can be seen in the background."
+          ],
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P8170387.jpg?raw=true"
+        }
+      ]
+    },
+{
+      id: 13,
+      name: "Jalan Hang Jebat",
+      lat: 1.2897443,
+      lng: 103.7990186,
+      photos: [
+        {
+          id: 1,
+          title: "Off the Beaten Track",
+          shotFrom: "near Masjid Hang Jebat",
+          shotDate: "2010-08-31",
+          caption: [
+            "After Depot Road, a Malaysia-bound train continues alongside the Ayer Rajah Expressway until Gillman Flyover at Alexandra Road, where it diverges from the AYE and continues northwards. Here, it passes the Alexandra Hospital on its right before traveling past Jalan Hang Jebat, a well-concealed road that is off the beaten track.",
+            "This photograph shows Tanjong Pagar-bound Train Number 13 \"Ekspres Sinaran Selatan\" ‒ originating from KL Sentral ‒ approaching Jalan Hang Jebat, with Blks 19-22 Queen's Close in the background."
+          ],
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P8310543.jpg?raw=true"
+        },
+        {
+          id: 2,
+          title: "There and Back Again?",
+          shotFrom: "near Masjid Hang Jebat",
+          shotDate: "2010-08-31",
+          caption: [
+            "Since the railway tracks are properties of the KTM, and the land on which they stand belongs to the government of Malaysia, does it mean that if someone steps onto the track, he or she is in Malaysia?",
+            "There is a Muslim mosque known as Masjid Hang Jebat at Jalan Hang Jebat. During the Muslim Haj period, this charitable mosque gives out free food to anyone, regardless of Muslims or otherwise - a Muslim uncle who saw me waiting for trains actually persuaded me to go get some free food there. I politely turned him down as I thought someone else needed it more than I did.",
+            "Everyday, many Singaporeans cross at different points of the KTM railway tracks to get from one place to another, such as getting from one-north to Queensway at Jalan Hang Jebat."
+          ],
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P8310510.jpg?raw=true"
+        }
+      ]
+    },
+    {
+      id: 14,
+      name: "Queensway Flyover",
+      lat: 1.2944636,
+      lng: 103.7987638,
+      photos: [
+        {
+          id: 1,
+          title: "Tanjong Pagar-bound Train approaching the Queensway Flyover",
+          shotFrom: "from the Queensway Flyover",
+          shotDate: "2011-06-17",
+          caption: [
+            "After passing Jalan Hang Jebat, a Malaysia-bound train will go under the Queensway Flyover and emerge on the left-hand-side of the Blessed Sacrament Church on Commonwealth Drive.",
+            "This photograph shows Tanjong Pagar-bound Shuttle Service Train Number 91 approaching the Queensway Flyover, with the colorful Blk 55 Commonwealth Drive in the background."
+          ],
+          imageUrl: "https://github.com/t-plusone/plus.one-photos/blob/main/P6171689.jpg?raw=true"
+        }
+      ]
+    },
+    {
       id: 30,
       name: "The Causeway",
       lat: 1.4502533,
@@ -1196,91 +1265,93 @@ function createNumberedIcon(id) {
     </div>
 
 
-{/* ============ CENTERED MAP WITH LEFT PANEL ============ */}
+{/* ============ RESPONSIVE MAP + LEFT PANEL ============ */}
 <div style={{
-  position: 'relative',
   padding: '0 32px 40px',
   boxSizing: 'border-box'
 }}>
-  {/* LEFT PANEL — positioned using calc() */}
+  {/* Container with responsive max-width */}
   <div style={{
-    position: 'absolute',
-    top: '0',
-    left: 'calc(50% - 600px - 240px)', // 600 = half of 1200px map, 240 = 220px panel + 20px gap
-    width: '200px',
-    backgroundColor: '#111',
-    borderRight: '1px solid #333',
-    overflowY: 'auto',
-    padding: '20px 16px',
-    borderRadius: '8px 0 0 8px',
-    zIndex: 10,
-    // Optional: for debugging
-    // outline: '1px solid red'
-  }}>
-    <h3 style={{ fontSize: '1rem', fontWeight: 500, marginBottom: '16px', color: '#fff' }}>
-      Locations
-    </h3>
-    {ktmLocations.map(location => (
-      <button
-        key={location.id}
-        onClick={() => {
-          if (mapRef.current) {
-            mapRef.current.setView([location.lat, location.lng], 17, { animate: true });
-          }
-          setSelectedLocation(location);
-        }}
-        style={{
-          background: 'none',
-          border: 'none',
-          textAlign: 'left',
-          padding: '8px 12px',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontSize: '0.91rem',
-          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-          color: '#ccc',
-          width: '100%',
-          fontWeight: selectedLocation?.id === location.id ? '600' : 'normal',
-          backgroundColor: selectedLocation?.id === location.id ? 'rgba(255,255,255,0.1)' : 'transparent'
-        }}
-      >
-        <span style={{ color: '#fff', fontWeight: 'bold' }}>{location.id}.</span>{' '}
-        {location.name}
-      </button>
-    ))}
-  </div>
-
-  {/* CENTERED MAP — 1200px × 660px */}
-  <div style={{
-    width: '1200px',
+    display: 'flex',
     height: '660px',
+    maxWidth: '1400px', // max on big screens
     margin: '0 auto',
-    borderRadius: '0 8px 8px 0',
-    overflow: 'hidden',
-    border: '1px solid #333',
-    position: 'relative',
-    zIndex: 1
+    gap: '20px', // space between panel and map
+    width: '100%'
   }}>
-    <MapContainer
-      ref={mapRef}
-      center={[1.35, 103.82]}
-      zoom={11}
-      style={{ height: '100%', width: '100%' }}
-      scrollWheelZoom={true}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      />
-      {ktmLocations
+    {/* LEFT PANEL — responsive width */}
+    <div style={{
+      width: '200px',
+      minWidth: '180px', // won’t shrink below this
+      backgroundColor: '#111',
+      borderRight: '1px solid #333',
+      overflowY: 'auto',
+      padding: '20px 16px',
+      borderRadius: '8px 0 0 8px',
+      flexShrink: 0 // prevents shrinking
+    }}>
+      <h3 style={{ fontSize: '1rem', fontWeight: 500, marginBottom: '16px', color: '#fff' }}>
+        Locations
+      </h3>
+      {ktmLocations.map(location => (
+        <button
+          key={location.id}
+          onClick={() => {
+            if (mapRef.current) {
+              mapRef.current.setView([location.lat, location.lng], 17, { animate: true });
+            }
+            setSelectedLocation(location);
+          }}
+          style={{
+            background: 'none',
+            border: 'none',
+            textAlign: 'left',
+            padding: '8px 12px',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            fontSize: '0.91rem',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+            color: '#ccc',
+            width: '100%',
+            fontWeight: selectedLocation?.id === location.id ? '600' : 'normal',
+            backgroundColor: selectedLocation?.id === location.id ? 'rgba(255,255,255,0.1)' : 'transparent'
+          }}
+        >
+          <span style={{ color: '#fff', fontWeight: 'bold' }}>{location.id}.</span>{' '}
+          {location.name}
+        </button>
+      ))}
+    </div>
+
+    {/* MAP — flexible width */}
+    <div style={{
+      flex: 1,
+      minWidth: '800px', // won’t collapse on smaller screens
+      borderRadius: '0 8px 8px 0',
+      overflow: 'hidden',
+      border: '1px solid #333',
+      position: 'relative'
+    }}>
+      <MapContainer
+        ref={mapRef}
+        center={[1.35, 103.82]}
+        zoom={11}
+        style={{ height: '100%', width: '100%' }}
+        scrollWheelZoom={true}
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+{ktmLocations
   .slice()
-  .sort((a, b) => a.id - b.id) // sort by ID: 1, 2, 3...
+  .sort((a, b) => a.id - b.id) // ensure markers are processed in ID order
   .map((location) => (
     <Marker
       key={location.id}
       position={[location.lat, location.lng]}
       icon={createNumberedIcon(location.id)}
-      zIndexOffset={10000 + (100 - location.id)} // ← ensures lower IDs appear on top
+      zIndexOffset={10000 + (100 - location.id)} // ← critical: lower ID = higher zIndex
       eventHandlers={{
         click: () => {
           if (mapRef.current) {
@@ -1293,32 +1364,33 @@ function createNumberedIcon(id) {
     />
   ))
 }
-    </MapContainer>
-    <button
-      onClick={resetToHome}
-      style={{
-        position: 'absolute',
-        top: '10px',
-        right: '10px',
-        zIndex: 1000,
-        background: '#000',
-        color: '#fff',
-        border: '1px solid #fff',
-        borderRadius: '4px',
-        width: '36px',
-        height: '36px',
-        fontSize: '16px',
-        cursor: 'pointer',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
-        padding: '0'
-      }}
-      title="Reset to full journey view"
-    >
-      🏠
-    </button>
+      </MapContainer>
+      <button
+        onClick={resetToHome}
+        style={{
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+          zIndex: 1000,
+          background: '#000',
+          color: '#fff',
+          border: '1px solid #fff',
+          borderRadius: '4px',
+          width: '36px',
+          height: '36px',
+          fontSize: '16px',
+          cursor: 'pointer',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          boxShadow: '0 2px 6px rgba(0,0,0,0.3)',
+          padding: '0'
+        }}
+        title="Reset to full journey view"
+      >
+        🏠
+      </button>
+    </div>
   </div>
 </div>
 
