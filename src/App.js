@@ -3,8 +3,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
 
 // Leaflet JS
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import { Icon } from 'leaflet';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+// Note: 'Popup', 'useMap', and 'Icon' are not used anywhere → safe to remove
 
 // Leaflet CSS
 import "leaflet/dist/leaflet.css";
@@ -1213,12 +1213,12 @@ function createNumberedIcon(id) {
   };
 
   // ✅ On first load: do exactly what Home button does
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      resetToHome();
-    }, 400);
-    return () => clearTimeout(timer);
-  }, []);
+useEffect(() => {
+  const timer = setTimeout(() => {
+    resetToHome();
+  }, 400);
+  return () => clearTimeout(timer);
+}, [resetToHome]); // ← add resetToHome
 
  return (
   <div style={{
