@@ -1,5 +1,5 @@
 // React & core
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
 
 // Leaflet JS
@@ -1203,14 +1203,13 @@ function createNumberedIcon(id) {
   const mapBounds = ktmLocations.map(loc => [loc.lat, loc.lng]);
 
   // ✅ Home button: fit full journey, no extra zoom
-  const resetToHome = () => {
-    if (mapRef.current) {
-      mapRef.current.fitBounds(mapBounds, { padding: [50, 50], animate: true });
-      setTimeout(() => {
-        mapRef.current.invalidateSize(); // fix grey tiles
-      }, 300);
-    }
-  };
+const resetToHome = useCallback(() => {
+  if (mapRef.current) {
+    mapRef.current.fitBounds(mapBounds, { padding: [50, 50], animate: true });
+  }
+}, [mapBounds]);
+
+
 
   // ✅ On first load: do exactly what Home button does
 useEffect(() => {
@@ -1218,7 +1217,7 @@ useEffect(() => {
     resetToHome();
   }, 400);
   return () => clearTimeout(timer);
-}, [resetToHome]); // ← add resetToHome
+}, []); // 
 
  return (
   <div style={{
@@ -1297,11 +1296,19 @@ useEffect(() => {
         <button
           key={location.id}
           onClick={() => {
-            if (mapRef.current) {
-              mapRef.current.setView([location.lat, location.lng], 17, { animate: true });
-            }
-            setSelectedLocation(location);
-          }}
+  if (mapRef.current) {
+    // Step 1: Snap to clean zoom level 16 without animation
+    mapRef.current.setView([location.lat, location.lng], 16, { animate: false });
+    
+    // Step 2: After render, smoothly zoom to 17
+    setTimeout(() => {
+      if (mapRef.current) {
+        mapRef.current.setZoom(17, { animate: true });
+      }
+    }, 100);
+  }
+  setSelectedLocation(location);
+}}
           style={{
             background: 'none',
             border: 'none',
@@ -1333,12 +1340,22 @@ useEffect(() => {
       position: 'relative'
     }}>
       <MapContainer
-        ref={mapRef}
-        center={[1.35, 103.82]}
-        zoom={11}
-        style={{ height: '100%', width: '100%' }}
-        scrollWheelZoom={true}
-      >
+  ref={mapRef}
+  center={[1.35, 103.82]}
+  zoom={11}
+  zoomSnap={1}        // 👈 forces zoom to integers only
+  zoomDelta={1}        // 👈 prevents fractional zoom steps
+  style={{ height: '100%', width: '100%' }}
+  scrollWheelZoom={true}
+  whenCreated={(mapInstance) => {
+    // Initial fit + invalidate
+    mapInstance.fitBounds(mapBounds, { padding: [50, 50] });
+    requestAnimationFrame(() => {
+      mapInstance.invalidateSize();
+    });
+  }}
+>
+
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -1354,12 +1371,20 @@ useEffect(() => {
       zIndexOffset={10000 + (100 - location.id)} // ← critical: lower ID = higher zIndex
       eventHandlers={{
         click: () => {
-          if (mapRef.current) {
-            const z = mapRef.current.getZoom();
-            mapRef.current.setView([location.lat, location.lng], Math.min(z + 6, 18), { animate: true });
-          }
-          setSelectedLocation(location);
-        }
+  if (mapRef.current) {
+    // Use zoom 16 (integer), no animation for first click to avoid subpixel drift
+    mapRef.current.setView([location.lat, location.lng], 16, { animate: false });
+    
+    // Then animate *after* stable render
+    setTimeout(() => {
+      if (mapRef.current) {
+        mapRef.current.setZoom(17, { animate: true });
+      }
+    }, 100);
+  }
+  setSelectedLocation(location);
+}
+
       }}
     />
   ))
