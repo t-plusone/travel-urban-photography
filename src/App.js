@@ -1,5 +1,5 @@
 // React & core
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
 
 // Leaflet JS
@@ -1848,22 +1848,36 @@ const resetToHome = () => {
 };
 
 
+//useEffect(() => {
+//  const initMap = () => {
+//    if (mapRef.current) {
+//      mapRef.current.setView(homeCenter, homeZoom, { animate: false });
+      // Force clean tile render after layout settles
+//      setTimeout(() => {
+//        if (mapRef.current) {
+//          mapRef.current.invalidateSize({ pan: false });
+//        }
+//      }, 200);
+//    }
+//  };
+
+  // Delay initial map setup to ensure container is fully rendered
+//  const timer = setTimeout(initMap, 500); // ← increased from 300 → 500
+//  return () => clearTimeout(timer);
+//}, []);
+
 useEffect(() => {
   const initMap = () => {
     if (mapRef.current) {
       mapRef.current.setView(homeCenter, homeZoom, { animate: false });
-      // Force clean tile render after layout settles
-      setTimeout(() => {
-        if (mapRef.current) {
-          mapRef.current.invalidateSize({ pan: false });
-        }
-      }, 200);
+      requestAnimationFrame(() => {
+        mapRef.current.invalidateSize();
+      });
     }
   };
-
-  // Delay initial map setup to ensure container is fully rendered
-  const timer = setTimeout(initMap, 500); // ← increased from 300 → 500
+  const timer = setTimeout(initMap, 300);
   return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 
 
