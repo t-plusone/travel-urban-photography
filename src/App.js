@@ -11,9 +11,63 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
+// =============== GLOBAL HELPER: Render italics from *asterisks* ===============
+// Helper: Render bold (**text**) and italics (*text*)
+function renderFormatting(text) {
+  if (!text || typeof text !== 'string') return text;
+  
+  // First, split by bold markers: **text**
+  const boldParts = text.split(/\*\*(.*?)\*\*/);
+  
+  return boldParts.map((part, index) => {
+    // Odd indices = content inside ** ** (bold)
+    if (index % 2 === 1) {
+      return <strong key={`b-${index}`} style={{ fontWeight: 600 }}>{part}</strong>;
+    }
+    
+    // Even indices = regular text - check for italics *text*
+    const italicParts = part.split(/\*(.*?)\*/);
+    if (italicParts.length <= 1) {
+      return part; // No italics found
+    }
+    
+    return italicParts.map((subPart, subIndex) => {
+      // Odd indices = content inside * * (italic)
+      if (subIndex % 2 === 1) {
+        return <em key={`i-${index}-${subIndex}`} style={{ fontStyle: 'italic' }}>{subPart}</em>;
+      }
+      return subPart;
+    });
+  });
+}
+
+
+// Format ISO date/time string — auto-detects if time is present
+function formatDate(isoString) {
+  if (!isoString) return '';
+  const date = new Date(isoString);
+  if (isNaN(date.getTime())) return '';
+  
+  // Detect if time component is present (not midnight)
+  const hasTime = date.getHours() !== 0 || date.getMinutes() !== 0;
+  
+  return date.toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    ...(hasTime && {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    })
+  });
+}
+
+
 // ============================================================================
 // GLOBAL STYLES & LEAFLET FIXES
 // ============================================================================
+
 
 const GlobalStyles = () => (
   <style>
@@ -46,37 +100,61 @@ const projectData = {
   'sg-urbanscape': {
     title: 'singapore urbanscape',
     type: 'Urban Landscape',
-    location: 'Singapore',
     description: [
-      'Exploring the dynamic urban architecture and cityscapes of Singapore, capturing the interplay between modern development and natural elements.',
-      'This series examines how Singapore blends futuristic architecture with lush greenery, creating a unique urban environment that feels both technologically advanced and naturally harmonious.'
+      'Singapore is often reduced to its skyline, but its true character unfolds in the spaces between. This gallery moves through the city’s quiet contrasts—where grand landmarks share the light with everyday streets, and the spectacular lives alongside the unassuming. Beauty does not demand a destination or hide from sight; it simply asks for attention. Look closely, and it will meet you where you stand.'
     ],
     images: [
       {
         src: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG_0365.jpg?raw=true',
         caption: 'Spiral',
+        location: "Queen Street, near Bugis Street", 
         metadata: [
-          'Published in the 2005 photo-book \'To Singapore with Love\' as part of the nation\'s 40th National Day tribute.',
+          'Published in the 2005 photo-book *To Singapore with Love* as part of the nation\'s 40th National Day tribute.',
           'Shot on Canon EOS 20D'
         ]
       },
       {
         src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF4459.jpg?raw=true',
         caption: 'Inspired by MC Escher',
+        location: "Lorong 1 Toa Payoh",
         metadata: [
-          'Were the town planners in Singapore inspired by MC Escher when they designed the town of Toa Payoh back in the 1960s? I doubt they were, but one will never know. Millions of Singaporeans live in government-built apartments within these blocks of \'HDB flats\'. (HDB, or Housing Development Board of Singapore, is the government department that build and manage these apartments.) \'HDB flats\' has become a symbol of Singapore, loved by their inhabitants and providing a blueprint to many other countries in the world for the development of their own public housing. These \'public housing\' estates in Singapore are safe, clean and often spacious and well constructed internally - a far cry from the slums or ghettos associated with \'public housing\' in other countries.',
-          'Location: Toa Payoh, Singapore',
-          'Awarded \'Honorable Mention\' in Chromatic Awards 2023'
+          'Were the town planners in Singapore inspired by MC Escher when they designed the town of Toa Payoh back in the 1960s? I doubt they were, but one will never know. Millions of Singaporeans live in government-built apartments within these blocks of \'HDB flats\'. (HDB, or Housing Development Board of Singapore, is the government department that build and manage these apartments.) \n\n\'HDB flats\' has become a symbol of Singapore, loved by their inhabitants and providing a blueprint to many other countries in the world for the development of their own public housing. These \'public housing\' estates in Singapore are safe, clean and often spacious and well constructed internally - a far cry from the slums or ghettos associated with \'public housing\' in other countries.',
+          'Awarded \'Honorable Mention\' in Chromatic Awards 2023 (Amateur Category in Architecture)'
+        ]
+      },
+       {
+        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG_5828.jpg?raw=true',
+        caption: 'The Dragon',
+        location: "Lorong 6 Toa Payoh", 
+        metadata: [
+          'Photographed in July 2009, years before it gained international recognition, the Toa Payoh Dragon playground was originally designed for the children of Blk 28 Lorong 6. Framed here against the now-demolished housing block, the image preserves a quiet moment in Singapore’s urban fabric—where playful architecture, community life, and everyday streetscapes intersected before the landscape changed.'
+        ]
+      },
+      {
+        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF7919.jpg?raw=true',
+        caption: 'Ang Mo Kio Skyline at Dusk',
+        location: "Ang Mo Kio Avenue 8", 
+        metadata: [
+          'Shot at twilight following a rain, this 240-second exposure with neutral density filters captures the gradual illumination of Ang Mo Kio’s HDB landscape. A faint pink trace near the bottom was created by the lights from an ambulance, adding a subtle chromatic detail to the myriad of lights in the frame—marking the tranquil hour when dusk yields to the first warm glow of home.'
+        ]
+      },
+      {
+        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG20250607194920.jpg?raw=true',
+        caption: 'Nautilus',
+        location: "The Shoppes at Marina Bay Sands", 
+        metadata: [
+          'Captured with an Oppo Find X6, this image traces the sweeping curves and ribbed geometry of the ceiling of The Shoppes at Marina Bay Sands — a structure that naturally evokes a nautilus shell.\n\nI lean into the immediacy of mobile photography not as a compromise, but as a creative constraint that sharpens composition and perspective. Here, light, repetition, and architectural rhythm transform a busy interior into a quiet study of form and flow.'
         ]
       }
     ]
   },
-  'sychedelic': {
-    title: 'sychedelic southerncross station',
-    type: 'one-shoot photo documentary',
+
+  'down-under': {
+    title: 'down under',
+    type: 'travel/urbanscape photographs down under',
     location: 'Melbourne, Australia',
     description: [
-      'Shot during the electric haze of an early winter evening rush hour, this series transforms Melbourne\'s Southern Cross Station into a radiant, kinetic dreamscape. From soaring vantage points to ground-level chaos, each frame pulses with motion: commuters dissolve into streaks of color, trains blaze as neon comets, and the station\'s iconic ribbed roof glows like a molten canopy over the throng below.',
+      '*Shot during* the electric haze of an early winter evening rush hour, this series transforms Melbourne\'s Southern Cross Station into a radiant, kinetic dreamscape. From soaring vantage points to ground-level chaos, each frame pulses with motion: commuters dissolve into streaks of color, trains blaze as neon comets, and the station\'s iconic ribbed roof glows like a molten canopy over the throng below.',
       'Artificial light fractures through glass and steel, painting the scene in prisms of electric blue, amber, and spectral green. The air hums—not with steam, but with the visible energy of movement: footsteps, arrivals, departures, all rendered as liquid trails of light and shadow. Even stillness feels charged; waiting figures hover like ghosts caught between destinations.',
       'This is not documentation—it\'s transmutation. A fleeting window of urban flux, stretched and amplified, where architecture bends to the rhythm of human flow, and every reflection shimmers with the pulse of the city at its most alive.'
     ],
@@ -138,17 +216,119 @@ const projectData = {
         ]
       }
     ]
-  }
+  },
+'eye-e-city': {
+  title: '城市的眼睛 eye é city',
+  type: 'collective photographic initiative',
+  description: [
+  '「城市的眼睛」是新加坡一项摄影计划，自二〇〇二年至二〇〇八年期间，每年十二月三十一日召集全岛摄影爱好者，以镜头定格这座岛屿与她的人民在岁末最后一天的容颜。活动不设主题、不设奖项、不排名次，参与者自发散入城市各个角落——从组屋区到自然保护区，从牛车水到乌节路——捕捉他们认为值得铭记的瞬间。所有投稿必须为黑白影像，且参与者仅有翌年一月一日上午十时至下午一时的短暂窗口提交作品，几乎没有时间进行后期处理或数码修饰。由此产生的并非经过精心打磨的"Instagram式"影像，而是真诚摄影师的真诚之作：未经修饰、原汁原味的城市变迁瞬间。每年从数千投稿中精选百幅作品，结集成册并于国家图书馆举办为期一个月的展览，汇聚成新加坡景观变迁与人文发展的集体视觉档案。',
+'此计划从来无关怀旧。它是一种见证的纪律：清晰地凝视，以意图构图，并保存正在流逝的事物。这些影像并非遗物，而是以关怀、精准与尊重所铸就的纪念——见证这座急速变迁的城市，以及那些在岁末最后一天驻足凝望的人。',
+
+  
+  '*eye é city* was a Singaporean photographic initiative that ran from 2002 to 2008, gathering participants across the island each year on 31 December to document the city in a single day. With no assigned theme, no prizes, and no rankings, photographers dispersed spontaneously—from heartlands to nature reserves, Chinatown to Orchard Road—to capture what they believed worthy of remembrance before the year\'s end. All submissions were required to be in black and white, and participants had only a narrow window (10am to 1pm on 1 January) to submit their work—leaving little time for post-processing or digital manipulation. What resulted were not polished, Instagram-ready images, but sincere photographs from sincere photographers: raw, unfiltered moments of a city in transition. From thousands of submissions, one hundred images were selected annually for publication and a month-long exhibition at the National Library, forming a collective visual archive of Singapore\'s evolving landscape and humanity.',
+  
+  'For me, *eye é city* planted the seeds of my documentary mindset. It wasn\'t about technical constraints or aesthetic limitations—it was about respect for the environment, and the eagerness to share stories that would otherwise remain hidden. The project taught me that documentary photography is not about what is beautiful, but what is meaningful; not about technical perfection, but about witnessing with intention. This mindset carried through to later projects like the KTM Railway story, which spanned a full year with complete freedom to compose and post-process—but the core intention remained the same: to tell stories that, if no one tells them, will remain out of sight, washed away by the tides of time.'
+],
+
+
+
+
+  images: [
+    // 2006: Single photo
+    {
+      src: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG_5187.jpg?raw=true',
+      caption: 'At least they don\'t need to work tonight...',
+      shotDate: '2006-12-31T17:36:37',
+      location: 'Toa Payoh, Singapore',
+      metadata: [
+        'Selected for the 2006 Exhibition and Publication',
+        'They may not be *foreign talent* in the official definition of this phrase, but yet they are also benefitting Singaporeans and contributing to our success.'
+      ]
+    },
+    // 2007: Two photos
+    {
+      src: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG_2305.jpg?raw=true',
+      caption: 'Sphere vs Sphere',
+      shotDate: '2007-12-31T18:49:03',
+      location: 'Jalan Sultan, Singapore',
+      metadata: [
+        'Selected for the 2007 Exhibition and Publication',
+        'I had a hard time deciding what to photograph weeks before 31 December. I flipped through the old *eye é city* publications. I noticed that the subjects of many photos were about nostalgia, things of the past, and sadness - more negative than positive. I told myself, is this how I want to remember Singapore when I eventually leave here or pass on? No, I know deep in my heart that there is beauty in Singapore. Hence I decided that I wanted to look for beauty in Singapore to capture for *eye 2007*. If this is a documentary for posterity, I\'m determined to share the beauty of Singapore with one and all.'
+      ]
+    },
+    {
+      src: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG_2291.jpg?raw=true',
+      caption: 'La Salle College of the Arts',
+      shotDate: '2007-12-31T18:17:14',
+      location: 'Short Street, Singapore',
+      metadata: [
+        'Selected for the 2007 Exhibition and Publication',
+        'The first "thing" that came to my mind when I thought of "beauty" was the Lasalle College of the Arts. This spectacular building must be one of the most breathtaking structures I have seen for a long, long time. Having only seen it from afar earlier on, this photo session gave me an opportunity to closely examine this magnificent architecture. I was very impressed to say the least. Apparently, it was designed by a local architect from RSP Architects. Bravo! I\'m sure the gem of a building will inspire its students to be more creative!'
+      ]
+    },
+    // 2008 SECTION HEADER
+    {
+      isSectionHeader: true,
+      title: '2008 Eye Challenge: A River Run Through It',
+      subtitle: ''
+    },
+    // 2008 WRITEUP (text-only grid item)
+    {
+      isWriteup: true,
+      content: [
+        '*Note from the organizers:"We initiated the Eye Challenge (in 2007) to encourage serious photographers to work on a photo essay throughout the year. We wanted to give them an opportunity to exhibit their works and hopefully give them a little push in their pursuit of photography."*',
+        '',
+        'The Singapore River may not be as long or as beautiful as the Yangtze, Nile, Danube or Amazon Rivers, but to Singapore, it is every bit as important to the land in which it flows through as all the other great rivers. People of my generation do not have much memory of the old Singapore River. Our connection with its history is limited to old photographs or books related to the river. So, the news that the Great Singapore River stopped flowing into the open sea some time in 2008 may not be of much significance to under-40 Singaporeans like me. The Singapore River officially ends at Kim Seng Bridge but from the maps of Singapore, the waterways extend upstream as Alexandra Canal and Sungei Ulu Pandan. I hope to trace the entire length of the \'hydro-artery\' of Singapore River that runs through the Heart of Singapore.',
+        'All the photographs were shot with a Panasonic LX-3.']
+    },
+    // 2008: Eye Challenge Photo Essay — 4 photos
+    {
+      src: 'https://github.com/t-plusone/plus.one-photos/blob/main/P1010812.jpg?raw=true',
+      caption: 'Bumboats at Clarke Quay',
+      shotDate: '2008-12-31T09:40:40',
+      location: 'Clarke Quay',
+      metadata: [
+        'Photo #1 of Eye Challenge Photo Essay selected for the 2008 Exhibition and Publication'
+              ]
+    },
+    {
+      src: 'https://github.com/t-plusone/plus.one-photos/blob/main/P1010846.jpg?raw=true',
+      caption: '↑ 1045m | Alexandra Park Connector',
+      shotDate: '2008-12-31T16:08:13',
+      location: 'Alexandra Park Connector',
+      metadata: [
+        'Photo #2 of Eye Challenge Photo Essay selected for the 2008 Exhibition and Publication'
+       
+      ]
+    },
+    {
+      src: 'https://github.com/t-plusone/plus.one-photos/blob/main/P1010847.jpg?raw=true',
+      caption: 'Does this connect to the Singapore River?',
+      shotDate: '2008-12-31T16:26:56',
+      location: 'Alexandra Canal',
+      metadata: [
+        'Photo #3 of Eye Challenge Photo Essay selected for the 2008 Exhibition and Publication'
+      ]
+    },
+    {
+      src: 'https://github.com/t-plusone/plus.one-photos/blob/main/P1010856.jpg?raw=true',
+      caption: 'Abandoned Railway Bridge across Sungei Ulu Pandan',
+      shotDate: '2008-12-31T17:06:07',
+      location: 'Sunset Way',
+      metadata: [
+       'Photo #4 of Eye Challenge Photo Essay selected for the 2008 Exhibition and Publication'
+      ]
+    }
+  ]
+}
 };
 
 // ============================================================================
 // LIGHTBOX COMPONENT (MOBILE-OPTIMIZED)
 // ============================================================================
 
-function Lightbox({ isOpen, onClose, image, caption, metadata }) {
+function Lightbox({ isOpen, onClose, image, caption }) {
   if (!isOpen) return null;
-
-  const isMobile = window.innerWidth <= 768;
 
   return (
     <div
@@ -159,26 +339,23 @@ function Lightbox({ isOpen, onClose, image, caption, metadata }) {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.9)',
+        backgroundColor: 'rgba(0, 0, 0, 0.95)',
         zIndex: 1000,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '10px',
-        overflow: 'auto'
+        padding: '20px',
+        cursor: 'pointer'
       }}
     >
       <div
         style={{
-          backgroundColor: 'white',
-          borderRadius: '8px',
-          overflow: 'hidden',
           position: 'relative',
-          maxWidth: isMobile ? '95vw' : '1200px',
+          maxWidth: '95vw',
           maxHeight: '95vh',
-          width: '100%',
           display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row'
+          justifyContent: 'center',
+          alignItems: 'center'
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -186,79 +363,42 @@ function Lightbox({ isOpen, onClose, image, caption, metadata }) {
           onClick={onClose}
           style={{
             position: 'absolute',
-            top: '12px',
-            right: '12px',
+            top: '20px',
+            right: '20px',
             background: 'rgba(0, 0, 0, 0.7)',
             color: 'white',
             border: 'none',
             borderRadius: '50%',
-            width: '32px',
-            height: '32px',
-            fontSize: '18px',
-            cursor: 'pointer'
+            width: '40px',
+            height: '40px',
+            fontSize: '24px',
+            cursor: 'pointer',
+            zIndex: 10,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            transition: 'all 0.2s'
           }}
+          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.9)'}
+          onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.7)'}
         >
           ×
         </button>
 
-        <div
+        <img
+          src={image}
+          alt={caption}
           style={{
-            width: '100%',
-            padding: isMobile ? '16px' : '20px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            ...(isMobile ? {} : { flex: 2, minWidth: '400px' })
+            maxWidth: '100%',
+            maxHeight: '95vh',
+            width: 'auto',
+            height: 'auto',
+            objectFit: 'contain',
+            borderRadius: '0',
+            boxShadow: '0 0 40px rgba(0, 0, 0, 0.5)'
           }}
-        >
-          <img
-            src={image}
-            alt={caption}
-            style={{
-              maxWidth: '100%',
-              maxHeight: '70vh',
-              height: 'auto',
-              objectFit: 'contain',
-              borderRadius: '4px'
-            }}
-          />
-        </div>
-
-        <div
-          style={{
-            width: '100%',
-            padding: isMobile ? '0 16px 16px' : '20px',
-            ...(isMobile ? {} : { flex: 1, minWidth: '300px', overflowY: 'auto' })
-          }}
-        >
-          <h3
-            style={{
-              fontSize: isMobile ? '1rem' : '1.2rem',
-              fontWeight: 500,
-              marginBottom: '12px',
-              color: '#1a1a1a'
-            }}
-          >
-            {caption}
-          </h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {metadata.map((item, index) => (
-              <div
-                key={index}
-                style={{
-                  padding: '8px 12px',
-                  backgroundColor: '#f8f9fa',
-                  borderRadius: '4px',
-                  fontSize: isMobile ? '0.85rem' : '0.9rem',
-                  color: '#495057',
-                  lineHeight: 1.4
-                }}
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
+          onContextMenu={(e) => e.preventDefault()}
+        />
       </div>
     </div>
   );
@@ -576,7 +716,7 @@ function HomePage() {
               color: 'white'
             }}
           >
-            travel & urbanscape photographer
+            architecture & urbanscape photographer
           </p>
         </div>
       </div>
@@ -593,10 +733,16 @@ function PortfolioPage() {
       image: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG_0365.jpg?raw=true'
     },
     {
-      id: 'sychedelic',
-      title: 'sychedelic southerncross station',
+      id: 'down-under',
+      title: 'travel/urbanscape photographs down under',
       image: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5939.jpg?raw=true'
+    },
+    {
+      id: 'eye-e-city',
+      title: '城市的眼睛 eye é city',
+      image: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG_2291.jpg?raw=true'
     }
+
   ];
 
   return (
@@ -641,7 +787,7 @@ function PortfolioPage() {
           {projects.map((project, index) => (
             <Link
               key={index}
-              to={`/portfolio-collections/my-portfolio/${project.id}`}
+              to={`/portfolio/gallery/${project.id}`}
               style={{ display: 'block', textDecoration: 'none', width: '100%' }}
             >
               <img
@@ -876,18 +1022,34 @@ useEffect(() => {
     });
   }
 
-  // Helper: Render italics from *asterisks*
-  function renderItalic(text) {
-    if (!text || typeof text !== 'string') return text;
-    const parts = text.split('*');
-    if (parts.length <= 1) return text;
-    return parts.map((part, index) => {
-      if (index % 2 === 1) {
-        return <em key={index} style={{ fontStyle: 'italic' }}>{part}</em>;
+  // Helper: Render bold (**text**) and italics (*text*)
+function renderFormatting(text) {
+  if (!text || typeof text !== 'string') return text;
+  
+  // First, split by bold markers: **text**
+  const boldParts = text.split(/\*\*(.*?)\*\*/);
+  
+  return boldParts.map((part, index) => {
+    // Odd indices = content inside ** ** (bold)
+    if (index % 2 === 1) {
+      return <strong key={`b-${index}`} style={{ fontWeight: 600 }}>{part}</strong>;
+    }
+    
+    // Even indices = regular text - check for italics *text*
+    const italicParts = part.split(/\*(.*?)\*/);
+    if (italicParts.length <= 1) {
+      return part; // No italics found
+    }
+    
+    return italicParts.map((subPart, subIndex) => {
+      // Odd indices = content inside * * (italic)
+      if (subIndex % 2 === 1) {
+        return <em key={`i-${index}-${subIndex}`} style={{ fontStyle: 'italic' }}>{subPart}</em>;
       }
-      return part;
+      return subPart;
     });
-  }
+  });
+}
 
   // Helper: Create numbered marker icons
   function createNumberedIcon(id) {
@@ -2298,7 +2460,7 @@ useEffect(() => {
                       lineHeight: 1.3
                     }}
                   >
-                    {renderItalic(photo.title)}
+                    {renderFormatting(photo.title)}
                   </h3>
                   {!photo.isComposite && photo.shotDate && (
                     <p
@@ -2332,7 +2494,7 @@ useEffect(() => {
                             textJustify: isLong ? 'inter-word' : 'auto'
                           }}
                         >
-                          {renderItalic(para)}
+                          {renderFormatting(para)}
                         </p>
                       );
                     })
@@ -2349,7 +2511,7 @@ useEffect(() => {
                         textJustify: photo.caption?.length > 30 ? 'inter-word' : 'auto'
                       }}
                     >
-                      {renderItalic(photo.caption)}
+                      {renderFormatting(photo.caption)}
                     </p>
                   )}
                 </div>
@@ -2555,7 +2717,7 @@ function ToaPayohStoryMapPage() {
   }
 
   // Helper: Render italics from *asterisks*
-  function renderItalic(text) {
+  function renderFormatting(text) {
     if (!text || typeof text !== 'string') return text;
     const parts = text.split('*');
     if (parts.length <= 1) return text;
@@ -2970,7 +3132,7 @@ function ToaPayohStoryMapPage() {
                       lineHeight: 1.3
                     }}
                   >
-                    {renderItalic(photo.title)}
+                    {renderFormatting(photo.title)}
                   </h3>
                   {!photo.isComposite && photo.shotDate && (
                     <p
@@ -3004,7 +3166,7 @@ function ToaPayohStoryMapPage() {
                             textJustify: isLong ? 'inter-word' : 'auto'
                           }}
                         >
-                          {renderItalic(para)}
+                          {renderFormatting(para)}
                         </p>
                       );
                     })
@@ -3021,7 +3183,7 @@ function ToaPayohStoryMapPage() {
                         textJustify: photo.caption?.length > 30 ? 'inter-word' : 'auto'
                       }}
                     >
-                      {renderItalic(photo.caption)}
+                      {renderFormatting(photo.caption)}
                     </p>
                   )}
                 </div>
@@ -3076,7 +3238,17 @@ function ProjectPage() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const openLightbox = (imageData) => {
-    setSelectedImage(imageData);
+    const formattedDate = imageData.shotDate ? formatDate(imageData.shotDate) : null;
+    const displayMetadata = [
+      ...(imageData.location ? [imageData.location] : []),
+      ...(formattedDate ? [`Photographed on ${formattedDate}`] : []),
+      ...(imageData.metadata || [])
+    ];
+    
+    setSelectedImage({ 
+      ...imageData, 
+      metadata: displayMetadata  // ✅ Correct syntax 
+    });
     setLightboxOpen(true);
   };
 
@@ -3116,42 +3288,7 @@ function ProjectPage() {
           {project.title}
         </h1>
         <div style={{ marginBottom: '12px' }}>
-          <h2
-            style={{
-              fontSize: '1.1rem',
-              fontWeight: 500,
-              marginBottom: '6px',
-              color: '#666'
-            }}
-          >
-            Project type
-          </h2>
-          <p style={{ color: '#1a1a1a' }}>{project.type}</p>
-        </div>
-        <div style={{ marginBottom: '24px' }}>
-          <h2
-            style={{
-              fontSize: '1.1rem',
-              fontWeight: 500,
-              marginBottom: '6px',
-              color: '#666'
-            }}
-          >
-            Location
-          </h2>
-          <p style={{ color: '#1a1a1a' }}>{project.location}</p>
-        </div>
-        <div style={{ marginBottom: '32px' }}>
-          <h2
-            style={{
-              fontSize: '1.1rem',
-              fontWeight: 500,
-              marginBottom: '6px',
-              color: '#666'
-            }}
-          >
-            Description
-          </h2>
+
           {Array.isArray(project.description) ? (
             project.description.map((paragraph, index) => (
               <p
@@ -3162,55 +3299,199 @@ function ProjectPage() {
                   marginBottom: index === project.description.length - 1 ? '0' : '16px'
                 }}
               >
-                {paragraph}
+                {renderFormatting(paragraph)} 
               </p>
             ))
           ) : (
-            <p style={{ color: '#1a1a1a', lineHeight: 1.6 }}>{project.description}</p>
+            <p style={{ color: '#1a1a1a', lineHeight: 1.6 }}>
+              {renderFormatting(project.description)} 
+            </p>
           )}
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          {project.images.map((imageData, index) => (
-            <div
-              key={index}
-              onClick={() => openLightbox(imageData)}
-              style={{ cursor: 'pointer', position: 'relative' }}
-            >
-              <img
-                src={imageData.src}
-                alt={imageData.caption}
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  display: 'block',
-                  borderRadius: '4px'
-                }}
-                onContextMenu={(e) => e.preventDefault()}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  backgroundColor: 'rgba(0,0,0,0)',
-                  borderRadius: '4px',
-                  transition: 'background-color 0.3s ease'
-                }}
-                onMouseEnter={(e) => (e.target.style.backgroundColor = 'rgba(0,0,0,0.1)')}
-                onMouseLeave={(e) => (e.target.style.backgroundColor = 'rgba(0,0,0,0)')}
-              />
-            </div>
-          ))}
+        
+       <div style={{ 
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '40px',
+  marginTop: '40px',
+  maxWidth: '1200px',
+  margin: '0 auto'
+}}>
+  {project.images.map((imageData, index) => {
+    // ===== SECTION HEADER =====
+    if (imageData.isSectionHeader) {
+      return (
+        <div key={index} style={{ 
+          padding: '40px 0 20px',
+          borderTop: '2px solid #64b4ff',
+          borderBottom: '1px solid #eee',
+          width: '100%'
+        }}>
+          <h2 style={{ 
+            fontSize: '1.8rem',
+            fontWeight: 400,
+            marginBottom: '12px',
+            color: '#1a1a1a',
+            textAlign: 'center'
+          }}>
+            {imageData.title}
+          </h2>
+          <p style={{ 
+            textAlign: 'center',
+            fontSize: '1rem',
+            color: '#666',
+            fontStyle: 'italic',
+            lineHeight: 1.6
+          }}>
+            {renderFormatting(imageData.subtitle)}
+          </p>
         </div>
+      );
+    }
+
+    // ===== WRITEUP (Text-only grid item) =====
+// ===== WRITEUP (Full-width text block spanning entire grid) =====
+if (imageData.isWriteup) {
+  return (
+    <div 
+      key={index} 
+      style={{ 
+        cursor: 'default',
+        backgroundColor: 'white',
+        borderRadius: '8px',
+        overflow: 'hidden',
+        border: '1px solid #eee',
+        width: '100%',
+        padding: window.innerWidth <= 768 ? '24px 16px' : '32px 40px'  // ← Full-width padding
+      }}
+    >
+      {imageData.content.map((paragraph, pIdx) => (
+        <p 
+          key={pIdx} 
+          style={{ 
+            lineHeight: 1.7, 
+            fontSize: '1.05rem',
+            color: '#1a1a1a',
+            marginBottom: pIdx === imageData.content.length - 1 ? '0' : '24px',
+            textAlign: 'justify',
+            textJustify: 'inter-word',
+            hyphens: 'auto'
+          }}
+        >
+          {renderFormatting(paragraph)}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+    // ===== REGULAR PHOTO =====
+    const formattedDate = imageData.shotDate ? formatDate(imageData.shotDate) : null;
+      const displayMetadata = [
+    ...(imageData.location ? [`Location: ${imageData.location}`] : []),  // ← Added "Location: " prefix
+    ...(formattedDate ? [`Photographed on ${formattedDate}`] : []),
+    ...(imageData.metadata || [])
+];
+
+    return (
+      <div
+        key={index}
+        onClick={() => openLightbox(imageData)}
+        style={{
+          cursor: 'pointer',
+          backgroundColor: 'white',
+          borderRadius: '8px',
+          overflow: 'hidden',
+          border: '1px solid #eee',
+          transition: 'transform 0.2s, box-shadow 0.2s',
+          display: 'flex',
+          flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
+          width: '100%'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-4px)';
+          e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0)';
+          e.currentTarget.style.boxShadow = 'none';
+        }}
+      >
+        <div
+          style={{
+            width: '100%',
+            padding: window.innerWidth <= 768 ? '16px' : '20px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            ...(window.innerWidth > 768 && { flex: 2, minWidth: '400px' })
+          }}
+        >
+          <img
+            src={imageData.src.trim()}
+            alt={imageData.caption}
+            loading="lazy"
+            style={{
+              width: '100%',
+              height: 'auto',
+              maxWidth: '100%',
+              objectFit: 'contain',
+              borderRadius: '4px',
+              display: 'block'
+            }}
+            onContextMenu={(e) => e.preventDefault()}
+          />
+        </div>
+
+        <div
+          style={{
+            width: '100%',
+            padding: window.innerWidth <= 768 ? '16px' : '20px',
+            ...(window.innerWidth > 768 && { flex: 1, minWidth: '300px' })
+          }}
+        >
+          <h3
+            style={{
+              fontSize: window.innerWidth <= 768 ? '1rem' : '1.2rem',
+              fontWeight: 500,
+              marginBottom: '12px',
+              color: '#1a1a1a',
+              lineHeight: 1.4
+            }}
+          >
+            {renderFormatting(imageData.caption)}
+          </h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {displayMetadata.map((item, metaIndex) => (
+              <div
+                key={metaIndex}
+                style={{
+                  padding: '8px 12px',
+                  backgroundColor: '#f8f9fa',
+                  borderRadius: '4px',
+                  fontSize: window.innerWidth <= 768 ? '0.85rem' : '0.9rem',
+                  color: '#495057',
+                  whiteSpace: 'pre-line',
+                  lineHeight: 1.5
+                }}
+              >
+                {renderFormatting(item)}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  })}
+</div>
       </main>
+      
       {selectedImage && (
         <Lightbox
           isOpen={lightboxOpen}
           onClose={closeLightbox}
           image={selectedImage.src}
-          caption={selectedImage.caption}
+          caption={renderFormatting(selectedImage.caption)} 
           metadata={selectedImage.metadata}
         />
       )}
@@ -3220,20 +3501,62 @@ function ProjectPage() {
 
 // ---------------- STATIC PAGES ----------------
 function AboutPage() {
+  // Helper: Render bold (**text**) and italics (*text*)
+  function renderFormatting(text) {
+    if (!text || typeof text !== 'string') return text;
+    
+    // First, split by bold markers: **text**
+    const boldParts = text.split(/\*\*(.*?)\*\*/);
+    
+    return boldParts.map((part, index) => {
+      // Odd indices = content inside ** ** (bold)
+      if (index % 2 === 1) {
+        return <strong key={`b-${index}`} style={{ fontWeight: 600 }}>{part}</strong>;
+      }
+      
+      // Even indices = regular text - check for italics *text*
+      const italicParts = part.split(/\*(.*?)\*/);
+      if (italicParts.length <= 1) {
+        return part; // No italics found
+      }
+      
+      return italicParts.map((subPart, subIndex) => {
+        // Odd indices = content inside * * (italic)
+        if (subIndex % 2 === 1) {
+          return <em key={`i-${index}-${subIndex}`} style={{ fontStyle: 'italic' }}>{subPart}</em>;
+        }
+        return subPart;
+      });
+    });
+  }
+
   return (
     <div style={{ backgroundColor: 'white', minHeight: '100vh', color: '#1a1a1a' }}>
       <Header isHome={false} />
       <div style={{ padding: '60px 32px' }}>
-        <h1 style={{ fontSize: '2.5rem', fontWeight: 400, marginBottom: '20px' }}>About</h1>
-        <p
-          style={{
-            fontSize: '1.1rem',
-            lineHeight: 1.6,
-            maxWidth: '800px'
-          }}
-        >
-          plus.one is a travel and urbanscape photographer specializing in capturing the unique character of cities around the world. With a keen eye for architectural details, urban geometry, and the interplay between built environments and natural elements, each photograph tells a story of place, time, and human experience.
-        </p>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: 400, marginBottom: '40px' }}>about</h1>
+        
+        <div style={{ fontSize: '1.1rem', lineHeight: 1.6, maxWidth: '800px' }}>
+          <p style={{ marginBottom: '24px' }}>
+            {renderFormatting("Lines, shapes, color, perspective—these are my visual vocabulary. I believe **the best camera is the one you have with you**, and I enjoy working within the constraints of mobile and compact cameras to sharpen my vision.")}
+          </p>
+          
+          <p style={{ marginBottom: '24px' }}>
+            {renderFormatting("Urban environments shape my photography. Wherever I travel, I seek out interesting architecture, bridges, and built forms that catch my eye. Whether labeled urbanscape, travel, or architectural, my work explores the geometry and rhythm of the places I visit.")}
+          </p>
+          
+          <p style={{ marginBottom: '24px' }}>
+            {renderFormatting("I value documentary photography for its demand of time and persistence—qualities worth cultivating in an age of immediacy.")}
+          </p>
+          
+          <p style={{ marginBottom: '24px' }}>
+            {renderFormatting("After stepping back from mainstream social platforms, I created this space to share photographs intentionally. Built with Alibaba Qwen, this site is both a portfolio and an invitation: if I can build this from scratch, so can you.")}
+          </p>
+          
+          <p>
+            Thanks for visiting.
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -3283,7 +3606,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route
-            path="/portfolio-collections/my-portfolio/:projectId"
+            path="/portfolio/gallery/:projectId"
             element={<ProjectPage />}
           />
         </Routes>
