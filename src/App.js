@@ -97,12 +97,11 @@ L.Icon.Default.mergeOptions({
 // ============================================================================
 
 const projectData = {
-  'sg-urbanscape': {
-    title: 'singapore urbanscape',
-    type: 'Urban Landscape',
+  'singapore': {
+    title: 'singapore: urban rhythms',
     description: [
-      'Singapore is often reduced to its skyline, but its true character unfolds in the spaces between. This gallery moves through the city’s quiet contrasts—where grand landmarks share the light with everyday streets, and the spectacular lives alongside the unassuming. Beauty does not demand a destination or hide from sight; it simply asks for attention. Look closely, and it will meet you where you stand.'
-    ],
+  'Singapore is often reduced to its *urban* skyline, but its true character unfolds in the spaces between. This gallery moves through the city’s quiet contrasts—where polished facades give way to heartland lanes, and the spectacular lives alongside the unassuming. Beauty does not demand a destination or hide from sight; it simply asks for attention. Look closely, and it will meet you where you stand.'
+],
     images: [
       {
         src: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG_0365.jpg?raw=true',
@@ -150,8 +149,8 @@ const projectData = {
   },
 
   'down-under': {
-    title: 'down under',
-    type: 'travel/urbanscape photographs down under',
+    title: 'down-under',
+    type: 'urbanscape photographs down under',
     location: 'Melbourne, Australia',
     description: [
       '*Shot during* the electric haze of an early winter evening rush hour, this series transforms Melbourne\'s Southern Cross Station into a radiant, kinetic dreamscape. From soaring vantage points to ground-level chaos, each frame pulses with motion: commuters dissolve into streaks of color, trains blaze as neon comets, and the station\'s iconic ribbed roof glows like a molten canopy over the throng below.',
@@ -716,7 +715,7 @@ function HomePage() {
               color: 'white'
             }}
           >
-            architecture & urbanscape photographer
+            urbanscape & travel photographer
           </p>
         </div>
       </div>
@@ -726,23 +725,25 @@ function HomePage() {
 
 // ---------------- PORTFOLIO PAGE ----------------
 function PortfolioPage() {
+  // ✅ Keep manual control over preview images + IDs
   const projects = [
     {
-      id: 'sg-urbanscape',
-      title: 'singapore urbanscape',
-      image: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG_0365.jpg?raw=true'
+      id: 'singapore',
+      previewImage: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG_0365.jpg?raw=true'
     },
     {
-      id: 'down-under',
-      title: 'travel/urbanscape photographs down under',
-      image: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5939.jpg?raw=true'
+      id: 'australia',
+      previewImage: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF3402.jpg?raw=true'
     },
+    {
+      id: 'china',
+      previewImage: 'https://github.com/t-plusone/plus.one-photos/blob/main/DSCF0393c.jpg?raw=true'
+    },
+
     {
       id: 'eye-e-city',
-      title: '城市的眼睛 eye é city',
-      image: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG_2291.jpg?raw=true'
+      previewImage: 'https://github.com/t-plusone/plus.one-photos/blob/main/IMG_2291.jpg?raw=true'
     }
-
   ];
 
   return (
@@ -784,36 +785,42 @@ function PortfolioPage() {
             width: '100%'
           }}
         >
-          {projects.map((project, index) => (
-            <Link
-              key={index}
-              to={`/portfolio/gallery/${project.id}`}
-              style={{ display: 'block', textDecoration: 'none', width: '100%' }}
-            >
-              <img
-                src={project.image.trim()}
-                alt={project.title}
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  display: 'block',
-                  borderRadius: '4px'
-                }}
-                onContextMenu={(e) => e.preventDefault()}
-              />
-              <div
-                style={{
-                  textAlign: 'center',
-                  fontSize: '0.95rem',
-                  fontWeight: 400,
-                  marginTop: '12px',
-                  color: '#1a1a1a'
-                }}
+          {projects.map((project) => {
+            // ✅ Pull title from central projectData using the ID
+            const displayTitle = projectData[project.id]?.title || project.id;
+            
+            return (
+              <Link
+                key={project.id}
+                to={`/portfolio/gallery/${project.id}`}
+                style={{ display: 'block', textDecoration: 'none', width: '100%' }}
               >
-                {project.title}
-              </div>
-            </Link>
-          ))}
+                <img
+                  src={project.previewImage.trim()}
+                  alt={displayTitle}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    display: 'block',
+                    borderRadius: '4px'
+                  }}
+                  onContextMenu={(e) => e.preventDefault()}
+                />
+                <div
+                  style={{
+                    textAlign: 'center',
+                    fontSize: '0.95rem',
+                    fontWeight: 400,
+                    marginTop: '12px',
+                    color: '#1a1a1a'
+                  }}
+                >
+                  {/* ✅ Title always stays in sync with projectData */}
+                  {displayTitle}
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -3538,17 +3545,14 @@ function AboutPage() {
         
         <div style={{ fontSize: '1.1rem', lineHeight: 1.6, maxWidth: '800px' }}>
           <p style={{ marginBottom: '24px' }}>
-            {renderFormatting("Lines, shapes, color, perspective—these are my visual vocabulary. I believe **the best camera is the one you have with you**, and I enjoy working within the constraints of mobile and compact cameras to sharpen my vision.")}
+            {renderFormatting("Lines, shapes, color, perspective—these are my visual vocabulary. I believe the best camera is the one you have with you, and I enjoy working within the constraints of mobile and compact cameras to sharpen my vision.")}
           </p>
           
           <p style={{ marginBottom: '24px' }}>
-            {renderFormatting("Urban environments shape my photography. Wherever I travel, I seek out interesting architecture, bridges, and built forms that catch my eye. Whether labeled urbanscape, travel, or architectural, my work explores the geometry and rhythm of the places I visit.")}
+            {renderFormatting("Urban environments shape my photography. Wherever I travel, I seek out architecture, bridges, and built forms that reveal hidden rhythms. Whether labeled urbanscape, travel, or architectural, my work explores the geometry, light, and spatial dynamics of the places I visit. Through the years, this sustained focus has occasionally been recognized through local exhibitions, jury selections at international awards, and top placements in competitions across Singapore and Australia. Yet recognition remains secondary to the practice itself—a deliberate, unhurried approach that values patience over immediacy, and observation over output.")}
           </p>
           
-          <p style={{ marginBottom: '24px' }}>
-            {renderFormatting("I value documentary photography for its demand of time and persistence—qualities worth cultivating in an age of immediacy.")}
-          </p>
-          
+        
           <p style={{ marginBottom: '24px' }}>
             {renderFormatting("After stepping back from mainstream social platforms, I created this space to share photographs intentionally. Built with Alibaba Qwen, this site is both a portfolio and an invitation: if I can build this from scratch, so can you.")}
           </p>
