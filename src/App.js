@@ -148,70 +148,61 @@ const projectData = {
     ]
   },
 
-  'down-under': {
-    title: 'down-under',
-    type: 'urbanscape photographs down under',
-    location: 'Melbourne, Australia',
+  'australia': {
+    title: 'australia: light & latitude',
     description: [
-      '*Shot during* the electric haze of an early winter evening rush hour, this series transforms Melbourne\'s Southern Cross Station into a radiant, kinetic dreamscape. From soaring vantage points to ground-level chaos, each frame pulses with motion: commuters dissolve into streaks of color, trains blaze as neon comets, and the station\'s iconic ribbed roof glows like a molten canopy over the throng below.',
-      'Artificial light fractures through glass and steel, painting the scene in prisms of electric blue, amber, and spectral green. The air hums—not with steam, but with the visible energy of movement: footsteps, arrivals, departures, all rendered as liquid trails of light and shadow. Even stillness feels charged; waiting figures hover like ghosts caught between destinations.',
-      'This is not documentation—it\'s transmutation. A fleeting window of urban flux, stretched and amplified, where architecture bends to the rhythm of human flow, and every reflection shimmers with the pulse of the city at its most alive.'
+      'Australia offers more than its iconic landmarks. It presents a distinct photographic landscape defined by high-contrast light, expansive skies, and elongated shadows. This gallery captures my perspective as both a temporary resident and a travel photographer, focusing on how latitude and atmosphere shape urban and natural forms. It is a study in seeing beyond the postcard.'
     ],
     images: [
       {
-        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5918.jpg?raw=true',
-        caption: 'Undulating roof structure',
+        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/DSC01556.jpg?raw=true',
+        caption: '[Untitled]',
+        location: "High Street, Windsor, Melbourne",
         metadata: [
-          'Winner: Australian Architecture Awards 2023',
-          'Featured in Dezeen Architecture'
-        ]
-      },
-      {
-        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5922.jpg?raw=true',
-        caption: 'Interior light play',
-        metadata: [
-          'Exhibited at Melbourne Photography Festival',
-          'Shot during golden hour'
-        ]
+          'A yellow bicycle parked roadside becomes the focal point against its own elongated shadow, formed by the late winter morning sun. Here, the object and its shadow exist as an inseparable duality—the Yang of solid form and the Yin of dark void—mirroring each other\'s complex geometry, serving as a reminder that light and shadow are not opposites, but partners in a single composition.'
+            ]
       },
       {
         src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5939.jpg?raw=true',
-        caption: 'Colorful terminal entrance',
+        caption: 'Platforms 9 and 10',
+        location: "Southern Cross Station, Melbourne",
         metadata: [
-          'Limited edition of 25 prints',
-          'Acquired by State Library Victoria'
+          'Captured during a winter evening rush, this image transforms the chaos of Southern Cross Station into a surreal study of light and motion. The composition is dominated by the station’s iconic undulating yellow roof, which arcs across the upper frame like a molten canopy. Beneath it, the rigid geometry of the platform dissolves into a hallucinatory vortex of commuter flow—neon streaks of tangerine and cobalt blur into a liquid symphony of human energy.',
+          'Awarded Second Prize in the #SCSSNAP2017 competition organized by Grimshaw, Open House Melbourne and Southern Cross Station',
+          'Awarded \'Honorable Mention\' in Chromatic Awards 2023 (Amateur Category in Cityscapes)'
         ]
       },
       {
-        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5942.jpg?raw=true',
-        caption: 'Undulating roof structure',
+        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF0097.jpg?raw=true',
+        caption: 'Trio',
+        location: "Southern Cross Station, Melbourne",
         metadata: [
-          'Winner: Australian Architecture Awards 2023',
-          'Featured in Dezeen Architecture'
+          'Captured on a late afternoon during mid-winter, this image centers on three commuters walking toward the viewer, their forms defined by strong backlighting. While a fourth figure passes in the opposite direction, the focus remains on the trio, whose silhouettes are traced with a subtle, glowing rim of light. Rendered in a muted, low-key palette, their elongated shadows stretch forward, dominating the frame. The composition strips away color and context, leaving only the essential interplay of light among shadows and shadows among lights—a pure study of shape and form.',
+          'Merit Award, #SCSSNAP2017 competition'
         ]
       },
       {
-        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5947.jpg?raw=true',
-        caption: 'Undulating roof structure',
+        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF3402.jpg?raw=true',
+        caption: 'Matrix',
+        location: "Ovolo Nishi Hotel, Canberra",
         metadata: [
-          'Winner: Australian Architecture Awards 2023',
-          'Featured in Dezeen Architecture'
+          'Shot from the extreme right hand side at the top of the staircase, this image isolates the timber wall of Ovolo Nishi. By avoiding a central, symmetrical viewpoint, the composition emphasizes strong diagonal recession, transforming the reclaimed planks into a receding matrix of texture and rhythm. Rendered with high saturation to accentuate the interplay of ochre and sienna tones, the warm lighting highlights the wood grain while casting deep, structural shadows between the slats. The frame excludes surrounding context, reducing the architecture to a pure study of linear perspective, color density, and the tactile quality of wood.'
         ]
       },
       {
-        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5953.jpg?raw=true',
-        caption: 'Undulating roof structure',
+        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/DSCF5203.jpg?raw=true',
+        caption: 'Lifesaver',
+        location: 'Junction of Dodds and Grant Streets, Melbourne',
         metadata: [
-          'Winner: Australian Architecture Awards 2023',
-          'Featured in Dezeen Architecture'
+          'From the series that was awarded 17th position in the *Top 20 Black & White Amateur Photographer 2016* competition (Australian Photography Magazine).'
         ]
       },
       {
-        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF5951.jpg?raw=true',
-        caption: 'Undulating roof structure',
+        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/DSC08312.jpg?raw=true',
+        caption: 'Autumn Colours',
+        location: 'Dandenong Ranges National Park, Victoria',
         metadata: [
-          'Winner: Australian Architecture Awards 2023',
-          'Featured in Dezeen Architecture'
+          'A study in chromatic contrast, where deep crimson foliage is interwoven with emerald greens. The reflection creates a symmetrical abstraction, transforming a routine autumn walk into a deliberate exercise in color composition.'
         ]
       }
     ]
@@ -3238,14 +3229,19 @@ function ToaPayohStoryMapPage() {
 }
 
 // ---------------- PROJECT DETAIL PAGE ----------------
+// ---------------- PROJECT DETAIL PAGE ----------------
 function ProjectPage() {
   const { projectId } = useParams();
-  const project = projectData[projectId] || projectData['sg-urbanscape'];
+  // Fallback to 'singapore' if project not found
+  const project = projectData[projectId] || projectData['singapore'];
+  
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
   const openLightbox = (imageData) => {
     const formattedDate = imageData.shotDate ? formatDate(imageData.shotDate) : null;
+    
+    // Construct metadata for lightbox
     const displayMetadata = [
       ...(imageData.location ? [imageData.location] : []),
       ...(formattedDate ? [`Photographed on ${formattedDate}`] : []),
@@ -3254,7 +3250,7 @@ function ProjectPage() {
     
     setSelectedImage({ 
       ...imageData, 
-      metadata: displayMetadata  // ✅ Correct syntax 
+      metadata: displayMetadata 
     });
     setLightboxOpen(true);
   };
@@ -3263,6 +3259,16 @@ function ProjectPage() {
     setLightboxOpen(false);
     setSelectedImage(null);
   };
+
+  // Safety check
+  if (!project) {
+    return (
+      <div style={{ padding: '100px', textAlign: 'center', fontFamily: 'sans-serif' }}>
+        <h2>Gallery Not Found</h2>
+        <p>The project "{projectId}" could not be loaded.</p>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -3295,7 +3301,6 @@ function ProjectPage() {
           {project.title}
         </h1>
         <div style={{ marginBottom: '12px' }}>
-
           {Array.isArray(project.description) ? (
             project.description.map((paragraph, index) => (
               <p
@@ -3317,180 +3322,192 @@ function ProjectPage() {
         </div>
         
        <div style={{ 
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '40px',
-  marginTop: '40px',
-  maxWidth: '1200px',
-  margin: '0 auto'
-}}>
-  {project.images.map((imageData, index) => {
-    // ===== SECTION HEADER =====
-    if (imageData.isSectionHeader) {
-      return (
-        <div key={index} style={{ 
-          padding: '40px 0 20px',
-          borderTop: '2px solid #64b4ff',
-          borderBottom: '1px solid #eee',
-          width: '100%'
-        }}>
-          <h2 style={{ 
-            fontSize: '1.8rem',
-            fontWeight: 400,
-            marginBottom: '12px',
-            color: '#1a1a1a',
-            textAlign: 'center'
-          }}>
-            {imageData.title}
-          </h2>
-          <p style={{ 
-            textAlign: 'center',
-            fontSize: '1rem',
-            color: '#666',
-            fontStyle: 'italic',
-            lineHeight: 1.6
-          }}>
-            {renderFormatting(imageData.subtitle)}
-          </p>
-        </div>
-      );
-    }
-
-    // ===== WRITEUP (Text-only grid item) =====
-// ===== WRITEUP (Full-width text block spanning entire grid) =====
-if (imageData.isWriteup) {
-  return (
-    <div 
-      key={index} 
-      style={{ 
-        cursor: 'default',
-        backgroundColor: 'white',
-        borderRadius: '8px',
-        overflow: 'hidden',
-        border: '1px solid #eee',
-        width: '100%',
-        padding: window.innerWidth <= 768 ? '24px 16px' : '32px 40px'  // ← Full-width padding
-      }}
-    >
-      {imageData.content.map((paragraph, pIdx) => (
-        <p 
-          key={pIdx} 
-          style={{ 
-            lineHeight: 1.7, 
-            fontSize: '1.05rem',
-            color: '#1a1a1a',
-            marginBottom: pIdx === imageData.content.length - 1 ? '0' : '24px',
-            textAlign: 'justify',
-            textJustify: 'inter-word',
-            hyphens: 'auto'
-          }}
-        >
-          {renderFormatting(paragraph)}
-        </p>
-      ))}
-    </div>
-  );
-}
-
-    // ===== REGULAR PHOTO =====
-    const formattedDate = imageData.shotDate ? formatDate(imageData.shotDate) : null;
-      const displayMetadata = [
-    ...(imageData.location ? [`Location: ${imageData.location}`] : []),  // ← Added "Location: " prefix
-    ...(formattedDate ? [`Photographed on ${formattedDate}`] : []),
-    ...(imageData.metadata || [])
-];
-
-    return (
-      <div
-        key={index}
-        onClick={() => openLightbox(imageData)}
-        style={{
-          cursor: 'pointer',
-          backgroundColor: 'white',
-          borderRadius: '8px',
-          overflow: 'hidden',
-          border: '1px solid #eee',
-          transition: 'transform 0.2s, box-shadow 0.2s',
           display: 'flex',
-          flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
-          width: '100%'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'translateY(-4px)';
-          e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'translateY(0)';
-          e.currentTarget.style.boxShadow = 'none';
-        }}
-      >
-        <div
-          style={{
-            width: '100%',
-            padding: window.innerWidth <= 768 ? '16px' : '20px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            ...(window.innerWidth > 768 && { flex: 2, minWidth: '400px' })
-          }}
-        >
-          <img
-            src={imageData.src.trim()}
-            alt={imageData.caption}
-            loading="lazy"
-            style={{
-              width: '100%',
-              height: 'auto',
-              maxWidth: '100%',
-              objectFit: 'contain',
-              borderRadius: '4px',
-              display: 'block'
-            }}
-            onContextMenu={(e) => e.preventDefault()}
-          />
-        </div>
+          flexDirection: 'column',
+          gap: '40px',
+          marginTop: '40px',
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}>
+          {project.images.map((imageData, index) => {
+            
+            // ===== SECTION HEADER =====
+            if (imageData.isSectionHeader) {
+              return (
+                <div key={index} style={{ 
+                  padding: '40px 0 20px',
+                  borderTop: '2px solid #64b4ff',
+                  borderBottom: '1px solid #eee',
+                  width: '100%'
+                }}>
+                  <h2 style={{ 
+                    fontSize: '1.8rem',
+                    fontWeight: 400,
+                    marginBottom: '12px',
+                    color: '#1a1a1a',
+                    textAlign: 'center'
+                  }}>
+                    {imageData.title}
+                  </h2>
+                  <p style={{ 
+                    textAlign: 'center',
+                    fontSize: '1rem',
+                    color: '#666',
+                    fontStyle: 'italic',
+                    lineHeight: 1.6
+                  }}>
+                    {renderFormatting(imageData.subtitle)}
+                  </p>
+                </div>
+              );
+            }
 
-        <div
-          style={{
-            width: '100%',
-            padding: window.innerWidth <= 768 ? '16px' : '20px',
-            ...(window.innerWidth > 768 && { flex: 1, minWidth: '300px' })
-          }}
-        >
-          <h3
-            style={{
-              fontSize: window.innerWidth <= 768 ? '1rem' : '1.2rem',
-              fontWeight: 500,
-              marginBottom: '12px',
-              color: '#1a1a1a',
-              lineHeight: 1.4
-            }}
-          >
-            {renderFormatting(imageData.caption)}
-          </h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {displayMetadata.map((item, metaIndex) => (
+            // ===== WRITEUP =====
+            if (imageData.isWriteup) {
+              return (
+                <div 
+                  key={index} 
+                  style={{ 
+                    cursor: 'default',
+                    backgroundColor: 'white',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    border: '1px solid #eee',
+                    width: '100%',
+                    padding: window.innerWidth <= 768 ? '24px 16px' : '32px 40px'
+                  }}
+                >
+                  {imageData.content.map((paragraph, pIdx) => (
+                    <p 
+                      key={pIdx} 
+                      style={{ 
+                        lineHeight: 1.7, 
+                        fontSize: '1.05rem',
+                        color: '#1a1a1a',
+                        marginBottom: pIdx === imageData.content.length - 1 ? '0' : '24px',
+                        textAlign: 'justify',
+                        textJustify: 'inter-word',
+                        hyphens: 'auto'
+                      }}
+                    >
+                      {renderFormatting(paragraph)}
+                    </p>
+                  ))}
+                </div>
+              );
+            }
+
+            // ===== REGULAR PHOTO =====
+            const formattedDate = imageData.shotDate ? formatDate(imageData.shotDate) : null;
+            
+            // ✅ CHECK THE 'caption' FIELD FOR [Untitled]
+            const isUntitled = imageData.caption === '[Untitled]';
+
+            const displayMetadata = [
+              ...(imageData.location ? [`Location: ${imageData.location}`] : []),
+              ...(formattedDate ? [`Photographed on ${formattedDate}`] : []),
+              ...(imageData.metadata || [])
+            ];
+
+            return (
               <div
-                key={metaIndex}
+                key={index}
+                onClick={() => openLightbox(imageData)}
                 style={{
-                  padding: '8px 12px',
-                  backgroundColor: '#f8f9fa',
-                  borderRadius: '4px',
-                  fontSize: window.innerWidth <= 768 ? '0.85rem' : '0.9rem',
-                  color: '#495057',
-                  whiteSpace: 'pre-line',
-                  lineHeight: 1.5
+                  cursor: 'pointer',
+                  backgroundColor: 'white',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                  border: '1px solid #eee',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  display: 'flex',
+                  flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
+                  width: '100%'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                {renderFormatting(item)}
+                {/* Image Side */}
+                <div
+                  style={{
+                    width: '100%',
+                    padding: window.innerWidth <= 768 ? '16px' : '20px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    ...(window.innerWidth > 768 && { flex: 2, minWidth: '400px' })
+                  }}
+                >
+                  <img
+                    src={imageData.src.trim()}
+                    // ✅ Use caption for alt text logic
+                    alt={isUntitled ? 'Untitled composition' : imageData.caption}
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      maxWidth: '100%',
+                      objectFit: 'contain',
+                      borderRadius: '4px',
+                      display: 'block'
+                    }}
+                    onContextMenu={(e) => e.preventDefault()}
+                  />
+                </div>
+
+                {/* Text Side */}
+                <div
+                  style={{
+                    width: '100%',
+                    padding: window.innerWidth <= 768 ? '16px' : '20px',
+                    ...(window.innerWidth > 768 && { flex: 1, minWidth: '300px' })
+                  }}
+                >
+                  {/* ✅ HEADLINE: Uses 'caption' field with conditional styling */}
+                  <h3
+                    style={{
+                      fontSize: window.innerWidth <= 768 ? '1rem' : '1.2rem',
+                      fontWeight: 500,
+                      marginBottom: '12px',
+                      // ✅ Conditional Style: Italic + Grey if Untitled
+                      fontStyle: isUntitled ? 'italic' : 'normal',
+                      color: isUntitled ? '#888' : '#1a1a1a',
+                      lineHeight: 1.4
+                    }}
+                  >
+                    {renderFormatting(imageData.caption)}
+                  </h3>
+
+                  {/* ✅ DETAILS: Uses 'metadata' array */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    {displayMetadata.map((item, metaIndex) => (
+                      <div
+                        key={metaIndex}
+                        style={{
+                          padding: '8px 12px',
+                          backgroundColor: '#f8f9fa',
+                          borderRadius: '4px',
+                          fontSize: window.innerWidth <= 768 ? '0.85rem' : '0.9rem',
+                          color: '#495057',
+                          whiteSpace: 'pre-line',
+                          lineHeight: 1.5
+                        }}
+                      >
+                        {renderFormatting(item)}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
-      </div>
-    );
-  })}
-</div>
       </main>
       
       {selectedImage && (
@@ -3505,7 +3522,6 @@ if (imageData.isWriteup) {
     </div>
   );
 }
-
 // ---------------- STATIC PAGES ----------------
 function AboutPage() {
   // Helper: Render bold (**text**) and italics (*text*)
@@ -3545,7 +3561,7 @@ function AboutPage() {
         
         <div style={{ fontSize: '1.1rem', lineHeight: 1.6, maxWidth: '800px' }}>
           <p style={{ marginBottom: '24px' }}>
-            {renderFormatting("Lines, shapes, color, perspective—these are my visual vocabulary. I believe the best camera is the one you have with you, and I enjoy working within the constraints of mobile and compact cameras to sharpen my vision.")}
+            {renderFormatting("Lines, shapes, colors, perspectives—these are my visual vocabulary. I believe the best camera is the one you have with you, and I enjoy working within the constraints of mobile and compact cameras to sharpen my vision.")}
           </p>
           
           <p style={{ marginBottom: '24px' }}>
