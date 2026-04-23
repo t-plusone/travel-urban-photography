@@ -207,6 +207,52 @@ const projectData = {
       }
     ]
   },
+
+  'china': {
+    title: '境·象：中国光影哲思 | realm & reflection: a philosophical journey through china',
+    description: [
+  '本系列精选四幅作品，跨越中国的地理与文化脉络：北京国家大剧院的现代几何、桂林阳朔晨曦中的水墨山水、乌镇雨后江南的静谧灯火，以及南宁“鸳鸯楼”的色彩交响。在视觉呈现上，我依据每处场景的情感基调与哲学意境，灵活选用不同的富士胶片模拟模式进行后期创作。无论是高饱和的色彩张力，还是低对比的柔和层次，皆旨在通过光影与色调的微妙变化，呼应东方哲学中“阴阳平衡”与“天人合一”的理念。这不仅是旅行的记录，更是一次通过镜头探索光、影、色与中国文化深层共鸣的实验性实践——在构图与色彩的流转间，寻找风景背后的精神境界。',
+  'This curated selection of four images traverses the diverse visual and cultural landscape of China: from the modern geometric curves of Beijing\'s National Centre for the Performing Arts to the ink-wash serenity of a Yangshuo sunrise; from the subtly lit old houses of Wuzhen\'s Jiangnan water towns after a rain to the vibrant chromatic intensity of Nanning\'s "Yuanyang Lou." In post-processing, I adaptively employ various Fujifilm film simulations to align with the specific mood and philosophical essence of each scene. Whether through vivid saturation of Velvia or subdued, nostalgic tones of Classic Chrome, these choices are made to enhance the interplay of light and shadow, reflecting concepts such as the balance of Yin and Yang and the harmony between humanity and nature. This series is not merely a travel record, but an ongoing exploration where color and composition serve as vehicles for cultural resonance—seeking the spiritual realm within the physical landscape.'
+],
+    images: [
+      {
+        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF4609.jpg?raw=true',
+        caption: '雨后·乌镇',
+        location: "Wuzhen, Zhejiang Province", 
+        metadata: [
+         'Shot on Fujifilm X-E2 using Classic Chrome film simulation'
+        ]
+      },
+      {
+        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF8331.jpg?raw=true',
+        caption: '日出·阳朔',
+        location: "Yangshuo, Guangxi Province",
+        metadata: [
+          'Shot on Fujifilm X-Pro2 using Eterna film simulation'
+        ]
+      },
+       {
+        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/DSCF0393.jpg?raw=true',
+        caption: '北京国家大剧院',
+        location: "Xicheng District, Beijing", 
+        metadata: [
+          'Shot on Fujifilm X-Pro2 using Velvia film simulation',
+        'Awarded \'Honorable Mention\' in Chromatic Awards 2024 (Amateur Category in Architecture)'
+        ]
+      },
+      {
+        src: 'https://github.com/t-plusone/plus.one-photos/blob/main/_DSF3785.jpg?raw=true',
+        caption: '鸳鸯楼·南宁',
+        location: "Nanning, Guangxi Province", 
+        metadata: [
+          '南宁唐山街28号，两道楼梯自地面升起，彼此穿插、缠绕，如一对相守半生的伴侣，步调交错却始终同向而行。\n\n红漆栏杆在日光下灼灼生辉——不是张扬，而是祈愿。那是中国人最熟悉的吉色，是门楣上的福字，是婚嫁时的绸缎，是平凡日子里对安稳与深情的无声寄托。\n\n晾晒的竹席、窗台的绿植、斑驳的水泥墙……生活的痕迹在此层层叠叠，却因那一抹红而有了仪式感。\n\n楼梯的交错并非杂乱，而是一种默契：你上我下，我左你右，日复一日，在方寸之间走出共生的韵律。\n\n这栋楼叫“鸳鸯”，不靠雕梁画栋，而靠日复一日的相望与同行。\n\n在这里，爱不在远方，就在每一次擦肩而过的楼梯转角——无声，却从未分离。 '
+        ]
+      }
+    ]
+  },
+
+
+
 'eye-e-city': {
   title: '城市的眼睛 eye é city',
   type: 'collective photographic initiative',
