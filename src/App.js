@@ -3035,7 +3035,20 @@ onMouseLeave={(e) => {
         {item.date && <p style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', marginBottom: '24px' }}>📅 {item.date}</p>}
 
         {/* Desktop Link */}
-        <a href="/journey" style={{ color: '#64b4ff', fontSize: '0.95rem', textDecoration: 'none', fontWeight: 500, marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid #222' }}>View full archival version →</a>
+        <a 
+  href="/journey" 
+  style={{ 
+    color: '#64b4ff', 
+    fontSize: '0.95rem', 
+    textDecoration: 'none', 
+    fontWeight: 500, 
+    marginTop: 'auto', 
+    paddingTop: '16px', 
+    borderTop: '1px solid #222' 
+  }}
+>
+  Click here for the full experience on a large-screen →
+</a>
       </div>
 
       {/* Navigation */}
