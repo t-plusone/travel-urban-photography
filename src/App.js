@@ -3600,7 +3600,6 @@ function ToaPayohStoryMapPage() {
 }
 
 // ---------------- PROJECT DETAIL PAGE ----------------
-// ---------------- PROJECT DETAIL PAGE ----------------
 function ProjectPage() {
   const { projectId } = useParams();
   // Fallback to 'singapore' if project not found
@@ -3692,14 +3691,16 @@ function ProjectPage() {
           )}
         </div>
         
-       <div style={{ 
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '40px',
-          marginTop: '40px',
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
+<div style={{
+  display: 'flex',
+  flexDirection: 'column',
+  gap: window.innerWidth <= 768 ? '24px' : '40px',
+  marginTop: '40px',
+  maxWidth: window.innerWidth <= 768 ? '100%' : '1200px',
+  margin: '0 auto',
+  padding: window.innerWidth <= 768 ? '0 16px' : '0'
+}}>
+  
           {project.images.map((imageData, index) => {
             
             // ===== SECTION HEADER =====
@@ -3781,20 +3782,22 @@ function ProjectPage() {
             ];
 
             return (
-              <div
-                key={index}
-                onClick={() => openLightbox(imageData)}
-                style={{
-                  cursor: 'pointer',
-                  backgroundColor: 'white',
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                  border: '1px solid #eee',
-                  transition: 'transform 0.2s, box-shadow 0.2s',
-                  display: 'flex',
-                  flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
-                  width: '100%'
-                }}
+<div
+  key={index}
+  onClick={() => openLightbox(imageData)}
+  style={{
+    cursor: 'pointer',
+    backgroundColor: 'white',
+    borderRadius: window.innerWidth <= 768 ? '0' : '8px',
+    overflow: 'hidden',
+    border: '1px solid #eee',
+    transition: 'transform 0.2s, box-shadow 0.2s',
+    display: 'flex',
+    flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
+    width: '100%',
+    margin: window.innerWidth <= 768 ? '0 -16px' : '0'
+  }}
+
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-4px)';
                   e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
@@ -3805,41 +3808,41 @@ function ProjectPage() {
                 }}
               >
                 {/* Image Side */}
-                <div
-                  style={{
-                    width: '100%',
-                    padding: window.innerWidth <= 768 ? '16px' : '20px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    ...(window.innerWidth > 768 && { flex: 2, minWidth: '400px' })
-                  }}
-                >
-                  <img
-                    src={imageData.src.trim()}
-                    // ✅ Use caption for alt text logic
-                    alt={isUntitled ? 'Untitled composition' : imageData.caption}
-                    loading="lazy"
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      maxWidth: '100%',
-                      objectFit: 'contain',
-                      borderRadius: '4px',
-                      display: 'block'
-                    }}
-                    onContextMenu={(e) => e.preventDefault()}
-                  />
+ <div
+  style={{
+    width: '100%',
+    padding: '0',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    ...(window.innerWidth > 768 && { flex: 2, minWidth: '400px', padding: '20px' })
+  }}
+>
+<img
+  src={imageData.src.trim()}
+  alt={isUntitled ? 'Untitled composition' : imageData.caption}
+  loading="lazy"
+  style={{
+    width: '100%',
+    height: 'auto',
+    maxWidth: '100%',
+    objectFit: 'contain',
+    borderRadius: window.innerWidth <= 768 ? '0' : '4px',
+    display: 'block'
+  }}
+  onContextMenu={(e) => e.preventDefault()}
+/>
                 </div>
 
                 {/* Text Side */}
-                <div
-                  style={{
-                    width: '100%',
-                    padding: window.innerWidth <= 768 ? '16px' : '20px',
-                    ...(window.innerWidth > 768 && { flex: 1, minWidth: '300px' })
-                  }}
-                >
+<div
+  style={{
+    width: '100%',
+    padding: window.innerWidth <= 768 ? '16px' : '20px',
+    ...(window.innerWidth > 768 && { flex: 1, minWidth: '300px' }),
+    ...(window.innerWidth <= 768 && { padding: '16px' })
+  }}
+>
                   {/* ✅ HEADLINE: Uses 'caption' field with conditional styling */}
                   <h3
                     style={{
