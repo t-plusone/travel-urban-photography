@@ -3835,53 +3835,51 @@ return (
     </div>
     
     {/* Text Side */}
-    <div
-      style={{
-        width: '100%',
-        padding: isMobile ? '16px' : '20px',
-        boxSizing: 'border-box', // ✅ FIX 3: Prevents text overflow
-        overflowWrap: 'break-word', // ✅ FIX 4
-        wordBreak: 'break-word', // ✅ FIX 5
-        ...(isMobile ? {} : { flex: 1, minWidth: '300px' })
-      }}
-    >
-      <h3
+<div
+  style={{
+    width: '100%',
+    padding: window.innerWidth <= 768 ? '16px' : '20px',
+    boxSizing: 'border-box',
+    ...(window.innerWidth > 768 && { flex: 1, minWidth: '300px' })
+  }}
+>
+  <h3
+    style={{
+      fontSize: window.innerWidth <= 768 ? '1rem' : '1.2rem',
+      fontWeight: 500,
+      marginBottom: '12px',
+      fontStyle: isUntitled ? 'italic' : 'normal',
+      color: isUntitled ? '#888' : '#1a1a1a',
+      lineHeight: 1.4,
+      overflowWrap: 'break-word',
+      wordBreak: 'break-word'
+    }}
+  >
+    {renderFormatting(imageData.caption)}
+  </h3>
+  
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    {displayMetadata.map((item, metaIndex) => (
+      <div
+        key={metaIndex}
         style={{
-          fontSize: isMobile ? '1rem' : '1.2rem',
-          fontWeight: 500,
-          marginBottom: '12px',
-          fontStyle: isUntitled ? 'italic' : 'normal',
-          color: isUntitled ? '#888' : '#1a1a1a',
-          lineHeight: 1.4,
-          overflowWrap: 'break-word', // ✅ FIX 6
-          wordBreak: 'break-word' // ✅ FIX 7
+          padding: '8px 12px',
+          backgroundColor: '#f8f9fa',
+          borderRadius: '4px',
+          fontSize: window.innerWidth <= 768 ? '0.85rem' : '0.9rem',
+          color: '#495057',
+          whiteSpace: 'pre-line',
+          lineHeight: 1.5,
+          overflowWrap: 'break-word',
+          wordBreak: 'break-word',
+          boxSizing: 'border-box'
         }}
       >
-        {renderFormatting(imageData.caption)}
-      </h3>
-      
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-        {displayMetadata.map((item, metaIndex) => (
-          <div
-            key={metaIndex}
-            style={{
-              padding: '8px 12px',
-              backgroundColor: '#f8f9fa',
-              borderRadius: '4px',
-              fontSize: isMobile ? '0.85rem' : '0.9rem',
-              color: '#495057',
-              whiteSpace: 'pre-line',
-              lineHeight: 1.5,
-              boxSizing: 'border-box', // ✅ FIX 8
-              overflowWrap: 'break-word', // ✅ FIX 9
-              wordBreak: 'break-word' // ✅ FIX 10
-            }}
-          >
-            {renderFormatting(item)}
-          </div>
-        ))}
+        {renderFormatting(item)}
       </div>
-    </div>
+    ))}
+  </div>
+</div>
   </div>
 );
           })}
