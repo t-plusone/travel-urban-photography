@@ -2911,6 +2911,7 @@ onMouseLeave={(e) => {
   }
 
   function KtmStoryMobilePage() {
+  const [showIntro, setShowIntro] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalItems = journeyData.length;
   const item = journeyData[currentIndex];
@@ -2918,15 +2919,102 @@ onMouseLeave={(e) => {
   const handlePrev = () => setCurrentIndex(prev => Math.max(0, prev - 1));
   const handleNext = () => setCurrentIndex(prev => Math.min(totalItems - 1, prev + 1));
 
+  // INTRO SCREEN
+  if (showIntro) {
+    return (
+      <div style={{
+        backgroundColor: '#000',
+        color: '#fff',
+        minHeight: '100vh',
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+        display: 'flex',
+        flexDirection: 'column',
+        padding: '40px 24px',
+        boxSizing: 'border-box'
+      }}>
+        {/* Header */}
+        <div style={{ marginBottom: '40px' }}>
+          <Link to="/photo-documentaries" style={{ color: '#64b4ff', textDecoration: 'none', fontSize: '0.9rem' }}>← Back</Link>
+        </div>
+
+        {/* Title */}
+        <h1 style={{
+          fontSize: '2rem',
+          fontWeight: 300,
+          marginBottom: '8px',
+          letterSpacing: '0.05em',
+          lineHeight: 1.2
+        }}>
+          A Journey Till The End
+        </h1>
+        <p style={{
+          fontSize: '0.95rem',
+          color: '#64b4ff',
+          marginBottom: '40px',
+          fontWeight: 300
+        }}>
+          The KTM Railway Story
+        </p>
+
+        {/* Introduction Text */}
+        <div style={{ 
+          flex: 1, 
+          fontSize: '1rem', 
+          lineHeight: 1.7, 
+          color: '#ccc',
+          marginBottom: '40px'
+        }}>
+          <p style={{ marginBottom: '20px' }}>
+            In May 2010, it was announced that KTM train services would depart from Woodlands instead of Tanjong Pagar from 1 July 2011. After nearly 80 years, the railway that connected Singapore to Malaysia would leave its historic terminus.
+          </p>
+          <p style={{ marginBottom: '20px' }}>
+            Over the next 360 days, I photographed KTM trains at publicly accessible locations across Singapore—from Tanjong Pagar to Woodlands. Every image was composed with strict discipline: including unmistakable symbols of Singapore so no photograph could be mistaken for Malaysia.
+          </p>
+          <p style={{ marginBottom: '20px', fontStyle: 'italic', color: '#999' }}>
+            This is not just a labour of love—it is a photographer's quest to preserve the memories of Singapore that we are losing, gradually and irreversibly.
+          </p>
+        </div>
+
+        {/* Begin Button */}
+        <button
+          onClick={() => setShowIntro(false)}
+          style={{
+            backgroundColor: '#64b4ff',
+            color: '#000',
+            border: 'none',
+            borderRadius: '8px',
+            padding: '16px 32px',
+            fontSize: '1.1rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+            width: '100%',
+            transition: 'all 0.2s'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#80c4ff';
+            e.currentTarget.style.transform = 'translateY(-2px)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = '#64b4ff';
+            e.currentTarget.style.transform = 'translateY(0)';
+          }}
+        >
+          Begin the Journey →
+        </button>
+      </div>
+    );
+  }
+
+  // GALLERY VIEW (existing code)
   return (
     <div style={{ backgroundColor: '#0a0a0a', color: '#fff', minHeight: '100vh', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', display: 'flex', flexDirection: 'column' }}>
       {/* Header */}
       <header style={{ padding: '16px 20px', borderBottom: '1px solid #1a1a1a', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, backgroundColor: '#0a0a0a', zIndex: 10 }}>
-        <Link to="/photo-documentaries" style={{ color: '#888', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500 }}>← Back</Link>
+        <button onClick={() => setShowIntro(true)} style={{ background: 'none', border: 'none', color: '#888', fontSize: '0.9rem', cursor: 'pointer' }}>← Intro</button>
         <span style={{ color: '#64b4ff', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.05em' }}>{String(currentIndex + 1).padStart(2, '0')} / {String(totalItems).padStart(2, '0')}</span>
       </header>
 
-      {/* Image */}
+      {/* Photo */}
       <div style={{ width: '100%', backgroundColor: '#111', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh', padding: '0' }}>
         <img src={item.imageUrl} alt={item.location} style={{ maxWidth: '100%', maxHeight: '60vh', objectFit: 'contain' }} onContextMenu={(e) => e.preventDefault()} />
       </div>
@@ -2958,7 +3046,6 @@ onMouseLeave={(e) => {
     </div>
   );
 }
-
 
 // ---------------- TOA PAYOH STORY MAP PAGE ----------------
 function ToaPayohStoryMapPage() {
