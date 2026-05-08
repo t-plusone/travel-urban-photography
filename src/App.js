@@ -2916,6 +2916,10 @@ onMouseLeave={(e) => {
   const totalItems = journeyData.length;
   const item = journeyData[currentIndex];
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [currentIndex, showIntro]);
+
   const handlePrev = () => setCurrentIndex(prev => Math.max(0, prev - 1));
   const handleNext = () => setCurrentIndex(prev => Math.min(totalItems - 1, prev + 1));
 
