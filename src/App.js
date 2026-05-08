@@ -3769,10 +3769,10 @@ function ProjectPage() {
               );
             }
 
-           // ===== REGULAR PHOTO =====
 // ===== REGULAR PHOTO =====
 const formattedDate = imageData.shotDate ? formatDate(imageData.shotDate) : null;
 const isUntitled = imageData.caption === '[Untitled]';
+const isMobile = window.innerWidth <= 768; // Define once for cleaner logic
 const displayMetadata = [
   ...(imageData.location ? [`Location: ${imageData.location}`] : []),
   ...(formattedDate ? [`Photographed on ${formattedDate}`] : []),
@@ -3787,33 +3787,35 @@ return (
       cursor: 'pointer',
       backgroundColor: 'white',
       borderRadius: '8px',
-      overflow: 'visible', // ✅ FIX 1: Stop clipping text/metadata
+      overflow: 'hidden', // Keeps rounded corners
       border: '1px solid #eee',
       transition: 'transform 0.2s, box-shadow 0.2s',
       display: 'flex',
-      flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
+      flexDirection: isMobile ? 'column' : 'row',
       width: '100%',
-      boxSizing: 'border-box' // ✅ FIX 2: Keep padding inside width
+      boxSizing: 'border-box' // ✅ FIX 1: Prevents parent overflow
     }}
     onMouseEnter={(e) => {
-      e.currentTarget.style.transform = 'translateY(-4px)';
-      e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
+      if (!isMobile) { // Disable hover effect on mobile to avoid sticky states
+        e.currentTarget.style.transform = 'translateY(-4px)';
+        e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
+      }
     }}
     onMouseLeave={(e) => {
       e.currentTarget.style.transform = 'translateY(0)';
       e.currentTarget.style.boxShadow = 'none';
     }}
   >
-    {/* Image Side - UNCHANGED (your preferred layout) */}
+    {/* Image Side */}
     <div
       style={{
         width: '100%',
-        padding: window.innerWidth <= 768 ? '16px' : '20px',
+        padding: isMobile ? '16px' : '20px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        boxSizing: 'border-box', // ✅ FIX 3
-        ...(window.innerWidth > 768 && { flex: 2, minWidth: '400px' })
+        boxSizing: 'border-box', // ✅ FIX 2: Padding included in width
+        ...(isMobile ? {} : { flex: 2, minWidth: '400px' })
       }}
     >
       <img
@@ -3836,19 +3838,23 @@ return (
     <div
       style={{
         width: '100%',
-        padding: window.innerWidth <= 768 ? '16px' : '20px',
-        boxSizing: 'border-box', // ✅ FIX 4
-        ...(window.innerWidth > 768 && { flex: 1, minWidth: '300px' })
+        padding: isMobile ? '16px' : '20px',
+        boxSizing: 'border-box', // ✅ FIX 3: Prevents text overflow
+        overflowWrap: 'break-word', // ✅ FIX 4
+        wordBreak: 'break-word', // ✅ FIX 5
+        ...(isMobile ? {} : { flex: 1, minWidth: '300px' })
       }}
     >
       <h3
         style={{
-          fontSize: window.innerWidth <= 768 ? '1rem' : '1.2rem',
+          fontSize: isMobile ? '1rem' : '1.2rem',
           fontWeight: 500,
           marginBottom: '12px',
           fontStyle: isUntitled ? 'italic' : 'normal',
           color: isUntitled ? '#888' : '#1a1a1a',
-          lineHeight: 1.4
+          lineHeight: 1.4,
+          overflowWrap: 'break-word', // ✅ FIX 6
+          wordBreak: 'break-word' // ✅ FIX 7
         }}
       >
         {renderFormatting(imageData.caption)}
@@ -3862,13 +3868,13 @@ return (
               padding: '8px 12px',
               backgroundColor: '#f8f9fa',
               borderRadius: '4px',
-              fontSize: window.innerWidth <= 768 ? '0.85rem' : '0.9rem',
+              fontSize: isMobile ? '0.85rem' : '0.9rem',
               color: '#495057',
               whiteSpace: 'pre-line',
               lineHeight: 1.5,
-              overflowWrap: 'break-word', // ✅ FIX 5: Force long text to wrap
-              wordBreak: 'break-word',
-              boxSizing: 'border-box'
+              boxSizing: 'border-box', // ✅ FIX 8
+              overflowWrap: 'break-word', // ✅ FIX 9
+              wordBreak: 'break-word' // ✅ FIX 10
             }}
           >
             {renderFormatting(item)}
