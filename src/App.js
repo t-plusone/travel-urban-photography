@@ -3859,26 +3859,28 @@ return (
   </h3>
   
   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-    {displayMetadata.map((item, metaIndex) => (
-      <div
-        key={metaIndex}
-        style={{
-          padding: '8px 12px',
-          backgroundColor: '#f8f9fa',
-          borderRadius: '4px',
-          fontSize: window.innerWidth <= 768 ? '0.85rem' : '0.9rem',
-          color: '#495057',
-          whiteSpace: 'pre-line',
-          lineHeight: 1.5,
-          overflowWrap: 'break-word',
-          wordBreak: 'break-word',
-          boxSizing: 'border-box'
-        }}
-      >
-        {renderFormatting(item)}
-      </div>
-    ))}
-  </div>
+  {displayMetadata.map((item, metaIndex) => (
+    <div
+      key={metaIndex}
+      style={{
+        padding: '8px 12px',
+        backgroundColor: '#f8f9fa',
+        borderRadius: '4px',
+        fontSize: window.innerWidth <= 768 ? '0.85rem' : '0.9rem',
+        color: '#495057',
+        whiteSpace: 'pre-line',
+        lineHeight: 1.5,
+        wordBreak: 'break-word',
+        overflowWrap: 'break-word',
+        hyphens: 'auto',
+        width: '100%',
+        boxSizing: 'border-box'
+      }}
+    >
+      {renderFormatting(item)}
+    </div>
+  ))}
+</div>
 </div>
   </div>
 );
