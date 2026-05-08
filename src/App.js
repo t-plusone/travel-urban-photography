@@ -3033,7 +3033,9 @@ onMouseLeave={(e) => {
         </a>
 
         {/* Description */}
-        <p style={{ fontSize: '1rem', lineHeight: 1.6, color: '#ccc', marginBottom: '12px', whiteSpace: 'pre-line' }}>{item.description}</p>
+<p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#ccc', marginBottom: '12px', whiteSpace: 'pre-line' }}>
+  {renderFormatting(item.description)}
+</p>
 
         {/* Date */}
         {item.date && <p style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', marginBottom: '24px' }}>📅 {item.date}</p>}
