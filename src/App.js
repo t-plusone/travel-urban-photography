@@ -1060,7 +1060,7 @@ function PhotoDocumentariesPage() {
     {
       slug: 'journey',
       title: 'A Journey Till The End',
-      subtitle: 'The KTM Railway Story',
+      subtitle: 'A Photographer’s Quest to Preserve the Memories of KTM in Singapore',
       coverImage: 'https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P8010338_s4st7a'
     }
   ];
