@@ -2957,7 +2957,7 @@ onMouseLeave={(e) => {
           marginBottom: '40px',
           fontWeight: 300
         }}>
-          The KTM Railway Story
+          A Photographer’s Quest to Preserve the Memories of KTM in Singapore
         </p>
 
         {/* Introduction Text */}
