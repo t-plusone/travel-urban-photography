@@ -359,6 +359,191 @@ const projectData = {
 }
 };
 
+const journeyData = [
+  {
+    id: 1,
+    location: "The Tanjong Pagar Railway Station",
+    lat: 1.2730275,
+    lng: 103.8389164,
+    date: "9 Feb 2011",
+    description: "Built in 1932, the Tanjong Pagar Railway Station was the showpiece of the KTM's Singapore operations and is located along Keppel Road.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P2090545_ljvbxx"
+  },
+  {
+    id: 2,
+    location: "Through the fencing",
+    lat: 1.2726349,
+    lng: 103.8383263,
+    date: "24 Jun 2010",
+    description: "A train at the departure platform viewed through the Station fencing along Keppel Road.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6240114_wvedrt"
+  },
+  {
+    id: 3,
+    location: "Kaunter Tiket | Ticket Counter",
+    lat: 1.2729819,
+    lng: 103.8386858,
+    date: "24 Jun 2010",
+    description: "No automated ticket machines. No stored-value electronic tickets either.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6240097_i47kax"
+  },
+  {
+    id: 4,
+    location: "Departing Tanjong Pagar Railway Station",
+    lat: 1.2728776,
+    lng: 103.8340294,
+    date: "18 Nov 2010",
+    description: "After departing the Station, a Malaysia-bound train first travels against Keppel Road's traffic flow before cruising alongside the Ayer Rajah Expressway in a northwesterly direction.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/PB180887_dog140"
+  },
+  {
+    id: 5,
+    location: "Approaching the Kampong Bahru Flyover",
+    lat: 1.2749824,
+    lng: 103.8297433,
+    date: "1 Aug 2010",
+    description: "The Kampong Bahru Flyover is the first major viaduct a Malaysia-bound train passes under after departing Tanjong Pagar Railway Station.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P8010338_s4st7a"
+  },
+  {
+    id: 6,
+    location: "Approaching the Queensway Flyover",
+    lat: 1.2944636,
+    lng: 103.7987638,
+    date: "17 Jun 2011",
+    description: "After passing Jalan Hang Jebat, a Malaysia-bound train passes under the Queensway Flyover and emerges on the left-hand side of the Blessed Sacrament Church on Commonwealth Drive.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6171689_rl4trg"
+  },
+  {
+    id: 7,
+    location: "Peekaboo at Woking Road",
+    lat: 1.2950485,
+    lng: 103.7984580,
+    date: "30 Aug 2010",
+    description: "From Tanjong Pagar to Woodlands, many parts of the railway tracks are well concealed by thick vegetation. It could be a way to keep people out of the railway tracks without building fences. This may also explain why few Singaporeans notice the KTM railway's presence in Singapore.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P8300484_gjz9f2"
+  },
+  {
+    id: 8,
+    location: "Train meets Train",
+    lat: 1.3066703,
+    lng: 103.7919751,
+    date: "7 Sep 2010",
+    description: "This photograph shows a Malaysia-bound KTM train and a west-bound Singapore MRT East-West Line train that has just left Buona Vista Station.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P9070720_rddqdr"
+  },
+  {
+    id: 9,
+    location: "Heading towards Bukit Timah Railway Station",
+    lat: 1.3148746,
+    lng: 103.7872785,
+    date: "15 May 2011",
+    description: "After Ghim Moh estate, a Malaysia-bound train cruises past the former Raffles Junior College on its left, before passing under Holland Road near Cold Storage Jelita.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P5151368_hbh9sl"
+  },
+  {
+    id: 10,
+    location: "The charming Bukit Timah Railway Station",
+    lat: 1.3342922,
+    lng: 103.7811282,
+    date: "2 Mar 2011",
+    description: "Compared to the grandeur of Tanjong Pagar Railway Station, Bukit Timah Railway Station is a charming, quaint station — reminiscent of KTM stations in small Malaysian towns like Kulai, Johor.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P3020802_xipios"
+  },
+  {
+    id: 11,
+    location: "A Key Token being handed over",
+    lat: 1.3342922,
+    lng: 103.7811282,
+    date: "2 Mar 2011",
+    description: "A Key Token is being handed over to the Bukit Timah Station Master by the Fireman of the approaching Malaysia-bound train.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P3020832_l9zw1n"
+  },
+  {
+    id: 12,
+    location: "Bukit Timah Station Master Encik Atan",
+    lat: 1.3346860,
+    lng: 103.7815011,
+    date: "2 Mar 2011",
+    description: "Encik Atan, who comes from Pontian, Johor, is a Station Master at the Bukit Timah Railway Station. He started working with the KTMB (Malaysian Railway Company) nearly 20 years ago and has been a Station Master for the past 2 years.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P3020809_bnamqk"
+  },
+  {
+    id: 13,
+    location: "Cruising along Rifle Range Road",
+    lat: 1.3386140,
+    lng: 103.7807500,
+    date: "17 Sep 2010",
+    description: "After crossing the Bukit Timah Railway Bridge, a Malaysia-bound train continues its journey along Rifle Range Road, where one can get as close as five metres from a passing train.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P9170926_vjqoic"
+  },
+  {
+    id: 14,
+    location: "Crossing the Railway Bridge",
+    lat: 1.3579150,
+    lng: 103.7674811,
+    date: "4 Jun 2011",
+    description: "This is the third of four overhead railway crossings between Bukit Timah and Woodlands. Although a similar bridge spans Bukit Timah and Dunearn Roads near the Bukit Timah Railway Station, to most older Singaporeans, 'Railway Bridge' (火车桥) refers to this one rather than its sibling.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6041462_dmu3hd"
+  },
+  {
+    id: 15,
+    location: "Hillview Road Crossing",
+    lat: 1.3620564,
+    lng: 103.7664400,
+    date: "28 Sep 2010",
+    description: "Pictured here is the Malaysia-bound Shuttle Service Train Number 62 scheduled to depart Tanjong Pagar at 8:45 AM and arrive in Gemas at 1:46 PM.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P9281012_gkhp5b"
+  },
+  {
+    id: 16,
+    location: "Bukit Panjang Crossing",
+    lat: 1.3791487,
+    lng: 103.7600702,
+    date: "1 Apr 2011",
+    description: "The second level crossing between Bukit Timah and Woodlands is the Bukit Panjang Crossing, where a Malaysia-bound train crosses Choa Chu Kang Road near Ten Mile Junction (now Junction 10).",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P4011095_l0v9et"
+  },
+  {
+    id: 17,
+    location: "Train Number 2 Ekspres Rakyat",
+    lat: 1.3809392,
+    lng: 103.7590939,
+    date: "17 May 2011",
+    description: "The passengers at the doors must have enjoyed their ride.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P5171403_k66kto"
+  },
+  {
+    id: 18,
+    location: "Peekaboo at Sungei Kadut Avenue",
+    lat: 1.4053957,
+    lng: 103.7542444,
+    date: "15 May 2011",
+    description: "A Tanjong Pagar-bound train plays peekaboo from behind thick vegetation on both sides of the track. This recurring phenomenon was one of many familiar sights along the line. Like the KTM itself, it was easy to take for granted while it existed. Only in its absence do we realize what has slipped away.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P5151387_w07u9u"
+  },
+  {
+    id: 19,
+    location: "The End",
+    lat: 1.4502533,
+    lng: 103.7700749,
+    date: "13 Dec 2010",
+    description: "After departing the Woodlands Train Checkpoint, a Malaysia-bound train leaves Singapore via the Johor–Singapore Causeway.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/PC131745_boxg5t"
+  },
+  {
+    id: 20,
+    location: "Epilogue",
+    lat: 1.2730275,
+    lng: 103.8389164,
+    date: "After 30 Jun 2011",
+    description: "This is not an ending. It is a preservation: the last train from Tanjong Pagar departed on 30 June 2011, but these images carry forward what was.\n\nThese images are not nostalgia — they are memorials crafted with care, precision, and respect.",
+    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/DSCF7012_fzvhtm"
+  }
+];
+
+
+
 // ============================================================================
 // LIGHTBOX COMPONENT (MOBILE-OPTIMIZED)
 // ============================================================================
@@ -829,7 +1014,7 @@ function PortfolioPage() {
             return (
               <Link
                 key={project.id}
-                to={`/portfolio/gallery/${project.id}`}
+                to={`/${project.id}`}
                 style={{ display: 'block', textDecoration: 'none', width: '100%' }}
               >
                 <img
@@ -867,13 +1052,13 @@ function PortfolioPage() {
 function PhotoDocumentariesPage() {
   const documentaries = [
     {
-      slug: 'a-stroll-down-memory-lane',
+      slug: 'stroll',
       title: 'A Stroll Down Memory Lane',
       subtitle: 'Awarded 1st Prize, "Changing Landscape of Singapore" Photography Competition, 2009, organized by National Library Board, Singapore',
       coverImage: 'https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/tp-cover_b4c3vi'
     },
     {
-      slug: 'a-journey-till-the-end',
+      slug: 'journey',
       title: 'A Journey Till The End',
       subtitle: 'The KTM Railway Story',
       coverImage: 'https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P8010338_s4st7a'
@@ -921,7 +1106,7 @@ function PhotoDocumentariesPage() {
         >
           {documentaries.map((doc, index) => {
             // Toa Payoh: Static "Work in Progress" card (non-clickable)
-            if (doc.slug === 'a-stroll-down-memory-lane') {
+            if (doc.slug === 'stroll') {
               return (
                 <div
                   key={index}
@@ -994,7 +1179,7 @@ function PhotoDocumentariesPage() {
             return (
               <Link
                 key={index}
-                to={`/photo-documentaries/${doc.slug}`}
+                to={`/${doc.slug}`}
                 style={{ display: 'block', textDecoration: 'none', width: '100%' }}
               >
                 <img
@@ -1124,7 +1309,7 @@ function renderFormatting(text) {
     const ktmLocations = [
     {
       id: 1,
-      name: "Entrance of the Tanjong Pagar Railway Station",
+      name: "The Tanjong Pagar Railway Station",
       lat: 1.2730275,
       lng: 103.8389164,
       photos: [
@@ -1161,17 +1346,17 @@ function renderFormatting(text) {
     },
     {
       id: 2,
-      name: "North side of the Tanjong Pagar Railway Station",
+      name: "North Side of the Tanjong Pagar Railway Station",
       lat: 1.2733707,
       lng: 103.8386348,
       photos: [
         {
           id: 1,
-          title: "A simple fencing",
+          title: "Perimeter fence",
           shotFrom: "",
           shotDate: "2010-11-18",
           caption: [
-            "On the north side of the station, a side entrance from Spottiswoode Park Road leads into the compound. The fencing here is unadorned — a quiet contrast to the grandeur of the main façade."
+            "A side entrance from Spottiswoode Park Road leads into the Station compound. The fencing here is unadorned."
 
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/PB180854_humpyb"
@@ -1181,15 +1366,15 @@ function renderFormatting(text) {
           title: "Bambai Food Catering",
           shotFrom: "",
           shotDate: "2010-06-24",
-          caption: "On the north side of the Station, there are several entrances that lead, via eating places or corridors, into the main hall of the Station.",
+          caption: "",
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6240088_cb2xfl"
         },
         {
           id: 3,
-          title: "One of the entrances into the Station",
+          title: "A service entrance",
           shotFrom: "",
           shotDate: "2010-11-18",
-          caption: "",
+          caption: "On this side of the Station, several entrances lead, via eating places or corridors, into the main hall.",
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/PB180856_vyjsi6"
         },
         {
@@ -1197,14 +1382,14 @@ function renderFormatting(text) {
           title: "Motorbikes Galore",
           shotFrom: "",
           shotDate: "2010-11-18",
-          caption: "Many motorbikes are parked on this side of the Station, likely belonging to people working in the Station.",
+          caption: "Many motorbikes are parked on this side of the Station, likely belonging to food sellers or workers within the Station.",
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/PB180858_id6msq"
         }
       ]
     },
     {
       id: 3,
-      name: "South side of the Tanjong Pagar Railway Station",
+      name: "South Side of the Tanjong Pagar Railway Station",
       lat: 1.2726349,
       lng: 103.8383263,
       photos: [
@@ -1215,7 +1400,7 @@ function renderFormatting(text) {
           shotDate: "2010-07-25",
           caption: [
             "This parcel van comes in at 6:24 AM with the night train from KL, and is then shunted to Platform 3 to allow easy loading and unloading of goods from the *Kiriman Ekspres* (KTM Distribution) office.",
-            "It departs Singapore at 10:30 PM the same day with the night train to KL, stopping at stations to pick up or drop off goods. Sometimes, 1 or 2 parcel vans are used, depending on the requirement."
+            "It departs Singapore at 10:30 PM the same day with the night train to KL, stopping at stations to pick up or drop off goods."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P7250273_ejwqxs"
         },
@@ -1237,10 +1422,10 @@ function renderFormatting(text) {
         },
         {
           id: 4,
-          title: "A train at the departure platform viewed through the Station fencing along Keppel Road.",
+          title: "Through the fencing",
           shotFrom: "",
           shotDate: "2010-06-24",
-          caption: "",
+          caption: "A train at the departure platform viewed through the Station fencing along Keppel Road.",
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6240114_wvedrt"
         }
       ]
@@ -1261,7 +1446,7 @@ function renderFormatting(text) {
         },
         {
           id: 2,
-          title: "Station Main Hall",
+          title: "Station main hall",
           shotFrom: "",
           shotDate: "2010-10-03",
           caption: "No security guards, metal detectors or rifle-carrying soldiers.",
@@ -1277,7 +1462,7 @@ function renderFormatting(text) {
         },
         {
           id: 4,
-          title: "Depature Gate",
+          title: "Departure gate",
           shotFrom: "",
           shotDate: "2010-07-25",
           caption: "",
@@ -1287,77 +1472,76 @@ function renderFormatting(text) {
     },
     {
       id: 5,
-      name: "Murals murals on the walls (of the Tanjong Pagar Railway Station)",
+      name: "Murals in the main hall of the Tanjong Pagar Railway Station",
       lat: 1.2729685,
       lng: 103.8384819,
       photos: [
         {
           id: 1,
-          title: "Mural #1",
-          shotFrom: "inside the Station",
-          shotDate: "2010-07-25",
+          title: "Mural #1: Rubber Plantation",
+          shotFrom: "Main Hall of the Station",
+          shotDate: "",
           caption: [
-            "There are six murals high on the east and west walls in the main hall of the Station.",
-            "To accurately represent the murals' composition, this image was post-processed to correct keystoning caused by the shooting angle.",
-            "This mural shows workers in a rubber plantation."
+            "(All photographs taken on 25 July 2010. To accurately represent the murals' composition, these images were post-processed to correct keystoning caused by the shooting angle.)",
+            "There are six murals high on the east and west walls in the main hall of the Station."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P7250286_muzg3d"
         },
         {
           id: 2,
-          title: "Mural #2",
+          title: "Mural #2: Rice Field",
           shotFrom: "",
-          shotDate: "2010-07-25",
-          caption: "This mural shows farmers in a rice field.",
+          shotDate: "",
+          caption: "",
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P7250287_krxddh"
         },
         {
           id: 3,
-          title: "Mural #3",
+          title: "Mural #3: Tin Mine",
           shotFrom: "",
-          shotDate: "2010-07-25",
-          caption: "This mural shows miners in a mine.",
+          shotDate: "",
+          caption: "",
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P7250288_pyajim"
         },
         {
           id: 4,
-          title: "Mural #4",
+          title: "Mural #4: Coconut Grove",
           shotFrom: "",
-          shotDate: "2010-07-25",
-          caption: "This mural shows villagers plucking coconuts from coconut trees.",
+          shotDate: "",
+          caption: "",
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P7250290_xznlpd"
         },
         {
           id: 5,
-          title: "Mural #5",
+          title: "Mural #5: Port Scene",
           shotFrom: "",
-          shotDate: "2010-07-25",
-          caption: "This mural shows workers in a port, with different types of ships in the background.",
+          shotDate: "",
+          caption: "",
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P7250292_ngsv18"
         },
         {
           id: 6,
-          title: "Mural #6",
+          title: "Mural #6: Village Scene",
           shotFrom: "",
-          shotDate: "2010-07-25",
-          caption: "This mural shows villagers transporting goods with tools such as a bullock cart, with a train in the background.",
+          shotDate: "",
+          caption: "",
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P7250293_fsxc3i"
         }
       ]
     },
     {
       id: 6,
-      name: "Arrival Platform in the Tanjong Pagar Railway Station",
+      name: "Arrival platform of the Tanjong Pagar Railway Station",
       lat: 1.2731777,
       lng: 103.8381466,
       photos: [
         {
           id: 1,
-          title: "Eating at the Arrival Platform",
+          title: "Eating at the arrival platform",
           shotFrom: "",
           shotDate: "2010-10-09",
           caption: [
-            "Patrons of the eating places in the Station can sit down at the arrival platform to enjoy their mee siam or teh tarik in a relaxed manner."
+            "Patrons of the eating places in the Station can sit at the arrival platform to enjoy mee siam or teh tarik—a relaxed exception to the usual restrictions of railway platforms all over the world."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/PA091173_srxgw6"
         }
@@ -1372,11 +1556,11 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Train Number 26 *Senandung Timuran* leaving Tanjong Pagar Railway Station",
-          shotFrom: "from the 25th storey of 106 Spottiswoode Park Road",
+          title: "Train Number 26 *Senandung Timuran* departing Tanjong Pagar Railway Station",
+          shotFrom: "from the 25th storey of Blk 106 Spottiswoode Park Road",
           shotDate: "2010-11-18",
           caption: [
-            "After departing Tanjong Pagar, a Malaysia-bound train first travels against Keppel Road's traffic flow before cruising alongside the Ayer Rajah Expressway in a northwesterly direction."
+            "After departing the Station, a Malaysia-bound train first travels against Keppel Road's traffic flow before cruising alongside the Ayer Rajah Expressway in a northwesterly direction."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/PB180887_dog140"
         }
@@ -1390,7 +1574,7 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Train Number 14 *Ekspres Timuran* departing from Tanjong Pagar Railway Station",
+          title: "Train Number 14 *Ekspres Timuran* departing Tanjong Pagar Railway Station",
           shotFrom: "along Keppel Road",
           shotDate: "2010-07-25",
           caption: [
@@ -1412,23 +1596,15 @@ function renderFormatting(text) {
           title: "Train Number 26 *Senandung Timuran* approaching the Kampong Bahru Flyover",
           shotFrom: "on Kampong Bahru Flyover",
           shotDate: "2010-08-01",
-          caption: "The Kampong Bahru Flyover is the first major structure a Malaysia-bound train passes under after departing Tanjong Pagar.",
+          caption: "The Kampong Bahru Flyover is the first major viaduct a Malaysia-bound train passes under after departing Tanjong Pagar Railway Station.",
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P8010338_s4st7a"
-        },
-        {
-          id: 2,
-          title: "",
-          shotFrom: "on Kampong Bahru Flyover",
-          shotDate: "2011-06-19",
-          caption: "Train Number 26 *Senandung Timuran* approaching the Kampong Bahru Flyover about 3 minutes after departing from the Tanjong Pagar Railway Station.",
-          imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/DSCF0235_siige3"
         }
       ]
     },
     
     {
       id: 10,
-      name: "Approaching Henderson Flyover",
+      name: "Before Henderson Flyover",
       lat: 1.2802055,
       lng: 103.8187730,
       photos: [
@@ -1439,7 +1615,7 @@ function renderFormatting(text) {
           shotDate: "2010-08-09",
           caption: [
             "After passing under the Kampong Bahru Flyover, a Malaysia-bound train goes under the Lower Delta Flyover before reaching the Henderson Flyover.",
-            "As the train approaches the Henderson Flyover approximately 6 minutes after leaving the Tanjong Pagar Railway Station, one can see the thirty-storey tall Blk 17 Telok Blangah Crescent in the background."
+            "The 30-storey Blk 17 Telok Blangah Crescent is visible in the background."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P8090377_pfbier"
         }
@@ -1454,11 +1630,11 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Tanjong Pagar-bound Freight Train passing under Henderson Flyover",
+          title: "Freight train passing under Henderson Flyover",
           shotFrom: "from Blk 17 Telok Blangah Crescent",
           shotDate: "2011-02-17",
           caption: [
-            "Photographed here is a Tanjong Pagar-bound freight train passing under the Henderson Flyover. To the left lies the Telok Blangah HDB estate; to the right, the Henderson industrial area."
+            "A Tanjong Pagar-bound freight train passes under the Henderson Flyover. To the left lies the Telok Blangah HDB estate; to the right, the Henderson industrial area."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P2170666_r3fhpt"
         }
@@ -1473,11 +1649,11 @@ function renderFormatting(text) {
         {
           id: 1,
           title: "A Walk in the Park",
-          shotFrom: "on the overhead bridge connecting Depot Road and Bukit Merach Central",
+          shotFrom: "on the overhead bridge connecting Depot Road and Bukit Merah Central",
           shotDate: "2010-08-17",
           caption: [
             "Though walking along the railway track is risky, this couple appears familiar with the train schedule.",
-            "Once again, the thirty-storey tall Blk 17 Telok Blangah Crescent can be seen in the background."
+            "Once again, the 30-storey Blk 17 Telok Blangah Crescent is visible in the background."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P8170387_enljih"
         }
@@ -1507,8 +1683,8 @@ function renderFormatting(text) {
           shotDate: "2010-08-31",
           caption: [
             "Since the railway tracks are property of KTM, and the land beneath them belongs to the Malaysian government, does stepping onto the tracks mean entering Malaysia?",
-            "There is a Muslim mosque known as Masjid Hang Jebat at Jalan Hang Jebat. During the Muslim Haj period, this charitable mosque gives out free food to anyone, regardless of Muslims or otherwise - a Muslim uncle who saw me waiting for trains actually persuaded me to go get some free food there. I politely turned him down as I thought someone else needed it more than I did.",
-            "Everyday, many Singaporeans cross at different points of the KTM railway tracks to get from one place to another, such as getting from one-north to Queensway at Jalan Hang Jebat."
+            "There is a Muslim mosque known as Masjid Hang Jebat at Jalan Hang Jebat. During the Muslim Haj period, this charitable mosque gives out free food to anyone, regardless of Muslim or otherwise - a Muslim uncle who saw me waiting for trains actually persuaded me to go get some free food there. I politely turned him down as I thought someone else needed it more than I did.",
+            "Every day, many Singaporeans cross at different points of the KTM railway tracks to get from one place to another, such as getting from one-north to Queensway at Jalan Hang Jebat."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P8310510_emvcau"
         }
@@ -1522,7 +1698,7 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Tanjong Pagar-bound Train approaching the Queensway Flyover",
+          title: "Tanjong Pagar-bound train approaching the Queensway Flyover",
           shotFrom: "from the Queensway Flyover",
           shotDate: "2011-06-17",
           caption: [
@@ -1545,9 +1721,9 @@ function renderFormatting(text) {
           shotFrom: "from Woking Road",
           shotDate: "2010-08-30",
           caption: [
-            "Immediately after passing the Blessed Sacrament Church, a Malaysia-bound train passes near Woking Road, appearing peekaboo among thick vegetation along the track. Looming large in the background is the 22-storey tall Blk 23A Queen's Close.",
+            "Immediately after passing the Blessed Sacrament Church, a Malaysia-bound train passes near Woking Road, appearing peekaboo among thick vegetation along the track. Looming large in the background is the 22-storey Blk 23A Queen's Close.",
             "From Tanjong Pagar to Woodlands, many parts of the railway tracks are well concealed by thick vegetation. It could be a way to keep people out of the railway tracks without building fences. This may also explain why few Singaporeans notice the KTM railway's presence in Singapore.",
-            "Photographed here is the Malaysia-bound Train Number 26 *Senandung Timuran* that departed from Tanjong Pagar at 6 pm."
+            "Photographed here is the Malaysia-bound Train Number 26 *Senandung Timuran*, scheduled to depart from Tanjong Pagar at 6 PM."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P8300484_gjz9f2"
         }
@@ -1561,12 +1737,12 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "As Close as it gets",
+          title: "As Close as It Gets",
           shotFrom: "trackside near Biomedical Grove",
           shotDate: "2010-10-04",
           caption: [
-            "As a Malaysia-bound train navigates further northwards after passing by Woking Road, it gets as close as about 20 to 25 metres from some of the HDB blocks near Commonwealth Park on its right-hand-side. These trains normally slow down when they reach this area.",
-            "Along this stretch of the railway track, there are several shortcuts that have been artificially made to allow people to cross the railway track to get from Commonwealth area to Biopolis and Buona Vista areas, and vice versa.",
+            "As a Malaysia-bound train navigates further northwards after passing Woking Road, it comes within about 20 to 25 metres of some HDB blocks near Commonwealth Park on its right-hand-side. Trains normally slow down when they reach this area.",
+            "Along this stretch of the track, several shortcuts have been worn into the ground by daily foot traffic over a long period of time, allowing people to cross between the Commonwealth area and Biopolis/Buona Vista.",
             "The buildings in the background are Synapse (left) and Immunos."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/PA041123_xvl3bp"
@@ -1585,8 +1761,8 @@ function renderFormatting(text) {
           shotFrom: "along Commonwealth Avenue opposite Blk 43 Commonwealth Avenue",
           shotDate: "2010-09-07",
           caption: [
-            "As a Malaysia-bound KTM train leaves behind Biopolis, it will meet the Singapore Mass Rapid Transit (MRT) train/track for the very first time at the junction of North Buona Vista Road and Commonwealth Avenue near the Buona Vista MRT Station.",
-            "Photographed here is the Malaysia-bound Train Number 26 *Senandung Timuran*, about 11 minutes after it departed from Tanjong Pagar Railway Station."
+            "As a Malaysia-bound KTM train leaves behind Biopolis, it meets the Singapore Mass Rapid Transit (MRT) tracks for the first time at the junction of North Buona Vista Road and Commonwealth Avenue near the Buona Vista MRT Station.",
+            "This photograph shows the Malaysia-bound Train Number 26 *Senandung Timuran* and a west-bound Singapore MRT East-West Line train that has just left Buona Vista Station."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P9070720_rddqdr"
         }
@@ -1601,12 +1777,12 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Malaysia-bound Train Winding through Ghim Moh",
-          shotFrom: "from the 34th storey of Blk 18B Holland Drive",
+          title: "Malaysia-bound Train winding through Ghim Moh",
+          shotFrom: "from Blk 18B Holland Drive",
           shotDate: "2011-06-29",
           caption: [
-            "After passing under the MRT track near Buona Vista MRT Station, a Malaysia-bound train emerges between Ghim Moh estate on its left and Holland estate on its right, next to North Buona Vista Road. Here, a moving train will be visible to pedestrians and motorists traveling along North Buona Vista Road.",
-            "From the top of the 34-storey Blk 18B Holland Drive, one can see the winding railway track meandering on the periphery of Ghim Moh estate, with Mount Sinai estate in the background."
+            "After passing under the MRT tracks near Buona Vista MRT Station, a Malaysia-bound train emerges between Ghim Moh estate on its left and Holland estate on its right, next to North Buona Vista Road. Here, moving trains are visible to pedestrians and motorists traveling along North Buona Vista Road.",
+            "From the top of the 34-storey Blk 18B Holland Drive, the railway track can be seen winding along the periphery of Ghim Moh estate, with Mount Sinai estate ahead."
             ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/S0120061_dypu8x"
         }
@@ -1621,12 +1797,12 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Train Number 26 *Senandung Timuran* passing through Ghim Moh area",
+          title: "Train Number 26 *Senandung Timuran* passing Ghim Moh",
           shotFrom: "from the pedestrian overhead bridge connecting East Sussex Lane and Ghim Moh",
           shotDate: "2010-09-08",
           caption: [
             "This would be a familiar sight for residents living in the Ghim Moh area.",
-            "The prominent building in the background is the 34-storey tall Blk 18C Holland Drive."
+            "The prominent building in the background is the 40-storey Blk 18C Holland Drive."
             ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P9080729_jovqie"
         }
@@ -1645,8 +1821,8 @@ function renderFormatting(text) {
           shotFrom: "trackside near Jalan Jelita",
           shotDate: "2011-05-15",
           caption: [
-            "After navigating past Ghim Moh Estate, a Malaysia-bound train cruises past the former Raffles Junior College on its left, before going under Holland Road near Cold Storage Jelita.",
-            "From this stretch onwards until the quaint and charming Bukit Timah Railway Station, the railway tracks are well-concealed by the heavy forestation along the tracks. One can only catch a glimpse of the trains and track near Ewart Park, off Holland and Ulu Pandan Roads, before the train reaches Bukit Timah Railway Station."
+            "After Ghim Moh estate, a Malaysia-bound train cruises past the former Raffles Junior College on its left, before passing under Holland Road near Cold Storage Jelita.",
+            "From this stretch onwards until the quaint and charming Bukit Timah Railway Station, the railway tracks are well concealed by dense vegetation. One can only catch a glimpse of passing trains near Ewart Park, off Holland and Ulu Pandan Roads, before they reach the Station."
             ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P5151368_hbh9sl"
         }
@@ -1665,19 +1841,19 @@ function renderFormatting(text) {
           shotFrom: "along Bukit Timah Road near 1 King Albert Park",
           shotDate: "2011-03-02",
           caption: [
-            "Nestled in a corner of Bukit Timah Road is the long-forgotten Bukit Timah Railway Station. Not many people knows of its existence. A signboard near King Albert Park, just below the iconic Railway Bridge spanning across Bukit Timah and Dunearn Roads, points towards this charming little station."
+            "Nestled in a corner of Bukit Timah Road is the long-forgotten Bukit Timah Railway Station. Not many people know of its existence. A signboard near King Albert Park, just below the iconic Railway Bridge spanning across Bukit Timah and Dunearn Roads, points the way to this charming little Station."
             ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P3020789_tgpgtu"
         },
          
         {
           id: 2,
-          title: "The Charming Bukit Timah Railway Station",
+          title: "The charming Bukit Timah Railway Station",
           shotFrom: "",
           shotDate: "2011-03-02",
           caption: [
             "Compared to the grandeur of Tanjong Pagar Railway Station, Bukit Timah Railway Station is a charming, quaint station — reminiscent of KTM stations in small Malaysian towns like Kulai, Johor.",
-            "Built in 1932, Bukit Timah Station ceased passenger operations years ago. Today, it serves as a passing loop — where a delayed train stops to wait for an oncoming train to pass before proceeding on the single-track KTM line."
+            "Built in 1932, Bukit Timah Railway Station ceased passenger operations years ago. Today, it serves as a passing loop — where a delayed train stops to wait for an oncoming train to pass before proceeding on the single-track KTM line."
             ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P3020802_xipios"
         },
@@ -1702,7 +1878,7 @@ function renderFormatting(text) {
         },
         {
           id: 5,
-          title: "Southern Wall of the Station facing the direction of Singapura",
+          title: "Southern wall of the Station facing the direction of Singapura",
           shotFrom: "",
           shotDate: "2011-03-02",
           caption: [
@@ -1712,7 +1888,7 @@ function renderFormatting(text) {
         },
         {
           id: 6,
-          title: "Waiting Area",
+          title: "Waiting area",
           shotFrom: "",
           shotDate: "2011-03-02",
           caption: [
@@ -1722,7 +1898,7 @@ function renderFormatting(text) {
         },
         {
           id: 7,
-          title: "Control Levers",
+          title: "Control levers",
           shotFrom: "",
           shotDate: "2011-03-02",
           caption: [
@@ -1732,7 +1908,7 @@ function renderFormatting(text) {
         },
         {
           id: 8,
-          title: "Key Token Post",
+          title: "Key Token post",
           shotFrom: "",
           shotDate: "2011-03-02",
           caption: [
@@ -1746,7 +1922,7 @@ function renderFormatting(text) {
           shotFrom: "",
           shotDate: "2011-03-02",
           caption: [
-            "A Key Token is being handed over to the Bukit Timah Station Master by the driver of the approaching Malaysia-bound Train Number 26 *Senandung Timuran*."
+            "A Key Token is being handed over to the Bukit Timah Station Master by the Fireman of the approaching Malaysia-bound Train Number 26 *Senandung Timuran*."
                         ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P3020832_l9zw1n"
         },
@@ -1756,7 +1932,7 @@ function renderFormatting(text) {
           shotFrom: "",
           shotDate: "2011-04-07",
           caption: [
-            "A Key Token is being placed at the post by the driver on the Malaysia-bound Train Number 26 *Senandung Timuran*."
+            "A Key Token is being placed at the post by the Fireman on the Malaysia-bound Train Number 26 *Senandung Timuran*."
                         ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P4071158_laafsd"
         },
@@ -1825,7 +2001,7 @@ function renderFormatting(text) {
           shotFrom: "",
           shotDate: "2011-03-02",
           caption: [
-          "Sulhan is a member of the KTM Railway Fan Club. After many years of being with the club, he managed to secure a job with KTM through staff recommendations.  Today, he is a fireman assisting the locomotive driver on various journeys, and is on his way to earning a promotion to be a locomotive driver.",
+          "Sulhan is a member of the KTM Railway Fan Club. After many years with the club, he managed to secure a job with KTMB through staff recommendations.  Today, he is a Fireman assisting locomotive drivers on various journeys, and is on his way to be promoted to a locomotive driver.",
           "Here, he poses with the Malaysia-bound Train Number 26 *Senandung Timuran* at the Bukit Timah Railway Station."
                         ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P3020838_lgozax"
@@ -1835,7 +2011,7 @@ function renderFormatting(text) {
 
 {
       id: 23,
-      name: "North end of Bukit Timah Railway Station",
+      name: "North end of the Bukit Timah Railway Station",
       lat: 1.3355766,
       lng: 103.7811685,
       photos: [
@@ -1865,7 +2041,7 @@ function renderFormatting(text) {
           shotFrom: "along Dunearn Road near the Bridge",
           shotDate: "2011-03-29",
           caption: [
-            "After departing from the Bukit Timah Railway Station, a Malaysian-bound train crosses Bukit Timah and Dunearn Roads via the Bukit Timah Railway Bridge, first of four overhead railway crossings between Bukit Timah and Woodlands.",
+            "After departing from the Bukit Timah Railway Station, a Malaysia-bound train crosses Bukit Timah and Dunearn Roads via the Bukit Timah Railway Bridge, the first of four overhead railway crossings between Bukit Timah and Woodlands.",
             ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P3290891_izceyy"
         }
@@ -1884,7 +2060,7 @@ function renderFormatting(text) {
           shotFrom: "along Rifle Range Road at the junction of Jalan Bangket",
           shotDate: "2010-09-17",
           caption: [
-            "After crossing the Bukit Timah Railway Bridge, a Malaysian-bound train continues its journey along Rifle Range Road, where one can get as close as five metres from a passing train.",
+            "After crossing the Bukit Timah Railway Bridge, a Malaysia-bound train continues its journey along Rifle Range Road, where one can get as close as five metres from a passing train.",
             ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P9170926_vjqoic"
         }
@@ -1903,6 +2079,7 @@ function renderFormatting(text) {
           shotFrom: "along Rifle Range Road at the junction of Jalan Bangket",
           shotDate: "2010-09-17",
           caption: [
+                "A property launch signboard—a familiar sight along Singapore's roads.",
                         ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P9170930_pm4meo"
         }
@@ -1917,11 +2094,11 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Tanjong Pagar-bound Train at the Hindhede Road Crossing",
+          title: "Tanjong Pagar-bound train at the Hindhede Road Crossing",
           shotFrom: "along Hindhede Road",
           shotDate: "2011-06-10",
           caption: [
-          "After Rifle Range Road, a Malaysia-bound train navigates on the periphery of the Bukit Timah Nature Reserve, well-hidden from the public eye, until it crosses Hindhede Road via an overhead crossing. This overhead crossing is the second of four between Bukit Timah and Woodlands."
+          "After Rifle Range Road, a Malaysia-bound train travels along the periphery of the Bukit Timah Nature Reserve, well-hidden from the public eye, until it crosses Hindhede Road via the Hindhede Road Crossing, the second of four overhead railway crossings between Bukit Timah and Woodlands."
                         ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6101506_rwvdha"
         }
@@ -1936,12 +2113,12 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Malaysia-bound Train crossing the Railway Bridge at Upper Bukit Timah Road",
+          title: "Malaysia-bound train crossing the Railway Bridge at Upper Bukit Timah Road",
           shotFrom: "at the junction of Jalan Asas and Upper Bukit Timah Road",
           shotDate: "2011-06-04",
           caption: [
-          "Shortly after leaving Hindhede Road, a Malaysia-bound train then speeds across Upper Bukit Timah Road via another Railway Bridge, arguably the most famous railway icon (notwithstanding the Tanjong Pagar Railway Station) in the entire KTM railway system in Singapore.",
-          "This bridge is the third of four overhead crossings between Bukit Timah and Woodlands.  Although there is another similar bridge across Bukit Timah and Dunearn Roads near the Bukit Timah Railway Station, in the memory of most older Singaporeans, 'Railway Bridge' (火车桥) more often than not refers to this bridge rather than its sibling at Bukit Timah Road."
+          "Shortly after leaving Hindhede Road, a Malaysia-bound train speeds across Upper Bukit Timah Road via the 'Railway Bridge'—arguably one of the most iconic railway structures in Singapore's KTM system, second only to the Tanjong Pagar Railway Station.",
+          "This is the third of four overhead railway crossings between Bukit Timah and Woodlands. Although a similar bridge spans Bukit Timah and Dunearn Roads near the Bukit Timah Railway Station, to most older Singaporeans, *'Railway Bridge'* (火车桥) refers to this one rather than its sibling."
                         ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6041462_dmu3hd"
         },
@@ -1956,12 +2133,12 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Malaysia-bound Train at the Hillview Road Crossing",
+          title: "Malaysia-bound train at the Hillview Road Crossing",
           shotFrom: "from a road divider on Hillview Road",
           shotDate: "2010-09-28",
           caption: [
-          "The fourth and last overhead crossing between Bukit Timah and Woodlands is at Hillview Road, not too far from the Railway Bridge at Upper Bukit Timah Road.",
-          "Photographed here is the Malaysia-bound Shuttle Service Train Number 62 that left Tanjong Pagar at 8:45 AM and is scheduled to arrive in Gemas at 1:46 PM."
+          "The fourth and final overhead railway crossing between Bukit Timah and Woodlands is at Hillview Road, just a short distance from the Railway Bridge at Upper Bukit Timah Road.",
+          "Pictured here is the Malaysia-bound Shuttle Service Train Number 62 scheduled to depart Tanjong Pagar at 8:45 AM and arrive in Gemas at 1:46 PM."
                         ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P9281012_gkhp5b"
         }
@@ -1976,12 +2153,12 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Tanjong Pagar-bound Train at the Gombak Crossing",
+          title: "Tanjong Pagar-bound train at the Gombak Crossing",
           shotFrom: "from roadside along Gombak Drive",
           shotDate: "2011-06-12",
           caption: [
-          "After passing four overhead crossings, a Malaysia-bound train will traverse through five level crossings, the first of which is the level crossing at Gombak Drive.",
-          "This photograph shows the Shuttle Service Train Number 91, which originated from Kuala Lipis, heading towards Tanjong Pagar."
+          "After passing the four overhead railway crossings, a Malaysia-bound continues through five level crossings, the first of which is the Gombak Crossing.",
+          "Pictured here is the Shuttle Service Train Number 91, originating from Kuala Lipis and heading towards Tanjong Pagar."
                         ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6121646_arpyds"
         }
@@ -1996,11 +2173,11 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Tanjong Pagar-bound Train at the Bukit Panjang Crossing",
+          title: "Tanjong Pagar-bound train at the Bukit Panjang Crossing",
           shotFrom: "from a road divider on Choa Chu Kang Road",
           shotDate: "2011-04-01",
           caption: [
-          "The second level crossing between Bukit Timah and Woodlands is the Bukit Panjang Crossing, at which a Malaysia-bound train crosses Choa Chu Kang Road near the Ten Mile Junction (now Junction 10)."
+          "The second level crossing between Bukit Timah and Woodlands is the Bukit Panjang Crossing, where a Malaysia-bound train crosses Choa Chu Kang Road near Ten Mile Junction (now Junction 10)."
                         ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P4011095_l0v9et"
         },
@@ -2025,12 +2202,12 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Malaysian-bound train near Teck Whye Estate",
+          title: "Malaysian-bound train near Teck Whye estate",
           shotFrom: "from Woodlands Road near Ten Mile Junction (Junction 10)",
           shotDate: "2011-05-17",
           caption: [
-            "Immediately after a Malaysia-bound train crosses the Bukit Panjang Crossing, it can be seen crossing a canal via a bridge in the vicinity of Ten Mile Junction, with some blocks of HDB flats in Jalan Teck Whye in the background.",
-            "Photographed here is the Train Number 2 *Ekspres Rakyat* that left Tanjong Pagar Railway Station at 8:00 AM."
+            "Immediately after crossing the Bukit Panjang Crossing, a Malaysia-bound train can be seen crossing a canal via a bridge near Ten Mile Junction (Junction 10), with HDB blocks in Jalan Teck Whye visible in the background.",
+            "Pictured here is Train Number 2 *Ekspres Rakyat*, scheduled to depart Tanjong Pagar Railway Station at 8:00 AM."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P5171403_k66kto"
         }
@@ -2045,12 +2222,12 @@ function renderFormatting(text) {
       photos: [
         {
           id: 1,
-          title: "Malaysian-bound train at the Mandai Crossing",
+          title: "Malaysia-bound train at the Mandai Crossing",
           shotFrom: "from roadside on Stagmont Ring",
           shotDate: "2011-06-11",
           caption: [
-            "The third of five level crossings between Bukit Timah and Woodlands is the Mandai Crossing, at which a Malaysia-bound train cuts across Stagmont Ring.",
-            "Singaporeans know this crossing as the \"Stagmont Ring Crossing\" but from KTM's perspective, \"Mandai Crossing\" is its official name."
+            "The third of five level crossings between Bukit Timah and Woodlands is the Mandai Crossing, where a Malaysia-bound train crosses Stagmont Ring.",
+            "While Singaporeans commonly refer to this crossing as the \"Stagmont Ring Crossing\", \"Mandai Crossing\" is its official name from KTM's perspective."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6111523_kjsfal"
         }
@@ -2069,7 +2246,8 @@ function renderFormatting(text) {
           shotFrom: "from Blk 687D Choa Chu Kang Drive",
           shotDate: "2011-05-15",
           caption: [
-            "While vehicles wait at the nearby Sungei Kadut Crossing, a Tanjong Pagar-bound train does a peekaboo among the thick vegetation on both sides of the track, visible from Blk 687D Choa Chu Kang Drive."
+            "While vehicles wait at the nearby Sungei Kadut Crossing, a Tanjong Pagar-bound train plays peekaboo from behind thick vegetation on both sides of the track, visible from Blk 687D Choa Chu Kang Drive.",
+            "This recurring phenomenon—first observed in Location 15, then hinted at in Location 20—was one of many familiar sights along the line. Like the KTM itself, it was easy to take for granted while it existed. Only in its absence do we realize what has slipped away."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P5151387_w07u9u"
         }
@@ -2087,8 +2265,8 @@ function renderFormatting(text) {
           shotFrom: "from roadside on Sungei Kadut Avenue",
           shotDate: "2011-06-19",
           caption: [
-            "Sungei Kadut Crossing is the second last of five level crossings between Bukit Timah and Woodlands.",
-            "Photographed here is a Tanjong Pagar-bound train passing the Sungei Kadut Crossing as vehicles wait on along Sungei Kadut Avenue."
+            "Sungei Kadut Crossing is the fourth of five level crossings between Bukit Timah and Woodlands.",
+            "Pictured here is a Tanjong Pagar-bound train passing the Crossing as vehicles wait along Sungei Kadut Avenue."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6191800_uvksjp"
         }
@@ -2107,8 +2285,8 @@ function renderFormatting(text) {
           shotFrom: "from roadside on Kranji Road",
           shotDate: "2011-06-19",
           caption: [
-            "Kranji Crossing is the final significant landmark in the entire KTM railway system between Tanjong Pagar and Woodlands.",
-            "From here till Woodlands, a Malaysia-bound train will be well-concealed behind thick vegetation, only appearing briefly behind an Esso petrol station along Woodlands Road, before reaching the Woodlands Train Checkpoint."
+            "Kranji Crossing is the final significant landmark in the KTM railway system between Tanjong Pagar and Woodlands.",
+            "From here to Woodlands, a Malaysia-bound train is well-concealed behind thick vegetation, appearing only briefly behind an Esso petrol station along Woodlands Road before reaching the Woodlands Train Checkpoint."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6121608_ol0qbv"
         }
@@ -2137,7 +2315,7 @@ function renderFormatting(text) {
           shotFrom: "",
           shotDate: "2011-06-25",
           caption: [
-            "Roslan has worked for KTM for over 25 years.",
+            "Roslan has worked for KTMB for over 25 years.",
             "He has spent the last 11 years based in Singapore - 10 years at the Sungei Kadut Crossing, and since early 2011, at the Kranji Crossing."
                         ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/DSCF0009_nnlyv7"
@@ -2159,7 +2337,7 @@ function renderFormatting(text) {
           shotDate: "2010-12-13",
           caption: [
             "After departing the Woodlands Train Checkpoint, a Malaysia-bound train leaves Singapore via the Johor–Singapore Causeway.",
-            "This photograph shows Train Number 2 *Ekspres Rakyat* leaving Singapore shortly after 9:00 AM."
+            "Pictured here is Train Number 2 *Ekspres Rakyat* leaving Singapore shortly after 9:00 AM."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/PC131745_boxg5t"
         }
@@ -2731,6 +2909,56 @@ onMouseLeave={(e) => {
       </div>
     );
   }
+
+  function KtmStoryMobilePage() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalItems = journeyData.length;
+  const item = journeyData[currentIndex];
+
+  const handlePrev = () => setCurrentIndex(prev => Math.max(0, prev - 1));
+  const handleNext = () => setCurrentIndex(prev => Math.min(totalItems - 1, prev + 1));
+
+  return (
+    <div style={{ backgroundColor: '#0a0a0a', color: '#fff', minHeight: '100vh', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', display: 'flex', flexDirection: 'column' }}>
+      {/* Header */}
+      <header style={{ padding: '16px 20px', borderBottom: '1px solid #1a1a1a', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, backgroundColor: '#0a0a0a', zIndex: 10 }}>
+        <Link to="/photo-documentaries" style={{ color: '#888', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500 }}>← Back</Link>
+        <span style={{ color: '#64b4ff', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.05em' }}>{String(currentIndex + 1).padStart(2, '0')} / {String(totalItems).padStart(2, '0')}</span>
+      </header>
+
+      {/* Image */}
+      <div style={{ width: '100%', backgroundColor: '#111', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh', padding: '0' }}>
+        <img src={item.imageUrl} alt={item.location} style={{ maxWidth: '100%', maxHeight: '60vh', objectFit: 'contain' }} onContextMenu={(e) => e.preventDefault()} />
+      </div>
+
+      {/* Info Panel */}
+      <div style={{ padding: '24px 20px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <h2 style={{ fontSize: '1.4rem', fontWeight: 400, marginBottom: '8px', lineHeight: 1.3, color: '#f5f5f5' }}>{item.location}</h2>
+
+        {/* Coordinates */}
+        <a href={`https://www.google.com/maps?q=${item.lat},${item.lng}`} target="_blank" rel="noopener noreferrer" style={{ color: '#64b4ff', fontSize: '0.9rem', textDecoration: 'none', display: 'inline-block', marginBottom: '16px', opacity: 0.9 }}>
+          📍 {item.lat.toFixed(4)}°N, {item.lng.toFixed(4)}°E
+        </a>
+
+        {/* Description */}
+        <p style={{ fontSize: '1rem', lineHeight: 1.6, color: '#ccc', marginBottom: '12px', whiteSpace: 'pre-line' }}>{item.description}</p>
+
+        {/* Date */}
+        {item.date && <p style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', marginBottom: '24px' }}>📅 {item.date}</p>}
+
+        {/* Desktop Link */}
+        <a href="/journey" style={{ color: '#64b4ff', fontSize: '0.95rem', textDecoration: 'none', fontWeight: 500, marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid #222' }}>View full archival version →</a>
+      </div>
+
+      {/* Navigation */}
+      <nav style={{ padding: '16px 20px 24px', borderTop: '1px solid #1a1a1a', display: 'flex', justifyContent: 'space-between', gap: '12px', backgroundColor: '#0a0a0a', position: 'sticky', bottom: 0 }}>
+        <button onClick={handlePrev} disabled={currentIndex === 0} style={{ flex: 1, padding: '14px', backgroundColor: currentIndex === 0 ? '#111' : '#1a1a1a', color: currentIndex === 0 ? '#444' : '#fff', border: '1px solid #333', borderRadius: '8px', fontSize: '0.95rem', cursor: currentIndex === 0 ? 'not-allowed' : 'pointer', transition: 'all 0.2s' }}>← Previous</button>
+        <button onClick={handleNext} disabled={currentIndex === totalItems - 1} style={{ flex: 1, padding: '14px', backgroundColor: currentIndex === totalItems - 1 ? '#111' : '#1a1a1a', color: currentIndex === totalItems - 1 ? '#444' : '#fff', border: '1px solid #333', borderRadius: '8px', fontSize: '0.95rem', cursor: currentIndex === totalItems - 1 ? 'not-allowed' : 'pointer', transition: 'all 0.2s' }}>Next →</button>
+      </nav>
+    </div>
+  );
+}
+
 
 // ---------------- TOA PAYOH STORY MAP PAGE ----------------
 function ToaPayohStoryMapPage() {
@@ -3641,6 +3869,20 @@ function ContactPage() {
   );
 }
 
+function JourneyRouter() {
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
+  
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return isMobile ? <KtmStoryMobilePage /> : <KtmStoryMapPage />;
+}
+
+
+
 // ============================================================================
 // MAIN APP COMPONENT
 // ============================================================================
@@ -3654,18 +3896,25 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/photo-documentaries" element={<PhotoDocumentariesPage />} />
+          
+          {/* Documentaries at root level */}
           <Route
-            path="/photo-documentaries/a-stroll-down-memory-lane"
+            path="/stroll"
             element={<ToaPayohStoryMapPage />}
           />
           <Route
-            path="/photo-documentaries/a-journey-till-the-end"
-            element={<KtmStoryMapPage />}
-          />
+            path="/journey"
+            element={
+              <JourneyRouter />
+  }
+/>
+          
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          
+          {/* Galleries at root level (must be last to avoid catching static routes) */}
           <Route
-            path="/portfolio/gallery/:projectId"
+            path="/:projectId"
             element={<ProjectPage />}
           />
         </Routes>
