@@ -3770,6 +3770,7 @@ function ProjectPage() {
             }
 
            // ===== REGULAR PHOTO =====
+// ===== REGULAR PHOTO =====
 const formattedDate = imageData.shotDate ? formatDate(imageData.shotDate) : null;
 const isUntitled = imageData.caption === '[Untitled]';
 const displayMetadata = [
@@ -3786,13 +3787,13 @@ return (
       cursor: 'pointer',
       backgroundColor: 'white',
       borderRadius: '8px',
-      overflow: 'visible', // ✅ FIX 1: Stops clipping text
+      overflow: 'visible', // ✅ FIX 1: Stop clipping text/metadata
       border: '1px solid #eee',
       transition: 'transform 0.2s, box-shadow 0.2s',
       display: 'flex',
       flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
       width: '100%',
-      boxSizing: 'border-box' // ✅ FIX 2: Padding stays inside width
+      boxSizing: 'border-box' // ✅ FIX 2: Keep padding inside width
     }}
     onMouseEnter={(e) => {
       e.currentTarget.style.transform = 'translateY(-4px)';
@@ -3803,7 +3804,7 @@ return (
       e.currentTarget.style.boxShadow = 'none';
     }}
   >
-    {/* Image Side */}
+    {/* Image Side - UNCHANGED (your preferred layout) */}
     <div
       style={{
         width: '100%',
@@ -3822,6 +3823,7 @@ return (
         style={{
           width: '100%',
           height: 'auto',
+          maxWidth: '100%',
           objectFit: 'contain',
           borderRadius: '4px',
           display: 'block'
@@ -3829,6 +3831,7 @@ return (
         onContextMenu={(e) => e.preventDefault()}
       />
     </div>
+    
     {/* Text Side */}
     <div
       style={{
@@ -3850,6 +3853,7 @@ return (
       >
         {renderFormatting(imageData.caption)}
       </h3>
+      
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {displayMetadata.map((item, metaIndex) => (
           <div
@@ -3862,8 +3866,9 @@ return (
               color: '#495057',
               whiteSpace: 'pre-line',
               lineHeight: 1.5,
-              overflowWrap: 'break-word', // ✅ FIX 5: Forces long text to wrap
-              wordBreak: 'break-word'
+              overflowWrap: 'break-word', // ✅ FIX 5: Force long text to wrap
+              wordBreak: 'break-word',
+              boxSizing: 'border-box'
             }}
           >
             {renderFormatting(item)}
