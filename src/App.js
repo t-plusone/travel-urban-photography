@@ -3769,7 +3769,6 @@ function ProjectPage() {
               );
             }
 
-           // ===== REGULAR PHOTO =====
 // ===== REGULAR PHOTO =====
 const formattedDate = imageData.shotDate ? formatDate(imageData.shotDate) : null;
 const isUntitled = imageData.caption === '[Untitled]';
@@ -3787,7 +3786,7 @@ return (
       cursor: 'pointer',
       backgroundColor: 'white',
       borderRadius: '8px',
-      overflow: 'visible', // ✅ FIX 1: Stop clipping text/metadata
+      overflow: 'visible', // ✅ FIX 1: Stop clipping text/metadata boxes
       border: '1px solid #eee',
       transition: 'transform 0.2s, box-shadow 0.2s',
       display: 'flex',
@@ -3804,7 +3803,7 @@ return (
       e.currentTarget.style.boxShadow = 'none';
     }}
   >
-    {/* Image Side - UNCHANGED (your preferred layout) */}
+    {/* Image Side - UNCHANGED */}
     <div
       style={{
         width: '100%',
