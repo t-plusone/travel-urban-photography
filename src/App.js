@@ -536,8 +536,8 @@ const journeyData = [
     location: "Epilogue",
     lat: 1.2730275,
     lng: 103.8389164,
-    date: "After 30 Jun 2011",
-    description: "This is not an ending. It is a preservation: the last train from Tanjong Pagar departed on 30 June 2011, but these images carry forward what was.\n\nThese images are not nostalgia — they are memorials crafted with care, precision, and respect.",
+    date: "31 Dec 2011",
+    description: "This is not an ending. It is a preservation: the last train from Tanjong Pagar departed on 30 June 2011, but these images carry forward what was.\n\n*These images are not nostalgia — they are memorials crafted with care, precision, and respect.*",
     imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/DSCF7012_fzvhtm"
   }
 ];
