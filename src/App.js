@@ -3769,115 +3769,110 @@ function ProjectPage() {
               );
             }
 
-            // ===== REGULAR PHOTO =====
-            const formattedDate = imageData.shotDate ? formatDate(imageData.shotDate) : null;
-            
-            // ✅ CHECK THE 'caption' FIELD FOR [Untitled]
-            const isUntitled = imageData.caption === '[Untitled]';
+           // ===== REGULAR PHOTO =====
+const formattedDate = imageData.shotDate ? formatDate(imageData.shotDate) : null;
+const isUntitled = imageData.caption === '[Untitled]';
+const displayMetadata = [
+  ...(imageData.location ? [`Location: ${imageData.location}`] : []),
+  ...(formattedDate ? [`Photographed on ${formattedDate}`] : []),
+  ...(imageData.metadata || [])
+];
 
-            const displayMetadata = [
-              ...(imageData.location ? [`Location: ${imageData.location}`] : []),
-              ...(formattedDate ? [`Photographed on ${formattedDate}`] : []),
-              ...(imageData.metadata || [])
-            ];
-
-            return (
-              <div
-                key={index}
-                onClick={() => openLightbox(imageData)}
-                style={{
-                  cursor: 'pointer',
-                  backgroundColor: 'white',
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                  border: '1px solid #eee',
-                  transition: 'transform 0.2s, box-shadow 0.2s',
-                  display: 'flex',
-                  flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
-                  width: '100%'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
-              >
-                {/* Image Side */}
-                <div
-                  style={{
-                    width: '100%',
-                    padding: window.innerWidth <= 768 ? '16px' : '20px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    ...(window.innerWidth > 768 && { flex: 2, minWidth: '400px' })
-                  }}
-                >
-                  <img
-                    src={imageData.src.trim()}
-                    // ✅ Use caption for alt text logic
-                    alt={isUntitled ? 'Untitled composition' : imageData.caption}
-                    loading="lazy"
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      maxWidth: '100%',
-                      objectFit: 'contain',
-                      borderRadius: '4px',
-                      display: 'block'
-                    }}
-                    onContextMenu={(e) => e.preventDefault()}
-                  />
-                </div>
-
-                {/* Text Side */}
-                <div
-                  style={{
-                    width: '100%',
-                    padding: window.innerWidth <= 768 ? '16px' : '20px',
-                    ...(window.innerWidth > 768 && { flex: 1, minWidth: '300px' })
-                  }}
-                >
-                  {/* ✅ HEADLINE: Uses 'caption' field with conditional styling */}
-                  <h3
-                    style={{
-                      fontSize: window.innerWidth <= 768 ? '1rem' : '1.2rem',
-                      fontWeight: 500,
-                      marginBottom: '12px',
-                      // ✅ Conditional Style: Italic + Grey if Untitled
-                      fontStyle: isUntitled ? 'italic' : 'normal',
-                      color: isUntitled ? '#888' : '#1a1a1a',
-                      lineHeight: 1.4
-                    }}
-                  >
-                    {renderFormatting(imageData.caption)}
-                  </h3>
-
-                  {/* ✅ DETAILS: Uses 'metadata' array */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    {displayMetadata.map((item, metaIndex) => (
-                      <div
-                        key={metaIndex}
-                        style={{
-                          padding: '8px 12px',
-                          backgroundColor: '#f8f9fa',
-                          borderRadius: '4px',
-                          fontSize: window.innerWidth <= 768 ? '0.85rem' : '0.9rem',
-                          color: '#495057',
-                          whiteSpace: 'pre-line',
-                          lineHeight: 1.5
-                        }}
-                      >
-                        {renderFormatting(item)}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            );
+return (
+  <div
+    key={index}
+    onClick={() => openLightbox(imageData)}
+    style={{
+      cursor: 'pointer',
+      backgroundColor: 'white',
+      borderRadius: '8px',
+      overflow: 'visible', // ✅ FIX 1: Stops clipping text
+      border: '1px solid #eee',
+      transition: 'transform 0.2s, box-shadow 0.2s',
+      display: 'flex',
+      flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
+      width: '100%',
+      boxSizing: 'border-box' // ✅ FIX 2: Padding stays inside width
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.transform = 'translateY(-4px)';
+      e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.transform = 'translateY(0)';
+      e.currentTarget.style.boxShadow = 'none';
+    }}
+  >
+    {/* Image Side */}
+    <div
+      style={{
+        width: '100%',
+        padding: window.innerWidth <= 768 ? '16px' : '20px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        boxSizing: 'border-box', // ✅ FIX 3
+        ...(window.innerWidth > 768 && { flex: 2, minWidth: '400px' })
+      }}
+    >
+      <img
+        src={imageData.src.trim()}
+        alt={isUntitled ? 'Untitled composition' : imageData.caption}
+        loading="lazy"
+        style={{
+          width: '100%',
+          height: 'auto',
+          objectFit: 'contain',
+          borderRadius: '4px',
+          display: 'block'
+        }}
+        onContextMenu={(e) => e.preventDefault()}
+      />
+    </div>
+    {/* Text Side */}
+    <div
+      style={{
+        width: '100%',
+        padding: window.innerWidth <= 768 ? '16px' : '20px',
+        boxSizing: 'border-box', // ✅ FIX 4
+        ...(window.innerWidth > 768 && { flex: 1, minWidth: '300px' })
+      }}
+    >
+      <h3
+        style={{
+          fontSize: window.innerWidth <= 768 ? '1rem' : '1.2rem',
+          fontWeight: 500,
+          marginBottom: '12px',
+          fontStyle: isUntitled ? 'italic' : 'normal',
+          color: isUntitled ? '#888' : '#1a1a1a',
+          lineHeight: 1.4
+        }}
+      >
+        {renderFormatting(imageData.caption)}
+      </h3>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        {displayMetadata.map((item, metaIndex) => (
+          <div
+            key={metaIndex}
+            style={{
+              padding: '8px 12px',
+              backgroundColor: '#f8f9fa',
+              borderRadius: '4px',
+              fontSize: window.innerWidth <= 768 ? '0.85rem' : '0.9rem',
+              color: '#495057',
+              whiteSpace: 'pre-line',
+              lineHeight: 1.5,
+              overflowWrap: 'break-word', // ✅ FIX 5: Forces long text to wrap
+              wordBreak: 'break-word'
+            }}
+          >
+            {renderFormatting(item)}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
           })}
         </div>
       </main>
