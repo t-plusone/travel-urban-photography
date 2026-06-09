@@ -211,8 +211,8 @@ const projectData = {
   'china': {
     title: '境·象：中国光影哲思 | realm & reflection: a philosophical journey through china',
     description: [
-  '本系列精选四幅作品，跨越中国的地理与文化脉络：北京国家大剧院的现代几何、桂林阳朔晨曦中的水墨山水、乌镇雨后江南的静谧灯火，以及南宁“鸳鸯楼”的色彩交响。在视觉呈现上，我依据每处场景的情感基调与哲学意境，灵活选用不同的富士胶片模拟模式进行后期创作。无论是高饱和的色彩张力，还是低对比的柔和层次，皆旨在通过光影与色调的微妙变化，呼应东方哲学中“阴阳平衡”与“天人合一”的理念。这不仅是旅行的记录，更是一次通过镜头探索光、影、色与中国文化深层共鸣的实验性实践——在构图与色彩的流转间，寻找风景背后的精神境界。',
-  'This curated selection of four images traverses the diverse visual and cultural landscape of China: from the modern geometric curves of Beijing\'s National Centre for the Performing Arts to the ink-wash serenity of a Yangshuo sunrise; from the subtly lit old houses of Wuzhen\'s Jiangnan water towns after a rain to the vibrant chromatic intensity of Nanning\'s "Yuanyang Lou." In post-processing, I adaptively employ various Fujifilm film simulations to align with the specific mood and philosophical essence of each scene. Whether through vivid saturation of Velvia or subdued, nostalgic tones of Classic Chrome, these choices are made to enhance the interplay of light and shadow, reflecting concepts such as the balance of Yin and Yang and the harmony between humanity and nature. This series is not merely a travel record, but an ongoing exploration where color and composition serve as vehicles for cultural resonance—seeking the spiritual realm within the physical landscape.'
+  '本系列精选四幅作品，跨越中国的地理与文化脉络：北京国家大剧院的现代几何、桂林阳朔晨曦中的水墨山水、乌镇雨后江南的静谧灯火，以及汕头南岸风塔的极简哲思。在视觉呈现上，我依据每处场景的情感基调与哲学意境，灵活选用不同的富士胶片模拟模式或黑白影调技术进行后期创作。无论是高饱和的色彩张力、低对比的柔和层次，还是极致的黑白抽象，皆旨在通过光影与色调的微妙变化，呼应东方哲学中"阴阳平衡"与"天人合一"的理念。这不仅是旅行的记录，更是一次通过镜头探索光、影、色与中国文化深层共鸣的实验性实践——在构图与色彩的流转间，寻找风景背后的精神境界。',
+  'This curated selection of four images traverses the diverse visual and cultural landscape of China: from the modern geometric curves of Beijing\'s National Centre for the Performing Arts to the ink-wash serenity of a Yangshuo sunrise; from the subtly lit old houses of Wuzhen\'s Jiangnan water towns after rain to the stark, philosophical minimalism of the Nan\'an Wind Tower in Shantou. \n\nIn post-processing, I adaptively employ various Fujifilm film simulations or rigorous black-and-white tonal techniques to align with the specific mood and philosophical essence of each scene. Whether through vivid saturation, subdued nostalgic tones, or extreme monochromatic abstraction, these choices are made to enhance the interplay of light and shadow, reflecting concepts such as the balance of Yin and Yang and the harmony between humanity and nature. This series is not merely a travel record, but an ongoing exploration where color and composition serve as vehicles for cultural resonance—seeking the spiritual realm within the physical landscape.'
 ],
     images: [
       {
@@ -233,7 +233,7 @@ const projectData = {
       },
        {
         src: 'https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/DSCF0393_ldqvzs',
-        caption: '北京国家大剧院',
+        caption: '国家大剧院·北京',
         location: "Xicheng District, Beijing", 
         metadata: [
           'Shot on Fujifilm X-Pro2 using Velvia film simulation',
@@ -241,11 +241,11 @@ const projectData = {
         ]
       },
       {
-        src: 'https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/_DSF3785_ra7sxv',
-        caption: '鸳鸯楼·南宁',
-        location: "Nanning, Guangxi Province", 
+        src: 'https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/_DSF5146_nfqiuw',
+        caption: '南岸风塔·汕头',
+        location: "Shantou, Guangdong Province", 
         metadata: [
-          '南宁唐山街28号，两道楼梯自地面升起，彼此穿插、缠绕，如一对相守半生的伴侣，步调交错却始终同向而行。\n\n红漆栏杆在日光下灼灼生辉——不是张扬，而是祈愿。那是中国人最熟悉的吉色，是门楣上的福字，是婚嫁时的绸缎，是平凡日子里对安稳与深情的无声寄托。\n\n晾晒的竹席、窗台的绿植、斑驳的水泥墙……生活的痕迹在此层层叠叠，却因那一抹红而有了仪式感。\n\n楼梯的交错并非杂乱，而是一种默契：你上我下，我左你右，日复一日，在方寸之间走出共生的韵律。\n\n这栋楼叫“鸳鸯”，不靠雕梁画栋，而靠日复一日的相望与同行。\n\n在这里，爱不在远方，就在每一次擦肩而过的楼梯转角——无声，却从未分离。 '
+          '这幅展现汕头南岸风塔的黑白作品，通过精准的光影控制，将建筑的几何形态转化为一幅动态的太极意象。一道约60度的斜线将画面一分为二，建筑两侧的弧形轮廓在纯净的天空背景下，形成了阴阳流转的视觉韵律。极简的黑白影调剥离了色彩的干扰，突显出建筑本身的哲学美感——刚与柔、动与静、虚与实的对话，体现了东方美学中“大道至简”的意境。'
         ]
       }
     ]
@@ -585,7 +585,7 @@ function Lightbox({ isOpen, onClose, image, caption }) {
           style={{
             position: 'absolute',
             top: '20px',
-            right: '20px',
+            left: '20px',
             background: 'rgba(0, 0, 0, 0.7)',
             color: 'white',
             border: 'none',
