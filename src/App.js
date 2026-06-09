@@ -3975,12 +3975,28 @@ function ContactPage() {
             maxWidth: '800px'
           }}
         >
-          For collaboration inquiries, print sales, or general questions, please reach out via email at contact@plusone.photos
+          For collaboration inquiries, print sales, or general questions, please reach out via email at{' '}
+          <a 
+            href="mailto:plusone@plusone.photography" 
+            style={{ 
+              color: '#64b4ff', 
+              textDecoration: 'none',
+              fontWeight: 500,
+              borderBottom: '1px solid transparent',
+              transition: 'border-bottom 0.2s ease'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.borderBottom = '1px solid #64b4ff'}
+            onMouseLeave={(e) => e.currentTarget.style.borderBottom = '1px solid transparent'}
+          >
+            plusone@plusone.photography
+          </a>
         </p>
       </div>
     </div>
   );
 }
+
+export default ContactPage; // Don't forget to keep your export statement if you have one!
 
 function JourneyRouter() {
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
