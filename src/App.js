@@ -236,7 +236,7 @@ const projectData = {
         caption: '国家大剧院·北京',
         location: "Xicheng District, Beijing", 
         metadata: [
-          'Shot on Fujifilm X-Pro2 using Velvia film simulation',
+          'Shot on Fujifilm X-Pro2 using Velvia film simulation and post-processed in Topaz Studio 2',
         'Awarded \'Honorable Mention\' in Chromatic Awards 2024 (Amateur Category in Architecture)'
         ]
       },
@@ -245,6 +245,7 @@ const projectData = {
         caption: '南岸风塔·汕头',
         location: "Shantou, Guangdong Province", 
         metadata: [
+          'Shot on Fujifilm X-T3 and post-processed in Photoshop',
           '这幅展现汕头南岸风塔的黑白作品，通过精准的光影控制，将建筑的几何形态转化为一幅动态的太极意象。一道约60度的斜线将画面一分为二，建筑两侧的弧形轮廓在纯净的天空背景下，形成了阴阳流转的视觉韵律。极简的黑白影调剥离了色彩的干扰，突显出建筑本身的哲学美感——刚与柔、动与静、虚与实的对话，体现了东方美学中“大道至简”的意境。'
         ]
       }
