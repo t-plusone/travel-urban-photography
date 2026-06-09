@@ -3996,7 +3996,6 @@ function ContactPage() {
   );
 }
 
-export default ContactPage; // Don't forget to keep your export statement if you have one!
 
 function JourneyRouter() {
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
