@@ -1060,7 +1060,7 @@ function PhotoDocumentariesPage() {
     },
     {
       slug: 'journey',
-      title: 'A Journey Till The End',
+      title: 'A Journey Till the End',
       subtitle: 'A Photographer’s Quest to Preserve the Memories of KTM in Singapore',
       coverImage: 'https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P8010338_s4st7a'
     }
@@ -2950,7 +2950,7 @@ onMouseLeave={(e) => {
           letterSpacing: '0.05em',
           lineHeight: 1.2
         }}>
-          A Journey Till The End
+          A Journey Till the End
         </h1>
         <p style={{
           fontSize: '0.95rem',
