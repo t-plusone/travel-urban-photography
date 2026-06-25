@@ -1704,7 +1704,7 @@ function renderFormatting(text) {
           shotDate: "2011-06-17",
           caption: [
             "After passing Jalan Hang Jebat, a Malaysia-bound train passes under the Queensway Flyover and emerges on the left-hand side of the Blessed Sacrament Church on Commonwealth Drive.",
-            "This photograph shows Tanjong Pagar-bound Shuttle Service Train Number 91 approaching the Queensway Flyover, with the colorful Blk 55 Commonwealth Drive in the background."
+            "This photograph shows a Tanjong Pagar-bound train approaching the Queensway Flyover, with the colorful Blk 55 Commonwealth Drive in the background."
           ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6171689_rl4trg"
         }
