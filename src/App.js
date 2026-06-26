@@ -2740,6 +2740,7 @@ onMouseLeave={(e) => {
   function KtmStoryMobilePage() {
   const [lightboxPhoto, setLightboxPhoto] = useState(null);
   const [showIntro, setShowIntro] = useState(true);
+  const [targetLocation, setTargetLocation] = useState(null); // <-- NEW STATE
 
   const openLightbox = (photo) => setLightboxPhoto(photo);
   const closeLightbox = () => setLightboxPhoto(null);
@@ -2781,13 +2782,21 @@ onMouseLeave={(e) => {
     });
   }
 
-  // Deep linking: Check URL hash on mount
+  // 1. Check URL hash on mount
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
     if (hash) {
-      setShowIntro(false);
+      setTargetLocation(hash); // Store the target
+      setShowIntro(false);     // Skip intro
+    }
+  }, []);
+
+  // 2. Scroll to location AFTER gallery is rendered
+  useEffect(() => {
+    if (!showIntro && targetLocation) {
+      // Small delay to ensure DOM is ready
       setTimeout(() => {
-        const element = document.getElementById(`location-${hash}`);
+        const element = document.getElementById(`location-${targetLocation}`);
         if (element) {
           element.scrollIntoView({ 
             behavior: 'smooth',
@@ -2801,10 +2810,12 @@ onMouseLeave={(e) => {
             element.style.backgroundColor = '';
           }, 3000);
         }
-      }, 500);
+        setTargetLocation(null); // Clear after scrolling
+      }, 300);
     }
-  }, []);
+  }, [showIntro, targetLocation]);
 
+  
   // INTRO SCREEN
   if (showIntro) {
     return (
