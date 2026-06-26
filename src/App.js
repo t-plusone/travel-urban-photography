@@ -2736,11 +2736,10 @@ onMouseLeave={(e) => {
       </div>
     );
   }
-
-  function KtmStoryMobilePage() {
+function KtmStoryMobilePage() {
   const [lightboxPhoto, setLightboxPhoto] = useState(null);
   const [showIntro, setShowIntro] = useState(true);
-  const [targetLocation, setTargetLocation] = useState(null); // <-- NEW STATE
+  // Removed targetLocation state - not needed
 
   const openLightbox = (photo) => setLightboxPhoto(photo);
   const closeLightbox = () => setLightboxPhoto(null);
@@ -2782,38 +2781,45 @@ onMouseLeave={(e) => {
     });
   }
 
-  // 1. Check URL hash on mount
-  useEffect(() => {
-    const hash = window.location.hash.replace('#', '');
-    if (hash) {
-      setTargetLocation(hash); // Store the target
-      setShowIntro(false);     // Skip intro
-    }
-  }, []);
+  // Function to scroll to location
+  const scrollToLocation = (locationId) => {
+    setTimeout(() => {
+      const element = document.getElementById(`location-${locationId}`);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+        element.style.boxShadow = '0 0 0 4px #64b4ff';
+        element.style.backgroundColor = 'rgba(100, 180, 255, 0.05)';
+        setTimeout(() => {
+          element.style.boxShadow = '';
+          element.style.backgroundColor = '';
+        }, 3000);
+      }
+    }, 500);
+  };
 
-  // 2. Scroll to location AFTER gallery is rendered
+  // Check URL hash on mount AND listen for hash changes
   useEffect(() => {
-    if (!showIntro && targetLocation) {
-      // Small delay to ensure DOM is ready
-      setTimeout(() => {
-        const element = document.getElementById(`location-${targetLocation}`);
-        if (element) {
-          element.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          });
-          // Highlight the location
-          element.style.boxShadow = '0 0 0 4px #64b4ff';
-          element.style.backgroundColor = 'rgba(100, 180, 255, 0.05)';
-          setTimeout(() => {
-            element.style.boxShadow = '';
-            element.style.backgroundColor = '';
-          }, 3000);
-        }
-        setTargetLocation(null); // Clear after scrolling
-      }, 300);
-    }
-  }, [showIntro, targetLocation]);
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        setShowIntro(false);
+        scrollToLocation(hash);
+      }
+    };
+
+    // Check initial hash
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
 
   
   // INTRO SCREEN
