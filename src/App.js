@@ -3,7 +3,7 @@
 // ============================================================================
 
 // React & Core
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
 
 // Leaflet
@@ -2780,30 +2780,38 @@ function KtmStoryMobilePage() {
     });
   }
 
-  // Scroll to location with retry mechanism
-  const scrollToLocation = useCallback((locationId, attempt = 0) => {
-    const headerElement = document.getElementById(`location-header-${locationId}`);
-    if (headerElement) {
-      headerElement.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-      
-      // Highlight the location container
-      const containerElement = document.getElementById(`location-${locationId}`);
-      if (containerElement) {
-        containerElement.style.boxShadow = '0 0 0 4px #64b4ff';
-        containerElement.style.backgroundColor = 'rgba(100, 180, 255, 0.05)';
-        setTimeout(() => {
-          containerElement.style.boxShadow = '';
-          containerElement.style.backgroundColor = '';
-        }, 3000);
-      }
-    } else if (attempt < 10) {
-      // Retry up to 10 times with 200ms intervals
-      setTimeout(() => scrollToLocation(locationId, attempt + 1), 200);
+// Scroll to location with retry mechanism
+const scrollToLocation = useCallback((locationId, attempt = 0) => {
+  const headerElement = document.getElementById(`location-header-${locationId}`);
+  if (headerElement) {
+    // Get the sticky header height
+    const stickyHeader = document.querySelector('header');
+    const headerHeight = stickyHeader ? stickyHeader.offsetHeight : 0;
+    
+    // Calculate position with offset
+    const elementPosition = headerElement.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - headerHeight - 20; // 20px extra padding
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+    
+    // Highlight the location container
+    const containerElement = document.getElementById(`location-${locationId}`);
+    if (containerElement) {
+      containerElement.style.boxShadow = '0 0 0 4px #64b4ff';
+      containerElement.style.backgroundColor = 'rgba(100, 180, 255, 0.05)';
+      setTimeout(() => {
+        containerElement.style.boxShadow = '';
+        containerElement.style.backgroundColor = '';
+      }, 3000);
     }
-  }, []);
+  } else if (attempt < 10) {
+    // Retry up to 10 times with 200ms intervals
+    setTimeout(() => scrollToLocation(locationId, attempt + 1), 200);
+  }
+}, []);
 
   // Check URL hash on mount
   useEffect(() => {
