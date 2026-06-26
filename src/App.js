@@ -2784,17 +2784,9 @@ function KtmStoryMobilePage() {
 const scrollToLocation = useCallback((locationId, attempt = 0) => {
   const headerElement = document.getElementById(`location-header-${locationId}`);
   if (headerElement) {
-    // Get the sticky header height
-    const stickyHeader = document.querySelector('header');
-    const headerHeight = stickyHeader ? stickyHeader.offsetHeight : 0;
-    
-    // Calculate position with offset
-    const elementPosition = headerElement.getBoundingClientRect().top + window.pageYOffset;
-    const offsetPosition = elementPosition - headerHeight - 20; // 20px extra padding
-    
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth'
+    headerElement.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
     });
     
     // Highlight the location container
@@ -2808,10 +2800,10 @@ const scrollToLocation = useCallback((locationId, attempt = 0) => {
       }, 3000);
     }
   } else if (attempt < 10) {
-    // Retry up to 10 times with 200ms intervals
     setTimeout(() => scrollToLocation(locationId, attempt + 1), 200);
   }
 }, []);
+
 
   // Check URL hash on mount
   useEffect(() => {
@@ -2961,18 +2953,19 @@ const scrollToLocation = useCallback((locationId, attempt = 0) => {
           >
             {/* Location Header - with its own ID for scrolling */}
             <h2 
-              id={`location-header-${location.id}`}
-              style={{ 
-                fontSize: '1.3rem',
-                fontWeight: 500,
-                marginBottom: '20px',
-                color: '#64b4ff',
-                borderBottom: '1px solid #333',
-                paddingBottom: '12px'
-              }}
-            >
-              #{location.id} {location.name}
-            </h2>
+  id={`location-header-${location.id}`}
+  style={{ 
+    fontSize: '1.3rem',
+    fontWeight: 500,
+    marginBottom: '20px',
+    color: '#64b4ff',
+    borderBottom: '1px solid #333',
+    paddingBottom: '12px',
+    scrollMarginTop: '80px' // This accounts for the sticky header
+  }}
+>
+  #{location.id} {location.name}
+</h2>
             
             {/* All Photos for this Location */}
             {location.photos.map((photo) => (
