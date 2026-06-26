@@ -360,188 +360,7 @@ const projectData = {
 }
 };
 
-const journeyData = [
-  {
-    id: 1,
-    location: "The Tanjong Pagar Railway Station",
-    lat: 1.2730275,
-    lng: 103.8389164,
-    date: "9 Feb 2011",
-    description: "Built in 1932, the Tanjong Pagar Railway Station was the showpiece of the KTM's Singapore operations and is located along Keppel Road.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P2090545_ljvbxx"
-  },
-  {
-    id: 2,
-    location: "Through the fencing",
-    lat: 1.2726349,
-    lng: 103.8383263,
-    date: "24 Jun 2010",
-    description: "A train at the departure platform viewed through the Station fencing along Keppel Road.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6240114_wvedrt"
-  },
-  {
-    id: 3,
-    location: "Kaunter Tiket | Ticket Counter",
-    lat: 1.2729819,
-    lng: 103.8386858,
-    date: "24 Jun 2010",
-    description: "No automated ticket machines. No stored-value electronic tickets either.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6240097_i47kax"
-  },
-  {
-    id: 4,
-    location: "Departing Tanjong Pagar Railway Station",
-    lat: 1.2728776,
-    lng: 103.8340294,
-    date: "18 Nov 2010",
-    description: "After departing the Station, a Malaysia-bound train first travels against Keppel Road's traffic flow before cruising alongside the Ayer Rajah Expressway in a northwesterly direction.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/PB180887_dog140"
-  },
-  {
-    id: 5,
-    location: "Approaching the Kampong Bahru Flyover",
-    lat: 1.2749824,
-    lng: 103.8297433,
-    date: "1 Aug 2010",
-    description: "The Kampong Bahru Flyover is the first major viaduct a Malaysia-bound train passes under after departing Tanjong Pagar Railway Station.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P8010338_s4st7a"
-  },
-  {
-    id: 6,
-    location: "Approaching the Queensway Flyover",
-    lat: 1.2944636,
-    lng: 103.7987638,
-    date: "17 Jun 2011",
-    description: "After passing Jalan Hang Jebat, a Malaysia-bound train passes under the Queensway Flyover and emerges on the left-hand side of the Blessed Sacrament Church on Commonwealth Drive.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6171689_rl4trg"
-  },
-  {
-    id: 7,
-    location: "Peekaboo at Woking Road",
-    lat: 1.2950485,
-    lng: 103.7984580,
-    date: "30 Aug 2010",
-    description: "From Tanjong Pagar to Woodlands, many parts of the railway tracks are well concealed by thick vegetation. It could be a way to keep people out of the railway tracks without building fences. This may also explain why few Singaporeans notice the KTM railway's presence in Singapore.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P8300484_gjz9f2"
-  },
-  {
-    id: 8,
-    location: "Train meets Train",
-    lat: 1.3066703,
-    lng: 103.7919751,
-    date: "7 Sep 2010",
-    description: "This photograph shows a Malaysia-bound KTM train and a west-bound Singapore MRT East-West Line train that has just left Buona Vista Station.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P9070720_rddqdr"
-  },
-  {
-    id: 9,
-    location: "Heading towards Bukit Timah Railway Station",
-    lat: 1.3148746,
-    lng: 103.7872785,
-    date: "15 May 2011",
-    description: "After Ghim Moh estate, a Malaysia-bound train cruises past the former Raffles Junior College on its left, before passing under Holland Road near Cold Storage Jelita.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P5151368_hbh9sl"
-  },
-  {
-    id: 10,
-    location: "The charming Bukit Timah Railway Station",
-    lat: 1.3342922,
-    lng: 103.7811282,
-    date: "2 Mar 2011",
-    description: "Compared to the grandeur of Tanjong Pagar Railway Station, Bukit Timah Railway Station is a charming, quaint station — reminiscent of KTM stations in small Malaysian towns like Kulai, Johor.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P3020802_xipios"
-  },
-  {
-    id: 11,
-    location: "A Key Token being handed over",
-    lat: 1.3342922,
-    lng: 103.7811282,
-    date: "2 Mar 2011",
-    description: "A Key Token is being handed over to the Bukit Timah Station Master by the Fireman of the approaching Malaysia-bound train.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P3020832_l9zw1n"
-  },
-  {
-    id: 12,
-    location: "Bukit Timah Station Master Encik Atan",
-    lat: 1.3346860,
-    lng: 103.7815011,
-    date: "2 Mar 2011",
-    description: "Encik Atan, who comes from Pontian, Johor, is a Station Master at the Bukit Timah Railway Station. He started working with the KTMB (Malaysian Railway Company) nearly 20 years ago and has been a Station Master for the past 2 years.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P3020809_bnamqk"
-  },
-  {
-    id: 13,
-    location: "Cruising along Rifle Range Road",
-    lat: 1.3386140,
-    lng: 103.7807500,
-    date: "17 Sep 2010",
-    description: "After crossing the Bukit Timah Railway Bridge, a Malaysia-bound train continues its journey along Rifle Range Road, where one can get as close as five metres from a passing train.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P9170926_vjqoic"
-  },
-  {
-    id: 14,
-    location: "Crossing the Railway Bridge",
-    lat: 1.3579150,
-    lng: 103.7674811,
-    date: "4 Jun 2011",
-    description: "This is the third of four overhead railway crossings between Bukit Timah and Woodlands. Although a similar bridge spans Bukit Timah and Dunearn Roads near the Bukit Timah Railway Station, to most older Singaporeans, 'Railway Bridge' (火车桥) refers to this one rather than its sibling.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6041462_dmu3hd"
-  },
-  {
-    id: 15,
-    location: "Hillview Road Crossing",
-    lat: 1.3620564,
-    lng: 103.7664400,
-    date: "28 Sep 2010",
-    description: "Pictured here is the Malaysia-bound Shuttle Service Train Number 62 scheduled to depart Tanjong Pagar at 8:45 AM and arrive in Gemas at 1:46 PM.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P9281012_gkhp5b"
-  },
-  {
-    id: 16,
-    location: "Bukit Panjang Crossing",
-    lat: 1.3791487,
-    lng: 103.7600702,
-    date: "1 Apr 2011",
-    description: "The second level crossing between Bukit Timah and Woodlands is the Bukit Panjang Crossing, where a Malaysia-bound train crosses Choa Chu Kang Road near Ten Mile Junction (now Junction 10).",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P4011095_l0v9et"
-  },
-  {
-    id: 17,
-    location: "Train Number 2 Ekspres Rakyat",
-    lat: 1.3809392,
-    lng: 103.7590939,
-    date: "17 May 2011",
-    description: "The passengers at the doors must have enjoyed their ride.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P5171403_k66kto"
-  },
-  {
-    id: 18,
-    location: "Peekaboo at Sungei Kadut Avenue",
-    lat: 1.4053957,
-    lng: 103.7542444,
-    date: "15 May 2011",
-    description: "A Tanjong Pagar-bound train plays peekaboo from behind thick vegetation on both sides of the track. This recurring phenomenon was one of many familiar sights along the line. Like the KTM itself, it was easy to take for granted while it existed. Only in its absence do we realize what has slipped away.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P5151387_w07u9u"
-  },
-  {
-    id: 19,
-    location: "The End",
-    lat: 1.4502533,
-    lng: 103.7700749,
-    date: "13 Dec 2010",
-    description: "After departing the Woodlands Train Checkpoint, a Malaysia-bound train leaves Singapore via the Johor–Singapore Causeway.",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/PC131745_boxg5t"
-  },
-  {
-    id: 20,
-    location: "Epilogue",
-    lat: 1.2730275,
-    lng: 103.8389164,
-    date: "31 Dec 2011",
-    description: "This is not an ending. It is a preservation: the last train from Tanjong Pagar departed on 30 June 2011, but these images carry forward what was.\n\n*These images are not nostalgia — they are memorials crafted with care, precision, and respect.*",
-    imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/DSCF7012_fzvhtm"
-  }
-];
+
 
 
 
@@ -1228,89 +1047,8 @@ function PhotoDocumentariesPage() {
     </div>
   );
 }
-// ---------------- KTM STORY MAP PAGE ----------------
-function KtmStoryMapPage() {
-  const [selectedLocation, setSelectedLocation] = useState(null);
-  const [lightboxPhoto, setLightboxPhoto] = useState(null);
-  const [epilogueOpen, setEpilogueOpen] = useState(false);
-  const mapRef = useRef();
 
-  const openLightbox = (photo) => setLightboxPhoto(photo);
-  const closeLightbox = () => setLightboxPhoto(null);
-
-useEffect(() => {
-  if (selectedLocation) {
-    console.log('Selected location ID:', selectedLocation.id, 'Name:', selectedLocation.name);
-  }
-}, [selectedLocation]);
-
-  // Helper: Format date for captions
-  function formatDate(isoDate) {
-    if (!isoDate) return '';
-    const date = new Date(isoDate);
-    if (isNaN(date.getTime())) return '';
-    return date.toLocaleDateString('en-GB', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    });
-  }
-
-  // Helper: Render bold (**text**) and italics (*text*)
-function renderFormatting(text) {
-  if (!text || typeof text !== 'string') return text;
-  
-  // First, split by bold markers: **text**
-  const boldParts = text.split(/\*\*(.*?)\*\*/);
-  
-  return boldParts.map((part, index) => {
-    // Odd indices = content inside ** ** (bold)
-    if (index % 2 === 1) {
-      return <strong key={`b-${index}`} style={{ fontWeight: 600 }}>{part}</strong>;
-    }
-    
-    // Even indices = regular text - check for italics *text*
-    const italicParts = part.split(/\*(.*?)\*/);
-    if (italicParts.length <= 1) {
-      return part; // No italics found
-    }
-    
-    return italicParts.map((subPart, subIndex) => {
-      // Odd indices = content inside * * (italic)
-      if (subIndex % 2 === 1) {
-        return <em key={`i-${index}-${subIndex}`} style={{ fontStyle: 'italic' }}>{subPart}</em>;
-      }
-      return subPart;
-    });
-  });
-}
-
-  // Helper: Create numbered marker icons
-  function createNumberedIcon(id) {
-    return L.divIcon({
-      className: 'numbered-marker',
-      html: `<div style="
-        background: #000;
-        color: #fff;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 12px;
-        font-weight: bold;
-        box-shadow: 0 2px 6px rgba(255,255,255,0.4);
-        border: 2px solid #fff;
-        position: relative;
-      ">${id}</div>`,
-      iconSize: [24, 24],
-      iconAnchor: [12, 12],
-      riseOnHover: false
-    });
-  }
-
-  // KTM Locations Data
+// KTM Locations Data
     const ktmLocations = [
     {
       id: 1,
@@ -2350,6 +2088,90 @@ function renderFormatting(text) {
     }
   ];
 
+// ---------------- KTM STORY MAP PAGE ----------------
+function KtmStoryMapPage() {
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [lightboxPhoto, setLightboxPhoto] = useState(null);
+  const [epilogueOpen, setEpilogueOpen] = useState(false);
+  const mapRef = useRef();
+
+  const openLightbox = (photo) => setLightboxPhoto(photo);
+  const closeLightbox = () => setLightboxPhoto(null);
+
+useEffect(() => {
+  if (selectedLocation) {
+    console.log('Selected location ID:', selectedLocation.id, 'Name:', selectedLocation.name);
+  }
+}, [selectedLocation]);
+
+  // Helper: Format date for captions
+  function formatDate(isoDate) {
+    if (!isoDate) return '';
+    const date = new Date(isoDate);
+    if (isNaN(date.getTime())) return '';
+    return date.toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  }
+
+  // Helper: Render bold (**text**) and italics (*text*)
+function renderFormatting(text) {
+  if (!text || typeof text !== 'string') return text;
+  
+  // First, split by bold markers: **text**
+  const boldParts = text.split(/\*\*(.*?)\*\*/);
+  
+  return boldParts.map((part, index) => {
+    // Odd indices = content inside ** ** (bold)
+    if (index % 2 === 1) {
+      return <strong key={`b-${index}`} style={{ fontWeight: 600 }}>{part}</strong>;
+    }
+    
+    // Even indices = regular text - check for italics *text*
+    const italicParts = part.split(/\*(.*?)\*/);
+    if (italicParts.length <= 1) {
+      return part; // No italics found
+    }
+    
+    return italicParts.map((subPart, subIndex) => {
+      // Odd indices = content inside * * (italic)
+      if (subIndex % 2 === 1) {
+        return <em key={`i-${index}-${subIndex}`} style={{ fontStyle: 'italic' }}>{subPart}</em>;
+      }
+      return subPart;
+    });
+  });
+}
+
+  // Helper: Create numbered marker icons
+  function createNumberedIcon(id) {
+    return L.divIcon({
+      className: 'numbered-marker',
+      html: `<div style="
+        background: #000;
+        color: #fff;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(255,255,255,0.4);
+        border: 2px solid #fff;
+        position: relative;
+      ">${id}</div>`,
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+      riseOnHover: false
+    });
+  }
+
+  
+
 
   // Map configuration
   const homeCenter = [1.36, 103.825];
@@ -2916,17 +2738,72 @@ onMouseLeave={(e) => {
   }
 
   function KtmStoryMobilePage() {
+  const [lightboxPhoto, setLightboxPhoto] = useState(null);
   const [showIntro, setShowIntro] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const totalItems = journeyData.length;
-  const item = journeyData[currentIndex];
 
+  const openLightbox = (photo) => setLightboxPhoto(photo);
+  const closeLightbox = () => setLightboxPhoto(null);
+
+  // Helper: Format date for captions
+  function formatDate(isoDate) {
+    if (!isoDate) return '';
+    const date = new Date(isoDate);
+    if (isNaN(date.getTime())) return '';
+    return date.toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  }
+
+  // Helper: Render bold (**text**) and italics (*text*)
+  function renderFormatting(text) {
+    if (!text || typeof text !== 'string') return text;
+    
+    const boldParts = text.split(/\*\*(.*?)\*\*/);
+    
+    return boldParts.map((part, index) => {
+      if (index % 2 === 1) {
+        return <strong key={`b-${index}`} style={{ fontWeight: 600 }}>{part}</strong>;
+      }
+      
+      const italicParts = part.split(/\*(.*?)\*/);
+      if (italicParts.length <= 1) {
+        return part;
+      }
+      
+      return italicParts.map((subPart, subIndex) => {
+        if (subIndex % 2 === 1) {
+          return <em key={`i-${index}-${subIndex}`} style={{ fontStyle: 'italic' }}>{subPart}</em>;
+        }
+        return subPart;
+      });
+    });
+  }
+
+  // Deep linking: Check URL hash on mount
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, [currentIndex, showIntro]);
-
-  const handlePrev = () => setCurrentIndex(prev => Math.max(0, prev - 1));
-  const handleNext = () => setCurrentIndex(prev => Math.min(totalItems - 1, prev + 1));
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      setShowIntro(false);
+      setTimeout(() => {
+        const element = document.getElementById(`location-${hash}`);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+          // Highlight the location
+          element.style.boxShadow = '0 0 0 4px #64b4ff';
+          element.style.backgroundColor = 'rgba(100, 180, 255, 0.05)';
+          setTimeout(() => {
+            element.style.boxShadow = '';
+            element.style.backgroundColor = '';
+          }, 3000);
+        }
+      }, 500);
+    }
+  }, []);
 
   // INTRO SCREEN
   if (showIntro) {
@@ -2941,12 +2818,10 @@ onMouseLeave={(e) => {
         padding: '40px 24px',
         boxSizing: 'border-box'
       }}>
-        {/* Header */}
         <div style={{ marginBottom: '40px' }}>
           <Link to="/photo-documentaries" style={{ color: '#64b4ff', textDecoration: 'none', fontSize: '0.9rem' }}>← Back</Link>
         </div>
 
-        {/* Title */}
         <h1 style={{
           fontSize: '2rem',
           fontWeight: 300,
@@ -2962,10 +2837,9 @@ onMouseLeave={(e) => {
           marginBottom: '40px',
           fontWeight: 300
         }}>
-          A Photographer’s Quest to Preserve the Memories of KTM in Singapore
+          A Photographer's Quest to Preserve the Memories of KTM in Singapore
         </p>
 
-        {/* Introduction Text */}
         <div style={{ 
           flex: 1, 
           fontSize: '1rem', 
@@ -2984,7 +2858,6 @@ onMouseLeave={(e) => {
           </p>
         </div>
 
-        {/* Begin Button */}
         <button
           onClick={() => setShowIntro(false)}
           style={{
@@ -3014,63 +2887,229 @@ onMouseLeave={(e) => {
     );
   }
 
-  // GALLERY VIEW (existing code)
+  // GALLERY VIEW - All locations with all photos
   return (
-    <div style={{ backgroundColor: '#0a0a0a', color: '#fff', minHeight: '100vh', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ 
+      backgroundColor: '#0a0a0a', 
+      color: '#fff', 
+      minHeight: '100vh', 
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
+    }}>
       {/* Header */}
-      <header style={{ padding: '16px 20px', borderBottom: '1px solid #1a1a1a', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'sticky', top: 0, backgroundColor: '#0a0a0a', zIndex: 10 }}>
-        <button onClick={() => setShowIntro(true)} style={{ background: 'none', border: 'none', color: '#888', fontSize: '0.9rem', cursor: 'pointer' }}>← Intro</button>
-        <span style={{ color: '#64b4ff', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.05em' }}>{String(currentIndex + 1).padStart(2, '0')} / {String(totalItems).padStart(2, '0')}</span>
+      <header style={{ 
+        padding: '16px 20px', 
+        borderBottom: '1px solid #1a1a1a', 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        position: 'sticky', 
+        top: 0, 
+        backgroundColor: '#0a0a0a', 
+        zIndex: 10 
+      }}>
+        <button 
+          onClick={() => setShowIntro(true)} 
+          style={{ 
+            background: 'none', 
+            border: 'none', 
+            color: '#888', 
+            fontSize: '0.9rem', 
+            cursor: 'pointer' 
+          }}
+        >
+          ← Intro
+        </button>
+        <span style={{ 
+          color: '#64b4ff', 
+          fontSize: '0.85rem', 
+          fontWeight: 600, 
+          letterSpacing: '0.05em' 
+        }}>
+          A Journey Till the End
+        </span>
       </header>
 
-      {/* Photo */}
-      <div style={{ width: '100%', backgroundColor: '#111', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh', padding: '0' }}>
-        <img src={item.imageUrl} alt={item.location} style={{ maxWidth: '100%', maxHeight: '60vh', objectFit: 'contain' }} onContextMenu={(e) => e.preventDefault()} />
+      {/* All Locations */}
+      <div style={{ padding: '20px' }}>
+        {ktmLocations.map((location) => (
+          <div 
+            key={location.id}
+            id={`location-${location.id}`}
+            style={{ 
+              marginBottom: '48px',
+              padding: '16px',
+              borderRadius: '12px',
+              transition: 'box-shadow 0.3s, background-color 0.3s',
+              backgroundColor: '#111'
+            }}
+          >
+            {/* Location Header */}
+            <h2 style={{ 
+              fontSize: '1.3rem',
+              fontWeight: 500,
+              marginBottom: '20px',
+              color: '#64b4ff',
+              borderBottom: '1px solid #333',
+              paddingBottom: '12px'
+            }}>
+              #{location.id} {location.name}
+            </h2>
+            
+            {/* All Photos for this Location */}
+            {location.photos.map((photo) => (
+              <div
+                key={photo.id}
+                style={{
+                  marginBottom: '32px',
+                  backgroundColor: '#1a1a1a',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                  border: '1px solid #222'
+                }}
+              >
+                {/* Image */}
+                <div 
+                  style={{ 
+                    width: '100%', 
+                    display: 'flex', 
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: '#000',
+                    padding: '12px'
+                  }}
+                >
+                  <img
+                    src={photo.imageUrl}
+                    alt={photo.title || location.name}
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      maxWidth: '100%',
+                      objectFit: 'contain',
+                      borderRadius: '4px',
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => openLightbox(photo)}
+                    onContextMenu={(e) => e.preventDefault()}
+                  />
+                </div>
+                
+                {/* Text Content */}
+                <div style={{ padding: '16px' }}>
+                  {photo.title && (
+                    <h3 style={{
+                      fontSize: '1.1rem',
+                      fontWeight: 500,
+                      marginBottom: '12px',
+                      color: '#f5f5f5',
+                      lineHeight: 1.4
+                    }}>
+                      {renderFormatting(photo.title)}
+                    </h3>
+                  )}
+                  
+                  {/* Metadata */}
+                  <div style={{ 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    gap: '8px',
+                    marginBottom: '12px'
+                  }}>
+                    {photo.shotFrom && (
+                      <div style={{
+                        padding: '8px 12px',
+                        backgroundColor: '#222',
+                        borderRadius: '4px',
+                        fontSize: '0.85rem',
+                        color: '#aaa'
+                      }}>
+                        📍 {photo.shotFrom}
+                      </div>
+                    )}
+                    {photo.shotDate && (
+                      <div style={{
+                        padding: '8px 12px',
+                        backgroundColor: '#222',
+                        borderRadius: '4px',
+                        fontSize: '0.85rem',
+                        color: '#aaa'
+                      }}>
+                        📅 {formatDate(photo.shotDate)}
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Caption */}
+                  {photo.caption && (
+                    <div style={{ marginTop: '12px' }}>
+                      {Array.isArray(photo.caption) ? (
+                        photo.caption.map((para, idx) => (
+                          <p key={idx} style={{
+                            fontSize: '0.95rem',
+                            color: '#ccc',
+                            lineHeight: 1.7,
+                            marginBottom: '12px',
+                            textAlign: 'justify'
+                          }}>
+                            {renderFormatting(para)}
+                          </p>
+                        ))
+                      ) : (
+                        <p style={{
+                          fontSize: '0.95rem',
+                          color: '#ccc',
+                          lineHeight: 1.7,
+                          textAlign: 'justify'
+                        }}>
+                          {renderFormatting(photo.caption)}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
 
-      {/* Info Panel */}
-      <div style={{ padding: '24px 20px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <h2 style={{ fontSize: '1.4rem', fontWeight: 400, marginBottom: '8px', lineHeight: 1.3, color: '#f5f5f5' }}>{item.location}</h2>
-
-        {/* Coordinates */}
-        <a href={`https://www.google.com/maps?q=${item.lat},${item.lng}`} target="_blank" rel="noopener noreferrer" style={{ color: '#64b4ff', fontSize: '0.9rem', textDecoration: 'none', display: 'inline-block', marginBottom: '16px', opacity: 0.9 }}>
-          📍 {item.lat.toFixed(4)}°N, {item.lng.toFixed(4)}°E
-        </a>
-
-        {/* Description */}
-<p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#ccc', marginBottom: '12px', whiteSpace: 'pre-line' }}>
-  {renderFormatting(item.description)}
-</p>
-
-        {/* Date */}
-        {item.date && <p style={{ fontSize: '0.85rem', color: '#666', fontStyle: 'italic', marginBottom: '24px' }}>📅 {item.date}</p>}
-
-        {/* Desktop Link */}
-        <a 
-  href="/journey" 
-  style={{ 
-    color: '#64b4ff', 
-    fontSize: '0.95rem', 
-    textDecoration: 'none', 
-    fontWeight: 500, 
-    marginTop: 'auto', 
-    paddingTop: '16px', 
-    borderTop: '1px solid #222' 
-  }}
->
-  Click here for the full experience on a large-screen →
-</a>
-      </div>
-
-      {/* Navigation */}
-      <nav style={{ padding: '16px 20px 24px', borderTop: '1px solid #1a1a1a', display: 'flex', justifyContent: 'space-between', gap: '12px', backgroundColor: '#0a0a0a', position: 'sticky', bottom: 0 }}>
-        <button onClick={handlePrev} disabled={currentIndex === 0} style={{ flex: 1, padding: '14px', backgroundColor: currentIndex === 0 ? '#111' : '#1a1a1a', color: currentIndex === 0 ? '#444' : '#fff', border: '1px solid #333', borderRadius: '8px', fontSize: '0.95rem', cursor: currentIndex === 0 ? 'not-allowed' : 'pointer', transition: 'all 0.2s' }}>← Previous</button>
-        <button onClick={handleNext} disabled={currentIndex === totalItems - 1} style={{ flex: 1, padding: '14px', backgroundColor: currentIndex === totalItems - 1 ? '#111' : '#1a1a1a', color: currentIndex === totalItems - 1 ? '#444' : '#fff', border: '1px solid #333', borderRadius: '8px', fontSize: '0.95rem', cursor: currentIndex === totalItems - 1 ? 'not-allowed' : 'pointer', transition: 'all 0.2s' }}>Next →</button>
-      </nav>
+      {/* Lightbox */}
+      {lightboxPhoto && (
+        <div
+          onClick={closeLightbox}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0,0,0,0.95)',
+            zIndex: 2000,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '20px',
+            cursor: 'zoom-out'
+          }}
+        >
+          <img
+            src={lightboxPhoto.imageUrl.trim()}
+            alt={lightboxPhoto.title}
+            style={{
+              maxWidth: '100%',
+              maxHeight: '100%',
+              width: 'auto',
+              height: 'auto',
+              objectFit: 'contain'
+            }}
+            onContextMenu={(e) => e.preventDefault()}
+          />
+        </div>
+      )}
     </div>
   );
 }
-
 // ---------------- TOA PAYOH STORY MAP PAGE ----------------
 function ToaPayohStoryMapPage() {
   const [selectedLocation, setSelectedLocation] = useState(null);
