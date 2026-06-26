@@ -2739,12 +2739,12 @@ onMouseLeave={(e) => {
 function KtmStoryMobilePage() {
   const [lightboxPhoto, setLightboxPhoto] = useState(null);
   const [showIntro, setShowIntro] = useState(true);
-  // Removed targetLocation state - not needed
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const openLightbox = (photo) => setLightboxPhoto(photo);
   const closeLightbox = () => setLightboxPhoto(null);
 
-  // Helper: Format date for captions
+  // Helper functions (formatDate, renderFormatting) - same as before
   function formatDate(isoDate) {
     if (!isoDate) return '';
     const date = new Date(isoDate);
@@ -2756,22 +2756,15 @@ function KtmStoryMobilePage() {
     });
   }
 
-  // Helper: Render bold (**text**) and italics (*text*)
   function renderFormatting(text) {
     if (!text || typeof text !== 'string') return text;
-    
     const boldParts = text.split(/\*\*(.*?)\*\*/);
-    
     return boldParts.map((part, index) => {
       if (index % 2 === 1) {
         return <strong key={`b-${index}`} style={{ fontWeight: 600 }}>{part}</strong>;
       }
-      
       const italicParts = part.split(/\*(.*?)\*/);
-      if (italicParts.length <= 1) {
-        return part;
-      }
-      
+      if (italicParts.length <= 1) return part;
       return italicParts.map((subPart, subIndex) => {
         if (subIndex % 2 === 1) {
           return <em key={`i-${index}-${subIndex}`} style={{ fontStyle: 'italic' }}>{subPart}</em>;
@@ -2781,45 +2774,86 @@ function KtmStoryMobilePage() {
     });
   }
 
-  // Function to scroll to location
+  // Scroll to location function
   const scrollToLocation = (locationId) => {
-    setTimeout(() => {
-      const element = document.getElementById(`location-${locationId}`);
-      if (element) {
-        element.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        });
-        element.style.boxShadow = '0 0 0 4px #64b4ff';
-        element.style.backgroundColor = 'rgba(100, 180, 255, 0.05)';
-        setTimeout(() => {
-          element.style.boxShadow = '';
-          element.style.backgroundColor = '';
-        }, 3000);
-      }
-    }, 500);
+    const element = document.getElementById(`location-${locationId}`);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+      element.style.boxShadow = '0 0 0 4px #64b4ff';
+      element.style.backgroundColor = 'rgba(100, 180, 255, 0.05)';
+      setTimeout(() => {
+        element.style.boxShadow = '';
+        element.style.backgroundColor = '';
+      }, 3000);
+    }
   };
 
-  // Check URL hash on mount AND listen for hash changes
+  // Check URL hash on mount
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      setShowIntro(false);
+      // Store hash to scroll after images load
+      const interval = setInterval(() => {
+        if (imagesLoaded) {
+          scrollToLocation(hash);
+          clearInterval(interval);
+        }
+      }, 100);
+      // Safety timeout - scroll after 3 seconds even if images haven't loaded
+      setTimeout(() => {
+        scrollToLocation(hash);
+        clearInterval(interval);
+      }, 3000);
+    }
+  }, [imagesLoaded]);
+
+  // Listen for hash changes
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
       if (hash) {
         setShowIntro(false);
-        scrollToLocation(hash);
+        setTimeout(() => scrollToLocation(hash), 100);
       }
     };
-
-    // Check initial hash
-    handleHashChange();
-
-    // Listen for hash changes
     window.addEventListener('hashchange', handleHashChange);
-
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
+
+  // Count loaded images
+  useEffect(() => {
+    if (!showIntro) {
+      const images = document.querySelectorAll('img[loading="lazy"]');
+      let loadedCount = 0;
+      const totalImages = images.length;
+      
+      if (totalImages === 0) {
+        setImagesLoaded(true);
+        return;
+      }
+
+      images.forEach(img => {
+        if (img.complete) {
+          loadedCount++;
+        } else {
+          img.addEventListener('load', () => {
+            loadedCount++;
+            if (loadedCount >= totalImages) {
+              setImagesLoaded(true);
+            }
+          });
+        }
+      });
+
+      if (loadedCount >= totalImages) {
+        setImagesLoaded(true);
+      }
+    }
+  }, [showIntro]);
 
   
   // INTRO SCREEN
@@ -2904,7 +2938,7 @@ function KtmStoryMobilePage() {
     );
   }
 
-  // GALLERY VIEW - All locations with all photos
+  // GALLERY VIEW
   return (
     <div style={{ 
       backgroundColor: '#0a0a0a', 
@@ -2924,24 +2958,10 @@ function KtmStoryMobilePage() {
         backgroundColor: '#0a0a0a', 
         zIndex: 10 
       }}>
-        <button 
-          onClick={() => setShowIntro(true)} 
-          style={{ 
-            background: 'none', 
-            border: 'none', 
-            color: '#888', 
-            fontSize: '0.9rem', 
-            cursor: 'pointer' 
-          }}
-        >
+        <button onClick={() => setShowIntro(true)} style={{ background: 'none', border: 'none', color: '#888', fontSize: '0.9rem', cursor: 'pointer' }}>
           ← Intro
         </button>
-        <span style={{ 
-          color: '#64b4ff', 
-          fontSize: '0.85rem', 
-          fontWeight: 600, 
-          letterSpacing: '0.05em' 
-        }}>
+        <span style={{ color: '#64b4ff', fontSize: '0.85rem', fontWeight: 600, letterSpacing: '0.05em' }}>
           A Journey Till the End
         </span>
       </header>
@@ -2985,16 +3005,14 @@ function KtmStoryMobilePage() {
                 }}
               >
                 {/* Image */}
-                <div 
-                  style={{ 
-                    width: '100%', 
-                    display: 'flex', 
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: '#000',
-                    padding: '12px'
-                  }}
-                >
+                <div style={{ 
+                  width: '100%', 
+                  display: 'flex', 
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  backgroundColor: '#000',
+                  padding: '12px'
+                }}>
                   <img
                     src={photo.imageUrl}
                     alt={photo.title || location.name}
@@ -3027,12 +3045,7 @@ function KtmStoryMobilePage() {
                   )}
                   
                   {/* Metadata */}
-                  <div style={{ 
-                    display: 'flex', 
-                    flexDirection: 'column', 
-                    gap: '8px',
-                    marginBottom: '12px'
-                  }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px' }}>
                     {photo.shotFrom && (
                       <div style={{
                         padding: '8px 12px',
