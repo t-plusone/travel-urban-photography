@@ -2739,12 +2739,11 @@ onMouseLeave={(e) => {
 function KtmStoryMobilePage() {
   const [lightboxPhoto, setLightboxPhoto] = useState(null);
   const [showIntro, setShowIntro] = useState(true);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const openLightbox = (photo) => setLightboxPhoto(photo);
   const closeLightbox = () => setLightboxPhoto(null);
 
-  // Helper functions (formatDate, renderFormatting) - same as before
+  // Helper: Format date for captions
   function formatDate(isoDate) {
     if (!isoDate) return '';
     const date = new Date(isoDate);
@@ -2756,15 +2755,22 @@ function KtmStoryMobilePage() {
     });
   }
 
+  // Helper: Render bold (**text**) and italics (*text*)
   function renderFormatting(text) {
     if (!text || typeof text !== 'string') return text;
+    
     const boldParts = text.split(/\*\*(.*?)\*\*/);
+    
     return boldParts.map((part, index) => {
       if (index % 2 === 1) {
         return <strong key={`b-${index}`} style={{ fontWeight: 600 }}>{part}</strong>;
       }
+      
       const italicParts = part.split(/\*(.*?)\*/);
-      if (italicParts.length <= 1) return part;
+      if (italicParts.length <= 1) {
+        return part;
+      }
+      
       return italicParts.map((subPart, subIndex) => {
         if (subIndex % 2 === 1) {
           return <em key={`i-${index}-${subIndex}`} style={{ fontStyle: 'italic' }}>{subPart}</em>;
@@ -2774,42 +2780,39 @@ function KtmStoryMobilePage() {
     });
   }
 
-  // Scroll to location function
-  const scrollToLocation = (locationId) => {
-    const element = document.getElementById(`location-${locationId}`);
-    if (element) {
-      element.scrollIntoView({ 
+  // Scroll to location with retry mechanism
+  const scrollToLocation = useCallback((locationId, attempt = 0) => {
+    const headerElement = document.getElementById(`location-header-${locationId}`);
+    if (headerElement) {
+      headerElement.scrollIntoView({ 
         behavior: 'smooth',
         block: 'start'
       });
-      element.style.boxShadow = '0 0 0 4px #64b4ff';
-      element.style.backgroundColor = 'rgba(100, 180, 255, 0.05)';
-      setTimeout(() => {
-        element.style.boxShadow = '';
-        element.style.backgroundColor = '';
-      }, 3000);
+      
+      // Highlight the location container
+      const containerElement = document.getElementById(`location-${locationId}`);
+      if (containerElement) {
+        containerElement.style.boxShadow = '0 0 0 4px #64b4ff';
+        containerElement.style.backgroundColor = 'rgba(100, 180, 255, 0.05)';
+        setTimeout(() => {
+          containerElement.style.boxShadow = '';
+          containerElement.style.backgroundColor = '';
+        }, 3000);
+      }
+    } else if (attempt < 10) {
+      // Retry up to 10 times with 200ms intervals
+      setTimeout(() => scrollToLocation(locationId, attempt + 1), 200);
     }
-  };
+  }, []);
 
   // Check URL hash on mount
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
     if (hash) {
       setShowIntro(false);
-      // Store hash to scroll after images load
-      const interval = setInterval(() => {
-        if (imagesLoaded) {
-          scrollToLocation(hash);
-          clearInterval(interval);
-        }
-      }, 100);
-      // Safety timeout - scroll after 3 seconds even if images haven't loaded
-      setTimeout(() => {
-        scrollToLocation(hash);
-        clearInterval(interval);
-      }, 3000);
+      setTimeout(() => scrollToLocation(hash), 100);
     }
-  }, [imagesLoaded]);
+  }, [scrollToLocation]);
 
   // Listen for hash changes
   useEffect(() => {
@@ -2822,40 +2825,8 @@ function KtmStoryMobilePage() {
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  }, [scrollToLocation]);
 
-  // Count loaded images
-  useEffect(() => {
-    if (!showIntro) {
-      const images = document.querySelectorAll('img[loading="lazy"]');
-      let loadedCount = 0;
-      const totalImages = images.length;
-      
-      if (totalImages === 0) {
-        setImagesLoaded(true);
-        return;
-      }
-
-      images.forEach(img => {
-        if (img.complete) {
-          loadedCount++;
-        } else {
-          img.addEventListener('load', () => {
-            loadedCount++;
-            if (loadedCount >= totalImages) {
-              setImagesLoaded(true);
-            }
-          });
-        }
-      });
-
-      if (loadedCount >= totalImages) {
-        setImagesLoaded(true);
-      }
-    }
-  }, [showIntro]);
-
-  
   // INTRO SCREEN
   if (showIntro) {
     return (
@@ -2980,15 +2951,18 @@ function KtmStoryMobilePage() {
               backgroundColor: '#111'
             }}
           >
-            {/* Location Header */}
-            <h2 style={{ 
-              fontSize: '1.3rem',
-              fontWeight: 500,
-              marginBottom: '20px',
-              color: '#64b4ff',
-              borderBottom: '1px solid #333',
-              paddingBottom: '12px'
-            }}>
+            {/* Location Header - with its own ID for scrolling */}
+            <h2 
+              id={`location-header-${location.id}`}
+              style={{ 
+                fontSize: '1.3rem',
+                fontWeight: 500,
+                marginBottom: '20px',
+                color: '#64b4ff',
+                borderBottom: '1px solid #333',
+                paddingBottom: '12px'
+              }}
+            >
               #{location.id} {location.name}
             </h2>
             
@@ -3140,6 +3114,7 @@ function KtmStoryMobilePage() {
     </div>
   );
 }
+
 // ---------------- TOA PAYOH STORY MAP PAGE ----------------
 function ToaPayohStoryMapPage() {
   const [selectedLocation, setSelectedLocation] = useState(null);
