@@ -551,6 +551,8 @@ const journeyData = [
 
 function Lightbox({ isOpen, onClose, image, caption }) {
   if (!isOpen) return null;
+  
+  const isMobile = window.innerWidth <= 768; // Add this line
 
   return (
     <div
@@ -581,31 +583,34 @@ function Lightbox({ isOpen, onClose, image, caption }) {
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          onClick={onClose}
-          style={{
-            position: 'absolute',
-            top: '20px',
-            left: '20px',
-            background: 'rgba(0, 0, 0, 0.7)',
-            color: 'white',
-            border: 'none',
-            borderRadius: '50%',
-            width: '40px',
-            height: '40px',
-            fontSize: '24px',
-            cursor: 'pointer',
-            zIndex: 10,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            transition: 'all 0.2s'
-          }}
-          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.9)'}
-          onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.7)'}
-        >
-          ×
-        </button>
+        {/* Wrap the button in a conditional */}
+        {isMobile && (
+          <button
+            onClick={onClose}
+            style={{
+              position: 'absolute',
+              top: '20px',
+              left: '20px',
+              background: 'rgba(0, 0, 0, 0.7)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '50%',
+              width: '40px',
+              height: '40px',
+              fontSize: '24px',
+              cursor: 'pointer',
+              zIndex: 10,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              transition: 'all 0.2s'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.9)'}
+            onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.7)'}
+          >
+            ×
+          </button>
+        )}
 
         <img
           src={image}
@@ -625,7 +630,6 @@ function Lightbox({ isOpen, onClose, image, caption }) {
     </div>
   );
 }
-
 // ============================================================================
 // UI COMPONENTS (HEADER, NAVIGATION, LOGO)
 // ============================================================================
@@ -2119,7 +2123,7 @@ function renderFormatting(text) {
           shotDate: "2011-06-04",
           caption: [
           "Shortly after leaving Hindhede Road, a Malaysia-bound train speeds across Upper Bukit Timah Road via the 'Railway Bridge'—arguably one of the most iconic railway structures in Singapore's KTM system, second only to the Tanjong Pagar Railway Station.",
-          "This is the third of four overhead railway crossings between Bukit Timah and Woodlands. Although a similar bridge spans Bukit Timah and Dunearn Roads near the Bukit Timah Railway Station, to most older Singaporeans, *'Railway Bridge'* (火车桥) refers to this one rather than its sibling."
+          "This is the third of four overhead railway crossings between Bukit Timah and Woodlands. Although a similar bridge spans Bukit Timah and Dunearn Roads near the Bukit Timah Railway Station, to most older Singaporeans, *\"Railway Bridge\"* (\"火车桥\") refers to this one rather than its sibling."
                         ],
           imageUrl: "https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/P6041462_dmu3hd"
         },
