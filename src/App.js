@@ -182,12 +182,13 @@ const projectData = {
         ]
       },
       {
-        src: 'https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/_DSF3402_do6l3q',
-        caption: 'Matrix',
+        src: 'https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/_DSF3407_qozn9m',
+        caption: 'Warped',
         location: "Ovolo Nishi Hotel, Canberra",
         metadata: [
-          'Shot from the extreme right hand side at the top of the staircase, this image isolates the timber wall of Ovolo Nishi. By avoiding a central, symmetrical viewpoint, the composition emphasizes strong diagonal recession, transforming the reclaimed planks into a receding matrix of texture and rhythm. Rendered with high saturation to accentuate the interplay of ochre and sienna tones, the warm lighting highlights the wood grain while casting deep, structural shadows between the slats. The frame excludes surrounding context, reducing the architecture to a pure study of linear perspective, color density, and the tactile quality of wood.'
-        ]
+          'This view from the top of the stairwell at the Ovolo Nishi Hotel in Canberra, Australia, captures an architectural illusion. The eye-level perspective looks down the length of the space, where the repeating horizontal timber slats on the walls and ceiling create a powerful sense of distortion. Lines appear to bend and warp, pulling the gaze forward toward the reversed "ovolo" sign in the centre of the frame.\n\nThe monochrome treatment emphasizes texture and form – the grain of the wood, the textured concrete wall, the sleek metal railings. It transforms the modern interior into an abstract composition of lines and planes. The image is purely about the immediate, physical sensation of being within this dynamic structure. It feels less like a static photograph and more like a moment suspended in motion, where the timber slabs, the railings, the lights, and "olovo" seem to shift and flow around you. The composition guides the eye through this confined space, creating a visceral experience of movement within stillness.',
+          'Awarded \'Honorable Mention in Architecture Category\' in the 10th Edition of The Monovisions Photography Awards 2026'
+]
       },
       {
         src: 'https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/DSCF5203_qrkcj3',
@@ -779,7 +780,7 @@ function PortfolioPage() {
     },
     {
       id: 'australia',
-      previewImage: 'https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/_DSF3402_do6l3q'
+      previewImage: 'https://res.cloudinary.com/dspjrym37/image/upload/w_2400,f_auto/_DSF5939_qbshri'
     },
     {
       id: 'china',
