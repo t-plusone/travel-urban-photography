@@ -5,21 +5,22 @@
       "destination": "/journey-og.html",
       "has": [
         {
-        "source": "/journey",
-        "destination": "/journey-og.html",
-        "has": [
-        {
           "type": "header",
           "key": "user-agent",
-          "value": ".*(facebookexternalhit|Facebot|Twitterbot|LinkedInBot|WhatsApp).*"
+          "value": "facebookexternalhit"
         }
-      ]
-    }
       ]
     },
     {
       "source": "/journey",
-      "destination": "/index.html"
+      "destination": "/journey-og.html",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "Facebot"
+        }
+      ]
     }
   ]
 }
