@@ -7,7 +7,7 @@
         {
           "type": "header",
           "key": "user-agent",
-          "value": "facebookexternalhit"
+          "value": ".*facebookexternalhit.*"
         }
       ]
     },
@@ -18,7 +18,7 @@
         {
           "type": "header",
           "key": "user-agent",
-          "value": "Facebot"
+          "value": ".*Facebot.*"
         }
       ]
     }
