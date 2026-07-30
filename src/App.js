@@ -5,7 +5,6 @@
 // React & Core
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 
 // Leaflet
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
@@ -4082,24 +4081,12 @@ function App() {
             path="/stroll"
             element={<ToaPayohStoryMapPage />}
           />
-          
           <Route
             path="/journey"
             element={
-              <>
-                <Helmet>
-                  <title>A Journey Till the End - KTM Railway Singapore</title>
-                  <meta property="og:title" content="A Journey Till the End" />
-                  <meta property="og:description" content="A Photographer's Quest to Preserve the Memories of KTM in Singapore" />
-                  <meta property="og:image" content="https://res.cloudinary.com/dspjrym37/image/upload/w_1200,h_630,c_fill/og-ktm2_akmro4" />
-                  <meta property="og:image:width" content="1200" />
-                  <meta property="og:image:height" content="630" />
-                  <meta property="og:url" content="https://plusone.photography/journey" />
-                </Helmet>
-                <JourneyRouter />
-              </>
-            }
-          />
+              <JourneyRouter />
+  }
+/>
           
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />

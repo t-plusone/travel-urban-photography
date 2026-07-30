@@ -1,6 +1,19 @@
 {
   "rewrites": [
-    { "source": "/journey", "destination": "/index.html" },
-    { "source": "/journey/(.*)", "destination": "/index.html" }
+    {
+      "source": "/journey",
+      "destination": "/journey-og.html",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": "facebookexternalhit"
+        }
+      ]
+    },
+    {
+      "source": "/journey",
+      "destination": "/index.html"
+    }
   ]
 }
