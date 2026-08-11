@@ -2782,29 +2782,47 @@ function KtmStoryMobilePage() {
   }
 
 // Scroll to location with retry mechanism
-const scrollToLocation = useCallback((locationId, attempt = 0) => {
-  const headerElement = document.getElementById(`location-header-${locationId}`);
-  if (headerElement) {
-    headerElement.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'start'
-    });
-    
-    // Highlight the location container
-    const containerElement = document.getElementById(`location-${locationId}`);
-    if (containerElement) {
-      containerElement.style.boxShadow = '0 0 0 4px #64b4ff';
-      containerElement.style.backgroundColor = 'rgba(100, 180, 255, 0.05)';
-      setTimeout(() => {
-        containerElement.style.boxShadow = '';
-        containerElement.style.backgroundColor = '';
-      }, 3000);
-    }
-  } else if (attempt < 10) {
-    setTimeout(() => scrollToLocation(locationId, attempt + 1), 200);
-  }
-}, []);
+  // Scroll to location with layout-shift settling mechanism
+  const scrollToLocation = useCallback((locationId, attempt = 0) => {
+    const headerElement = document.getElementById(`location-header-${locationId}`);
+    if (headerElement) {
+      // Because images are lazy-loaded, they expand and push content down.
+      // We will repeatedly "snap" to the header for 1.5 seconds to counteract this layout shift.
+      let checks = 0;
+      const maxChecks = 15; // 15 checks * 100ms = 1.5 seconds
 
+      const settleScroll = () => {
+        headerElement.scrollIntoView({ 
+          behavior: checks === maxChecks ? 'smooth' : 'auto', // Instant snaps, smooth at the very end
+          block: 'start'
+        });
+        
+        checks++;
+        if (checks < maxChecks) {
+          setTimeout(settleScroll, 100);
+        } else {
+          // Final highlight after layout has settled
+          const containerElement = document.getElementById(`location-${locationId}`);
+          if (containerElement) {
+            containerElement.style.boxShadow = '0 0 0 4px #64b4ff';
+            containerElement.style.backgroundColor = 'rgba(100, 180, 255, 0.05)';
+            setTimeout(() => {
+              containerElement.style.boxShadow = '';
+              containerElement.style.backgroundColor = '';
+            }, 3000);
+          }
+        }
+      };
+
+      settleScroll();
+      
+    } else if (attempt < 10) {
+      // Retry up to 10 times with 200ms intervals if element isn't in DOM yet
+      setTimeout(() => scrollToLocation(locationId, attempt + 1), 200);
+    }
+  }, []);
+
+  
 
   // Check URL hash on mount
   useEffect(() => {
